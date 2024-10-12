@@ -14,12 +14,12 @@ INSERT INTO category (category_name, status) VALUES
 ('Science', 'active'),
 ('Technology', 'active');
 
--- Insertar datos de prueba en la tabla book
-INSERT INTO book (title, author, isbn, publication_date, status) VALUES
-('The Science of Space', 'Carl Sagan', '9780131103627', '1980-11-15', 'active'),
-('Artificial Intelligence', 'Stuart Russell', '9780136042594', '2010-06-23', 'active'),
-('Digital Fortress', 'Dan Brown', '9780425195985', '2004-01-01', 'active'),
-('Introduction to Algorithms', 'Thomas H. Cormen', '9780262033848', '2009-07-31', 'active');
+-- Insertar datos de prueba en la tabla book (sin available_copies, ya que ahora se gestiona desde inventory)
+INSERT INTO book (title, author, isbn, publication_date, publisher, edition, number_of_pages, status) VALUES
+('The Science of Space', 'Carl Sagan', '9780131103627', '1980-11-15', 'Random House', '1st', 365, 'active'),
+('Artificial Intelligence', 'Stuart Russell', '9780136042594', '2010-06-23', 'Pearson', '3rd', 1152, 'active'),
+('Digital Fortress', 'Dan Brown', '9780425195985', '2004-01-01', 'Penguin', '2nd', 384, 'active'),
+('Introduction to Algorithms', 'Thomas H. Cormen', '9780262033848', '2009-07-31', 'MIT Press', '3rd', 1312, 'active');
 
 -- Insertar datos de prueba en la tabla inventory
 INSERT INTO inventory (book_id, available_copies, total_copies, status) VALUES
@@ -35,9 +35,9 @@ INSERT INTO book_category (book_id, category_id) VALUES
 (3, 1), -- 'Digital Fortress' pertenece a 'Fiction'
 (4, 4); -- 'Introduction to Algorithms' pertenece a 'Technology'
 
--- Insertar datos de prueba en la tabla loan
-INSERT INTO loan (user_id, book_id, loan_date, due_date, status) VALUES
-(1, 1, '2024-10-01', '2024-10-15', 'pending'), -- Canchola Aguilar Alan Yahir toma 'The Science of Space'
-(2, 2, '2024-10-03', '2024-10-17', 'pending'), -- Apaez Sotelo Alexis Jesus toma 'Artificial Intelligence'
-(3, 3, '2024-10-02', '2024-10-16', 'pending'), -- Jimenez Barcelata Isaac toma 'Digital Fortress'
-(4, 4, '2024-10-04', '2024-10-18', 'pending'); -- Negrete Juarez Vanessa toma 'Introduction to Algorithms'
+-- Insertar datos de prueba en la tabla loan (ahora con relación a inventory_id en lugar de book_id)
+INSERT INTO loan (user_id, inventory_id, loan_date, due_date, status) VALUES
+(1, 1, '2024-10-01', '2024-10-15', 'pending'), -- Canchola Aguilar Alan Yahir toma una copia de 'The Science of Space'
+(2, 2, '2024-10-03', '2024-10-17', 'pending'), -- Apaez Sotelo Alexis Jesus toma una copia de 'Artificial Intelligence'
+(3, 3, '2024-10-02', '2024-10-16', 'pending'), -- Jimenez Barcelata Isaac toma una copia de 'Digital Fortress'
+(4, 4, '2024-10-04', '2024-10-18', 'pending'); -- Negrete Juarez Vanessa toma una copia de 'Introduction to Algorithms'

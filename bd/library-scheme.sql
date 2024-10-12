@@ -2,7 +2,7 @@
 CREATE DATABASE library_db;
 USE library_db;
 
--- Crear tabla user
+-- Crear tabla user (sin cambios)
 CREATE TABLE user (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
@@ -12,30 +12,28 @@ CREATE TABLE user (
     status ENUM('active', 'inactive') DEFAULT 'active'
 );
 
--- Crear tabla category
+-- Crear tabla category (sin cambios)
 CREATE TABLE category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(100) UNIQUE NOT NULL,
     status ENUM('active', 'inactive') DEFAULT 'active'
 );
 
--- Crear tabla book
+-- Crear tabla book (eliminando available_copies para evitar duplicidad)
 CREATE TABLE book (
     book_id INT PRIMARY KEY AUTO_INCREMENT,
-    title VARCHAR(255) NOT NULL,            -- Título del libro (Alfanumérico)
-    author VARCHAR(255) NOT NULL,           -- Autor (Alfanumérico)
-    isbn VARCHAR(13) NOT NULL,              -- ISBN único
-    publication_date DATE NOT NULL,         -- Fecha de publicación del libro
-    publisher VARCHAR(255) NOT NULL,        -- Editorial (Alfanumérico)
-    edition VARCHAR(50) NOT NULL,           -- Edición (Alfanumérico)
-    available_copies INT NOT NULL,          -- Número de copias disponibles (Numérico)
-    number_of_pages INT,                    -- Número de páginas (Numérico, opcional)
-    status ENUM('active', 'inactive') DEFAULT 'active', -- Estado del libro (activo/inactivo)
-    UNIQUE (isbn)                           -- ISBN debe ser único
+    title VARCHAR(255) NOT NULL,
+    author VARCHAR(255) NOT NULL,
+    isbn VARCHAR(13) NOT NULL,
+    publication_date DATE NOT NULL,
+    publisher VARCHAR(255) NOT NULL,
+    edition VARCHAR(50) NOT NULL,
+    number_of_pages INT,
+    status ENUM('active', 'inactive') DEFAULT 'active',
+    UNIQUE (isbn)
 );
 
-
--- Crear tabla inventory
+-- Crear tabla inventory (sin cambios)
 CREATE TABLE inventory (
     inventory_id INT PRIMARY KEY AUTO_INCREMENT,
     book_id INT,
@@ -45,7 +43,7 @@ CREATE TABLE inventory (
     FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
--- Crear tabla book_category (relación muchos a muchos entre books y categories)
+-- Crear tabla book_category (sin cambios)
 CREATE TABLE book_category (
     book_id INT,
     category_id INT,
@@ -54,17 +52,17 @@ CREATE TABLE book_category (
     FOREIGN KEY (category_id) REFERENCES category(category_id)
 );
 
--- Crear tabla loan
+-- Crear tabla loan (relacionando directamente con inventory para reflejar mejor las copias disponibles)
 CREATE TABLE loan (
     loan_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
-    book_id INT,
+    inventory_id INT,  -- Relaciona con inventory en lugar de directamente con book
     loan_date DATE NOT NULL,
     due_date DATE NOT NULL, -- Fecha de devolución esperada
     return_date DATE,
     status ENUM('pending', 'returned') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES user(user_id),
-    FOREIGN KEY (book_id) REFERENCES book(book_id)
+    FOREIGN KEY (inventory_id) REFERENCES inventory(inventory_id)
 );
 
 -- Crear trigger para descontar inventario cuando se inserta un préstamo
@@ -77,10 +75,10 @@ BEGIN
     -- Reducir una copia del libro prestado si hay copias disponibles
     UPDATE inventory
     SET available_copies = available_copies - 1
-    WHERE book_id = NEW.book_id AND available_copies > 0;
+    WHERE inventory_id = NEW.inventory_id AND available_copies > 0;
 
     -- Lanzar error si no hay copias disponibles
-    IF (SELECT available_copies FROM inventory WHERE book_id = NEW.book_id) < 0 THEN
+    IF (SELECT available_copies FROM inventory WHERE inventory_id = NEW.inventory_id) < 0 THEN
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'No available copies for this book';
     END IF;
 END //
@@ -98,7 +96,7 @@ BEGIN
     IF NEW.status = 'returned' THEN
         UPDATE inventory
         SET available_copies = available_copies + 1
-        WHERE book_id = NEW.book_id;
+        WHERE inventory_id = NEW.inventory_id;
     END IF;
 END //
 
