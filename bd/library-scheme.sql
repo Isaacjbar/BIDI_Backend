@@ -2,24 +2,26 @@
 CREATE DATABASE library_db;
 USE library_db;
 
--- Crear tabla user (sin cambios)
+-- Crear tabla user
 CREATE TABLE user (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     role ENUM('administrator', 'client', 'guest') NOT NULL,
-    status ENUM('active', 'inactive') DEFAULT 'active'
+    status ENUM('active', 'inactive') DEFAULT 'active',
+    code VARCHAR(255),
+    code_generated_at TIMESTAMP NULL DEFAULT NULL -- Nueva columna para almacenar el tiempo de generación del código
 );
 
--- Crear tabla category (sin cambios)
+-- Crear tabla category
 CREATE TABLE category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     category_name VARCHAR(100) UNIQUE NOT NULL,
     status ENUM('active', 'inactive') DEFAULT 'active'
 );
 
--- Crear tabla book (eliminando available_copies para evitar duplicidad)
+-- Crear tabla book (sin available_copies para evitar duplicidad)
 CREATE TABLE book (
     book_id INT PRIMARY KEY AUTO_INCREMENT,
     title VARCHAR(255) NOT NULL,
@@ -33,7 +35,7 @@ CREATE TABLE book (
     UNIQUE (isbn)
 );
 
--- Crear tabla inventory (sin cambios)
+-- Crear tabla inventory
 CREATE TABLE inventory (
     inventory_id INT PRIMARY KEY AUTO_INCREMENT,
     book_id INT,
@@ -43,7 +45,7 @@ CREATE TABLE inventory (
     FOREIGN KEY (book_id) REFERENCES book(book_id)
 );
 
--- Crear tabla book_category (sin cambios)
+-- Crear tabla book_category
 CREATE TABLE book_category (
     book_id INT,
     category_id INT,
@@ -52,7 +54,7 @@ CREATE TABLE book_category (
     FOREIGN KEY (category_id) REFERENCES category(category_id)
 );
 
--- Crear tabla loan (relacionando directamente con inventory para reflejar mejor las copias disponibles)
+-- Crear tabla loan (relacionando directamente con inventory)
 CREATE TABLE loan (
     loan_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
@@ -97,6 +99,22 @@ BEGIN
         UPDATE inventory
         SET available_copies = available_copies + 1
         WHERE inventory_id = NEW.inventory_id;
+    END IF;
+END //
+
+DELIMITER ;
+
+-- Crear trigger para eliminar el código de recuperación después de 24 horas
+DELIMITER //
+
+CREATE TRIGGER delete_recovery_code
+BEFORE UPDATE ON user
+FOR EACH ROW
+BEGIN
+    -- Eliminar el código de recuperación si han pasado más de 24 horas desde que fue asignado
+    IF (NEW.code IS NOT NULL AND OLD.code IS NOT NULL AND TIMESTAMPDIFF(HOUR, OLD.code_generated_at, NOW()) > 24) THEN
+        SET NEW.code = NULL;
+        SET NEW.code_generated_at = NULL;
     END IF;
 END //
 
