@@ -1,0 +1,44 @@
+2024-10-12T22:14:47.842-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 10296 (C:\Users\palma\Descargas\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Descargas\GestionDeBibliotecas)
+2024-10-12T22:14:47.842-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-12T22:14:49.118-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-12T22:14:49.165-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 0 JPA repository interfaces.
+2024-10-12T22:14:50.284-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-12T22:14:50.315-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-12T22:14:50.316-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-12T22:14:50.494-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-12T22:14:50.495-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2579 ms
+2024-10-12T22:14:50.904-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-12T22:14:51.234-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-12T22:14:51.308-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-12T22:14:51.870-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-12T22:14:51.909-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-12T22:14:52.528-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3d235635
+2024-10-12T22:14:52.533-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-12T22:14:52.798-06:00  WARN 10296 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-12T22:14:52.810-06:00  WARN 10296 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-12T22:14:53.862-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-12T22:14:53.868-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-12T22:14:53.993-06:00  WARN 10296 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-12T22:14:54.876-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-10-12T22:14:54.890-06:00  INFO 10296 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 8.014 seconds (process running for 10.16)
+2024-10-12T22:15:00.026-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:16:00.051-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:17:00.007-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:18:00.013-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:19:00.011-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:20:00.011-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:21:00.008-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:22:00.008-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:23:00.005-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:24:00.013-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:25:00.009-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:26:00.002-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:27:00.012-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:28:00.011-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:29:00.009-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:30:00.013-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:31:00.013-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:32:00.010-06:00  INFO 10296 --- [GestionDeBibliotecas] [scheduling-1] c.s.GestionDeBibliotecas.Util.CronJobs   : Hello world!
+2024-10-12T22:32:41.207-06:00  INFO 10296 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-12T22:32:41.210-06:00  INFO 10296 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-12T22:32:41.223-06:00  INFO 10296 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

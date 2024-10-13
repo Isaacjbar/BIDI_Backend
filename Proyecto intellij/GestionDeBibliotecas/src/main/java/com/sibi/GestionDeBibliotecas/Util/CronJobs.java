@@ -1,0 +1,17 @@
+package com.sibi.GestionDeBibliotecas.Util;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class CronJobs {
+
+    private static final Logger logger = LoggerFactory.getLogger(CronJobs.class);
+
+    @Scheduled(cron = "0 * * * * ?")
+    public void changeStatus() {
+        logger.info("Hello world!");
+    }
+}
