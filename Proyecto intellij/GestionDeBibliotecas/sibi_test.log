@@ -1,95 +1,33 @@
-2024-10-13T15:16:52.447-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 5672 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
-2024-10-13T15:16:52.488-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-10-13T15:16:54.279-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-13T15:16:54.367-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 64 ms. Found 0 JPA repository interfaces.
-2024-10-13T15:16:55.785-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-10-13T15:16:55.820-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-10-13T15:16:55.821-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-10-13T15:16:55.919-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-10-13T15:16:55.919-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3249 ms
-2024-10-13T15:16:56.215-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-13T15:16:56.334-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-13T15:16:56.420-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-13T15:16:57.128-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-13T15:16:57.201-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-13T15:16:59.031-06:00  WARN 5672 --- [GestionDeBibliotecas] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1045, SQLState: 28000
-2024-10-13T15:16:59.034-06:00 ERROR 5672 --- [GestionDeBibliotecas] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Access denied for user 'root'@'localhost' (using password: YES)
-2024-10-13T15:16:59.039-06:00  WARN 5672 --- [GestionDeBibliotecas] [main] o.h.e.j.e.i.JdbcEnvironmentInitiator     : HHH000342: Could not obtain connection to query metadata
-
-org.hibernate.exception.GenericJDBCException: unable to obtain isolated JDBC connection [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:63) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:116) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.getJdbcEnvironmentUsingJdbcMetadata(JdbcEnvironmentInitiator.java:292) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:124) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator.initiateService(JdbcEnvironmentInitiator.java:78) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.registry.internal.StandardServiceRegistryImpl.initiateService(StandardServiceRegistryImpl.java:130) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.createService(AbstractServiceRegistryImpl.java:263) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.initializeService(AbstractServiceRegistryImpl.java:238) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.service.internal.AbstractServiceRegistryImpl.getService(AbstractServiceRegistryImpl.java:215) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.model.relational.Database.<init>(Database.java:45) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.getDatabase(InFlightMetadataCollectorImpl.java:221) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.internal.InFlightMetadataCollectorImpl.<init>(InFlightMetadataCollectorImpl.java:189) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.model.process.spi.MetadataBuildingProcess.complete(MetadataBuildingProcess.java:171) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.metadata(EntityManagerFactoryBuilderImpl.java:1431) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1502) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.13.jar:6.1.13]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.13.jar:6.1.13]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.4.jar:3.3.4]
-	at com.sibi.GestionDeBibliotecas.GestionDeBibliotecasApplication.main(GestionDeBibliotecasApplication.java:12) ~[classes/:na]
-Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:na]
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.JdbcIsolationDelegate.delegateWork(JdbcIsolationDelegate.java:61) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	... 35 common frames omitted
-
-2024-10-13T15:16:59.112-06:00  WARN 5672 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-13T15:16:59.115-06:00  WARN 5672 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-10-13T15:17:01.199-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-13T15:17:01.247-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-13T15:17:02.287-06:00  WARN 5672 --- [GestionDeBibliotecas] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1045, SQLState: 28000
-2024-10-13T15:17:02.288-06:00 ERROR 5672 --- [GestionDeBibliotecas] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : Access denied for user 'root'@'localhost' (using password: YES)
-2024-10-13T15:17:02.298-06:00 ERROR 5672 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
-2024-10-13T15:17:02.299-06:00  WARN 5672 --- [GestionDeBibliotecas] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
-2024-10-13T15:17:02.303-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-10-13T15:17:02.332-06:00  INFO 5672 --- [GestionDeBibliotecas] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-10-14T00:03:23.934-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 9504 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-10-14T00:03:23.948-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-14T00:03:25.024-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-14T00:03:25.137-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 1 JPA repository interface.
+2024-10-14T00:03:25.745-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-14T00:03:25.760-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-14T00:03:25.760-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-14T00:03:25.819-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-14T00:03:25.819-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1793 ms
+2024-10-14T00:03:25.996-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-14T00:03:26.053-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-14T00:03:26.092-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-14T00:03:26.439-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-14T00:03:26.472-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-14T00:03:26.833-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a89414e
+2024-10-14T00:03:26.835-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-14T00:03:26.888-06:00  WARN 9504 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-14T00:03:26.890-06:00  WARN 9504 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-14T00:03:28.091-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-14T00:03:28.158-06:00 ERROR 9504 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [inventory_id] in table [inventory]; found [int (Types#INTEGER)], but expecting [decimal(38,0) (Types#NUMERIC)]
+2024-10-14T00:03:28.159-06:00  WARN 9504 --- [GestionDeBibliotecas] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [inventory_id] in table [inventory]; found [int (Types#INTEGER)], but expecting [decimal(38,0) (Types#NUMERIC)]
+2024-10-14T00:03:28.159-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-14T00:03:28.169-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-14T00:03:28.170-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-10-14T00:03:28.184-06:00  INFO 9504 --- [GestionDeBibliotecas] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-10-13T15:17:02.376-06:00 ERROR 5672 --- [GestionDeBibliotecas] [main] o.s.boot.SpringApplication               : Application run failed
+2024-10-14T00:03:28.205-06:00 ERROR 9504 --- [GestionDeBibliotecas] [main] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [inventory_id] in table [inventory]; found [int (Types#INTEGER)], but expecting [decimal(38,0) (Types#NUMERIC)]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.13.jar:6.1.13]
@@ -106,114 +44,16 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.4.jar:3.3.4]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.4.jar:3.3.4]
 	at com.sibi.GestionDeBibliotecas.GestionDeBibliotecasApplication.main(GestionDeBibliotecasApplication.java:12) ~[classes/:na]
-Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [inventory_id] in table [inventory]; found [int (Types#INTEGER)], but expecting [decimal(38,0) (Types#NUMERIC)]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.13.jar:6.1.13]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.13.jar:6.1.13]
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.13.jar:6.1.13]
 	... 15 common frames omitted
-Caused by: org.hibernate.exception.GenericJDBCException: Unable to open JDBC Connection for DDL execution [Access denied for user 'root'@'localhost' (using password: YES)] [n/a]
-	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:63) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:108) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:94) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:74) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:39) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcConnection(ImprovedExtractionContextImpl.java:63) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.internal.exec.ImprovedExtractionContextImpl.getJdbcDatabaseMetaData(ImprovedExtractionContextImpl.java:70) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.extract.internal.InformationExtractorJdbcDatabaseMetaDataImpl.processTableResultSet(InformationExtractorJdbcDatabaseMetaDataImpl.java:65) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.extract.internal.AbstractInformationExtractorImpl.getTables(AbstractInformationExtractorImpl.java:570) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.extract.internal.DatabaseInformationImpl.getTablesInformation(DatabaseInformationImpl.java:122) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:41) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:289) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
-	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.13.jar:6.1.13]
-	... 19 common frames omitted
-Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (using password: YES)
-	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:130) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:815) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:438) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:241) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:189) ~[mysql-connector-j-8.3.0.jar:8.3.0]
-	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98) ~[HikariCP-5.1.0.jar:na]
-	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-5.1.0.jar:na]
-	at org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl.getConnection(DatasourceConnectionProviderImpl.java:122) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$ConnectionProviderJdbcConnectionAccess.obtainConnection(JdbcEnvironmentInitiator.java:439) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	at org.hibernate.resource.transaction.backend.jdbc.internal.DdlTransactionIsolatorNonJtaImpl.getIsolatedConnection(DdlTransactionIsolatorNonJtaImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
-	... 40 common frames omitted
-
-2024-10-13T15:17:39.542-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 8292 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
-2024-10-13T15:17:39.557-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-10-13T15:17:41.583-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-13T15:17:41.677-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 0 JPA repository interfaces.
-2024-10-13T15:17:42.870-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-10-13T15:17:42.901-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-10-13T15:17:42.901-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-10-13T15:17:43.027-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-10-13T15:17:43.027-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3318 ms
-2024-10-13T15:17:43.341-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-13T15:17:43.435-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-13T15:17:43.498-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-13T15:17:44.172-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-13T15:17:44.220-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-13T15:17:44.941-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@296676c4
-2024-10-13T15:17:44.957-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-10-13T15:17:45.036-06:00  WARN 8292 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-13T15:17:45.051-06:00  WARN 8292 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-10-13T15:17:46.657-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-13T15:17:46.751-06:00 ERROR 8292 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-2024-10-13T15:17:46.767-06:00  WARN 8292 --- [GestionDeBibliotecas] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-2024-10-13T15:17:46.767-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-10-13T15:17:46.783-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-10-13T15:17:46.798-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-10-13T15:17:46.821-06:00  INFO 8292 --- [GestionDeBibliotecas] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-10-13T15:17:46.861-06:00 ERROR 8292 --- [GestionDeBibliotecas] [main] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.13.jar:6.1.13]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.13.jar:6.1.13]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.4.jar:3.3.4]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.4.jar:3.3.4]
-	at com.sibi.GestionDeBibliotecas.GestionDeBibliotecasApplication.main(GestionDeBibliotecasApplication.java:12) ~[classes/:na]
-Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.13.jar:6.1.13]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.13.jar:6.1.13]
-	... 15 common frames omitted
-Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:148) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [inventory_id] in table [inventory]; found [int (Types#INTEGER)], but expecting [decimal(38,0) (Types#NUMERIC)]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateColumnType(AbstractSchemaValidator.java:168) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
@@ -231,36 +71,36 @@ Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-valid
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.13.jar:6.1.13]
 	... 19 common frames omitted
 
-2024-10-13T15:18:36.868-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 7568 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
-2024-10-13T15:18:36.884-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-10-13T15:18:38.509-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-13T15:18:38.572-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 38 ms. Found 0 JPA repository interfaces.
-2024-10-13T15:18:39.530-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-10-13T15:18:39.545-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-10-13T15:18:39.561-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-10-13T15:18:39.655-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-10-13T15:18:39.655-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2643 ms
-2024-10-13T15:18:39.987-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-13T15:18:40.096-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-13T15:18:40.159-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-13T15:18:40.733-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-13T15:18:40.780-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-13T15:18:41.377-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@45c90a05
-2024-10-13T15:18:41.377-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-10-13T15:18:41.455-06:00  WARN 7568 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-13T15:18:41.471-06:00  WARN 7568 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-10-13T15:18:43.187-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-13T15:18:43.281-06:00 ERROR 7568 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-2024-10-13T15:18:43.281-06:00  WARN 7568 --- [GestionDeBibliotecas] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-2024-10-13T15:18:43.281-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-10-13T15:18:43.297-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2024-10-13T15:18:43.313-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-10-13T15:18:43.328-06:00  INFO 7568 --- [GestionDeBibliotecas] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-10-14T00:07:08.285-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 7340 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-10-14T00:07:08.288-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-14T00:07:09.301-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-14T00:07:09.379-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 1 JPA repository interface.
+2024-10-14T00:07:09.966-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-14T00:07:09.985-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-14T00:07:09.985-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-14T00:07:10.048-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-14T00:07:10.048-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1695 ms
+2024-10-14T00:07:10.231-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-14T00:07:10.292-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-14T00:07:10.326-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-14T00:07:10.674-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-14T00:07:10.708-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-14T00:07:11.080-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@29f3185c
+2024-10-14T00:07:11.082-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-14T00:07:11.135-06:00  WARN 7340 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-14T00:07:11.137-06:00  WARN 7340 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-14T00:07:12.386-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-14T00:07:12.451-06:00 ERROR 7340 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [loan_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+2024-10-14T00:07:12.452-06:00  WARN 7340 --- [GestionDeBibliotecas] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [loan_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+2024-10-14T00:07:12.453-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-14T00:07:12.463-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-14T00:07:12.465-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-10-14T00:07:12.477-06:00  INFO 7340 --- [GestionDeBibliotecas] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-10-13T15:18:43.377-06:00 ERROR 7568 --- [GestionDeBibliotecas] [main] o.s.boot.SpringApplication               : Application run failed
+2024-10-14T00:07:12.496-06:00 ERROR 7340 --- [GestionDeBibliotecas] [main] o.s.boot.SpringApplication               : Application run failed
 
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [loan_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.13.jar:6.1.13]
@@ -277,15 +117,16 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.4.jar:3.3.4]
 	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.4.jar:3.3.4]
 	at com.sibi.GestionDeBibliotecas.GestionDeBibliotecasApplication.main(GestionDeBibliotecasApplication.java:12) ~[classes/:na]
-Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [loan_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.13.jar:6.1.13]
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.13.jar:6.1.13]
 	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.13.jar:6.1.13]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.13.jar:6.1.13]
 	... 15 common frames omitted
-Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: missing column [id] in table [book]
-	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:148) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [loan_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateColumnType(AbstractSchemaValidator.java:168) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
 	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
@@ -303,29 +144,102 @@ Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-valid
 	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.13.jar:6.1.13]
 	... 19 common frames omitted
 
-2024-10-13T15:20:05.354-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 3840 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
-2024-10-13T15:20:05.354-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
-2024-10-13T15:20:06.931-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-10-13T15:20:07.009-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 0 JPA repository interfaces.
-2024-10-13T15:20:08.225-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-10-13T15:20:08.250-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-10-13T15:20:08.250-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
-2024-10-13T15:20:08.422-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-10-13T15:20:08.422-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2962 ms
-2024-10-13T15:20:08.767-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-10-13T15:20:08.862-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
-2024-10-13T15:20:08.940-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
-2024-10-13T15:20:09.521-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-10-13T15:20:09.581-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-10-13T15:20:10.266-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5871a482
-2024-10-13T15:20:10.270-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-10-13T15:20:10.357-06:00  WARN 3840 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2024-10-13T15:20:10.360-06:00  WARN 3840 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
-2024-10-13T15:20:12.019-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-10-13T15:20:12.122-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-10-13T15:20:12.281-06:00  WARN 3840 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-10-13T15:20:13.242-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
-2024-10-13T15:20:13.265-06:00  INFO 3840 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 9.08 seconds (process running for 11.186)
-2024-10-13T15:20:18.051-06:00  INFO 3840 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-10-13T15:20:18.056-06:00  INFO 3840 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2024-10-13T15:20:18.078-06:00  INFO 3840 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-14T00:08:07.492-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 7652 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-10-14T00:08:07.495-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-14T00:08:08.587-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-14T00:08:08.690-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 1 JPA repository interface.
+2024-10-14T00:08:09.374-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-14T00:08:09.391-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-14T00:08:09.392-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-14T00:08:09.451-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-14T00:08:09.452-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1892 ms
+2024-10-14T00:08:09.630-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-14T00:08:09.692-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-14T00:08:09.727-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-14T00:08:10.135-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-14T00:08:10.169-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-14T00:08:10.590-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@370a8b6e
+2024-10-14T00:08:10.593-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-14T00:08:10.657-06:00  WARN 7652 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-14T00:08:10.660-06:00  WARN 7652 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-14T00:08:12.059-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-14T00:08:12.138-06:00 ERROR 7652 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Failed to initialize JPA EntityManagerFactory: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [user_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+2024-10-14T00:08:12.138-06:00  WARN 7652 --- [GestionDeBibliotecas] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [user_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+2024-10-14T00:08:12.139-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-14T00:08:12.154-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-10-14T00:08:12.156-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-10-14T00:08:12.173-06:00  INFO 7652 --- [GestionDeBibliotecas] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-10-14T00:08:12.195-06:00 ERROR 7652 --- [GestionDeBibliotecas] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/autoconfigure/orm/jpa/HibernateJpaConfiguration.class]: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [user_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1806) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:600) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:205) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:954) ~[spring-context-6.1.13.jar:6.1.13]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.13.jar:6.1.13]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.3.4.jar:3.3.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.3.4.jar:3.3.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.3.4.jar:3.3.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.3.4.jar:3.3.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.3.4.jar:3.3.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.3.4.jar:3.3.4]
+	at com.sibi.GestionDeBibliotecas.GestionDeBibliotecasApplication.main(GestionDeBibliotecasApplication.java:12) ~[classes/:na]
+Caused by: jakarta.persistence.PersistenceException: [PersistenceUnit: default] Unable to build Hibernate SessionFactory; nested exception is org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [user_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:421) ~[spring-orm-6.1.13.jar:6.1.13]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.afterPropertiesSet(AbstractEntityManagerFactoryBean.java:396) ~[spring-orm-6.1.13.jar:6.1.13]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.afterPropertiesSet(LocalContainerEntityManagerFactoryBean.java:366) ~[spring-orm-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1853) ~[spring-beans-6.1.13.jar:6.1.13]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1802) ~[spring-beans-6.1.13.jar:6.1.13]
+	... 15 common frames omitted
+Caused by: org.hibernate.tool.schema.spi.SchemaManagementException: Schema-validation: wrong column type encountered in column [user_id] in table [loan]; found [int (Types#INTEGER)], but expecting [bigint (Types#BIGINT)]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateColumnType(AbstractSchemaValidator.java:168) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.validateTable(AbstractSchemaValidator.java:155) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.GroupedSchemaValidatorImpl.validateTables(GroupedSchemaValidatorImpl.java:46) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.performValidation(AbstractSchemaValidator.java:98) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.internal.AbstractSchemaValidator.doValidation(AbstractSchemaValidator.java:76) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.performDatabaseAction(SchemaManagementToolCoordinator.java:289) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.lambda$process$5(SchemaManagementToolCoordinator.java:144) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/java.util.HashMap.forEach(HashMap.java:1429) ~[na:na]
+	at org.hibernate.tool.schema.spi.SchemaManagementToolCoordinator.process(SchemaManagementToolCoordinator.java:141) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryObserverForSchemaExport.sessionFactoryCreated(SessionFactoryObserverForSchemaExport.java:37) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryObserverChain.sessionFactoryCreated(SessionFactoryObserverChain.java:35) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionFactoryImpl.<init>(SessionFactoryImpl.java:322) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.boot.internal.SessionFactoryBuilderImpl.build(SessionFactoryBuilderImpl.java:457) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl.build(EntityManagerFactoryBuilderImpl.java:1506) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.springframework.orm.jpa.vendor.SpringHibernateJpaPersistenceProvider.createContainerEntityManagerFactory(SpringHibernateJpaPersistenceProvider.java:75) ~[spring-orm-6.1.13.jar:6.1.13]
+	at org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean.createNativeEntityManagerFactory(LocalContainerEntityManagerFactoryBean.java:390) ~[spring-orm-6.1.13.jar:6.1.13]
+	at org.springframework.orm.jpa.AbstractEntityManagerFactoryBean.buildNativeEntityManagerFactory(AbstractEntityManagerFactoryBean.java:409) ~[spring-orm-6.1.13.jar:6.1.13]
+	... 19 common frames omitted
+
+2024-10-14T00:09:06.302-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 4876 (C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by palma in C:\Users\palma\Desktop\Repositorio\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-10-14T00:09:06.305-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-10-14T00:09:07.306-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-10-14T00:09:07.386-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 68 ms. Found 1 JPA repository interface.
+2024-10-14T00:09:07.972-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-10-14T00:09:07.987-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-10-14T00:09:07.988-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-10-14T00:09:08.062-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-10-14T00:09:08.063-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1693 ms
+2024-10-14T00:09:08.268-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-10-14T00:09:08.331-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-10-14T00:09:08.372-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-10-14T00:09:08.724-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-10-14T00:09:08.754-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-10-14T00:09:09.131-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@370a8b6e
+2024-10-14T00:09:09.133-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-10-14T00:09:09.183-06:00  WARN 4876 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-10-14T00:09:09.184-06:00  WARN 4876 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-10-14T00:09:10.448-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-10-14T00:09:10.503-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-10-14T00:09:10.935-06:00  WARN 4876 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-10-14T00:09:11.461-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2024-10-14T00:09:11.478-06:00  INFO 4876 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 5.812 seconds (process running for 6.762)
+2024-10-14T00:09:19.598-06:00  INFO 4876 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-10-14T00:09:19.601-06:00  INFO 4876 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-10-14T00:09:19.611-06:00  INFO 4876 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

@@ -1,8 +1,13 @@
 package com.sibi.GestionDeBibliotecas.Libro.Model;
 
+import com.sibi.GestionDeBibliotecas.Categoria.Model.Categoria;
+import com.sibi.GestionDeBibliotecas.Inventario.Model.Inventario;
 import jakarta.persistence.*;
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "book")
@@ -41,6 +46,14 @@ public class Libro {
         ACTIVE,
         INACTIVE
     }
+
+    @ManyToMany
+    @JoinTable(
+            name = "book_category",
+            joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    private Set<Categoria> categorias = new HashSet<>();
 
     public Libro() {
 
