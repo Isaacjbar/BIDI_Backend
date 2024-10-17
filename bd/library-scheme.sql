@@ -10,9 +10,11 @@ CREATE TABLE user (
     password VARCHAR(255) NOT NULL,
     role ENUM('administrator', 'client', 'guest') NOT NULL,
     status ENUM('active', 'inactive') DEFAULT 'active',
+    phone_number VARCHAR(15), -- Nueva columna para el número de teléfono
     code VARCHAR(255),
-    code_generated_at TIMESTAMP NULL DEFAULT NULL -- Nueva columna para almacenar el tiempo de generación del código
+    code_generated_at TIMESTAMP NULL DEFAULT NULL -- Columna para almacenar el tiempo de generación del código
 );
+
 
 -- Crear tabla category
 CREATE TABLE category (
