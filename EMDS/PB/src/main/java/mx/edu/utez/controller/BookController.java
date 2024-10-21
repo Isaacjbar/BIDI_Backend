@@ -31,17 +31,8 @@ public class BookController {
             return "El estado es un campo obligatorio (Activo o Inactivo).";
         }
 
-        // Agregar el libro a la lista
         books.add(book);
         return "Libro agregado exitosamente.";
-    }
-
-    // Consultar Libro por ID
-    public Book getBookById(int bookId) throws Exception {
-        return books.stream()
-                .filter(book -> book.getBookId() == bookId)
-                .findFirst()
-                .orElseThrow(() -> new Exception("Libro no encontrado."));
     }
 
     // Consultar libros por categoría
@@ -53,6 +44,14 @@ public class BookController {
             }
         }
         return filteredBooks;
+    }
+
+    // Consultar libro por title
+    public Book getBookByTitle(String title) {
+        return books.stream()
+                .filter(book -> book.getTitle().equalsIgnoreCase(title))
+                .findFirst()
+                .orElse(null);
     }
 
     // Consultar libros por estado (Activo/Inactivo)
@@ -71,24 +70,44 @@ public class BookController {
         return new ArrayList<>(books);
     }
 
-    // Actualizar Libro
-    public String updateBook(int bookId, Book updatedBook) throws Exception {
-        Book book = getBookById(bookId);
+    // Actualizar un libro
+    public String updateBook(String title, Book updatedBook) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                // Validar los campos obligatorios
+                if (updatedBook.getTitle() == null || updatedBook.getTitle().isEmpty()) {
+                    return "El título es un campo obligatorio.";
+                }
+                if (updatedBook.getCategory() == null || updatedBook.getCategory().isEmpty()) {
+                    return "La categoría es un campo obligatorio.";
+                }
+                if (updatedBook.getStatus() == null || (!updatedBook.getStatus().equals("Activo") && !updatedBook.getStatus().equals("Inactivo"))) {
+                    return "El estado es un campo obligatorio (Activo o Inactivo).";
+                }
 
-        // Actualizar campos
-        book.setAuthor(updatedBook.getAuthor());
-        book.setTitle(updatedBook.getTitle());
-        book.setCategory(updatedBook.getCategory());
-        book.setStatus(updatedBook.getStatus());
-        book.setDescription(updatedBook.getDescription());  // Campo opcional
+                book.setTitle(updatedBook.getTitle());
+                book.setAuthor(updatedBook.getAuthor());
+                book.setCategory(updatedBook.getCategory());
+                book.setStatus(updatedBook.getStatus());
+                book.setDescription(updatedBook.getDescription());
 
-        return "Libro actualizado exitosamente.";
+                return "Libro actualizado exitosamente.";
+            }
+        }
+        return "Libro no encontrado.";
     }
 
-    // Cambiar estado de un Libro (Desactivar)
-    public String deactivateBook(int bookId) throws Exception {
-        Book book = getBookById(bookId);
-        book.setStatus("Inactivo");
-        return "Libro desactivado.";
+    // Cambiar estado de un Libro
+    public String deactivateBook(String title) {
+        for (Book book : books) {
+            if (book.getTitle().equalsIgnoreCase(title)) {
+                if ("Inactivo".equalsIgnoreCase(book.getStatus())) {
+                    return "El libro ya está inactivo.";
+                }
+                book.setStatus("Inactivo");
+                return "Libro desactivado exitosamente.";
+            }
+        }
+        return "Libro no encontrado.";
     }
 }

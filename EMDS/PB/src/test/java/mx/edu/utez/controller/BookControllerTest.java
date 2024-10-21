@@ -89,7 +89,7 @@ class BookControllerTest {
     }
 
     // Pruebas para Consultar Libros Activos
-    // M303 Caso 1: 
+    // M303 Caso 1: Consultar libros activos
     @Test
     void testGetBooksByStatus_ActiveBooks() {
         Book libro1 = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
@@ -105,6 +105,7 @@ class BookControllerTest {
         assertTrue(activeBooks.stream().allMatch(book -> book.getStatus().equals("Activo")));
     }
 
+    // M303 Caso 2: Consultar libros inactivos
     @Test
     void testGetBooksByStatus_AllInactive() {
         Book libro1 = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Inactivo", "Obra literaria del Boom Latinoamericano");
@@ -117,6 +118,7 @@ class BookControllerTest {
         assertTrue(activeBooks.isEmpty());
     }
 
+    // M303 Caso 3: Consultar libros activos con un solo libro activo
     @Test
     void testGetBooksByStatus_SingleActive() {
         Book libro1 = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
@@ -131,6 +133,7 @@ class BookControllerTest {
     }
 
     // Pruebas para Consultar Libros por Categoría
+    // M304 Caso 1: Consultar libros por categoría con varios libros en la lista
     @Test
     void testGetBooksByCategory_MultipleResults() {
         Book libro1 = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
@@ -146,6 +149,7 @@ class BookControllerTest {
         assertTrue(novelaBooks.stream().allMatch(book -> book.getCategory().equals("Novela")));
     }
 
+    // M304 Caso 2: Consultar libros sin categorías coincidentes
     @Test
     void testGetBooksByCategory_EmptyCategory() {
         Book libro1 = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
@@ -158,6 +162,7 @@ class BookControllerTest {
         assertTrue(cienciaFiccionBooks.isEmpty());
     }
 
+    // M304 Caso 3: Consultar un solo libro en la lista
     @Test
     void testGetBooksByCategory_SingleResult() {
         Book libro1 = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
@@ -169,5 +174,77 @@ class BookControllerTest {
         List<Book> novelaBooks = controller.getBooksByCategory("Novela");
         assertEquals(1, novelaBooks.size());
         assertEquals("Cien años de soledad", novelaBooks.get(0).getTitle());
+    }
+
+    // Pruebas para Actualización de libros
+    // M305 Caso 1: Modificación exitosa de un libro
+    @Test
+    void testUpdateBook_Success() {
+        Book libroOriginal = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
+        controller.addBook(libroOriginal);
+
+        Book libroActualizado = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Inactivo", "Edición especial");
+
+        String resultado = controller.updateBook("Cien años de soledad", libroActualizado);
+        assertEquals("Libro actualizado exitosamente.", resultado);
+
+        Book libro = controller.getBookByTitle("Cien años de soledad");
+        assertEquals("Inactivo", libro.getStatus());
+        assertEquals("Edición especial", libro.getDescription());
+    }
+
+    // M305 Caso 2: Actualización fallida por libro no encontrado
+    @Test
+    void testUpdateBook_BookNotFound() {
+        Book libroOriginal = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
+        controller.addBook(libroOriginal);
+
+        Book libroActualizado = new Book("Gabriel García Márquez", "Otro título", "Novela", "Inactivo", "Edición especial");
+        String resultado = controller.updateBook("Otro título", libroActualizado);
+
+        assertEquals("Libro no encontrado.", resultado);
+    }
+
+    // M305 Caso 3: Actualización fallida por datos inválidos
+    @Test
+    void testUpdateBook_InvalidData() {
+        Book libroOriginal = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
+        controller.addBook(libroOriginal);
+
+        Book libroActualizado = new Book("Gabriel García Márquez", "", "Novela", "Pendiente", "Descripción inválida");
+
+        String resultado = controller.updateBook("", libroActualizado);
+        assertEquals("Libro no encontrado.", resultado);
+    }
+
+    // Pruebas para la Desactivación de libros
+    // M306 Caso 1: Desactivación exitosa
+    @Test
+    void testDeactivateBook_Success() {
+        Book libro = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Activo", "Obra literaria del Boom Latinoamericano");
+        controller.addBook(libro);
+
+        String resultado = controller.deactivateBook("Cien años de soledad");
+        assertEquals("Libro desactivado exitosamente.", resultado);
+
+        Book desactivado = controller.getBookByTitle("Cien años de soledad");
+        assertEquals("Inactivo", desactivado.getStatus());
+    }
+
+    // M305 Caso 2: Desactivación fallida por libro no encontrado
+    @Test
+    void testDeactivateBook_BookNotFound() {
+        String resultado = controller.deactivateBook("Cien años de soledad");
+        assertEquals("Libro no encontrado.", resultado);
+    }
+
+    // M305 Caso 3: Desactivación fallida por libro ya inactivo
+    @Test
+    void testDeactivateBook_AlreadyInactive() throws Exception {
+        Book libro = new Book("Gabriel García Márquez", "Cien años de soledad", "Novela", "Inactivo", "Obra literaria del Boom Latinoamericano");
+        controller.addBook(libro);
+
+        String resultado = controller.deactivateBook("Cien años de soledad");
+        assertEquals("El libro ya está inactivo.", resultado);
     }
 }
