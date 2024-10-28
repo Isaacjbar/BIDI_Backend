@@ -5,24 +5,32 @@ import java.util.Date;
 public class User {
     private int userId;
     private String name;
+    private String lastName;
     private String email;
+    private String phone;
     private String password;
     private String role;
     private String status;
     private String code;
     private Date codeGeneratedAt;
 
+
+
     // Constructor
-    public User(int userId, String name, String email, String password, String role) {
+    public User(int userId, String name, String lastName, String email, String phone, String password, String role) {
         this.userId = userId;
         this.name = name;
+        this.lastName = lastName;
         this.email = email;
+        this.phone = phone;
         this.password = password;
         this.role = role;
         this.status = "active"; // Por defecto, el estado es 'active'
         this.code = null;
         this.codeGeneratedAt = null;
+
     }
+
 
     // Getters y Setters
 
@@ -91,7 +99,7 @@ public class User {
     }
 
     // Método para cambiar el estado (eliminar)
-    public void deactivate() {
+    public void desactivate() {
         this.status = "inactive";
     }
 
@@ -99,8 +107,26 @@ public class User {
         return "active".equals(this.status);
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     // Validaciones
     public boolean isEmailValid() {
         return this.email != null && this.email.contains("@");
     }
+
+
 }
