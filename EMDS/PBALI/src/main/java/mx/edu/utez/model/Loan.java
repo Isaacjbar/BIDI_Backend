@@ -46,7 +46,11 @@ public class Loan {
         return returnDate == null;  // Un préstamo está activo si no tiene fecha de devolución
     }
 
+    public boolean isReturned() {
+        return returnDate != null;  // Un préstamo está devuelto si tiene fecha de devolución
+    }
+
     public int getQuantity() {
         return quantity;
-}
+    }
 }
