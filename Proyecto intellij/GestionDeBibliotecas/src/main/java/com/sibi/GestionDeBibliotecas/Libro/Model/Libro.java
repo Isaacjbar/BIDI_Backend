@@ -1,12 +1,11 @@
 package com.sibi.GestionDeBibliotecas.Libro.Model;
 
 import com.sibi.GestionDeBibliotecas.Categoria.Model.Categoria;
-import com.sibi.GestionDeBibliotecas.Inventario.Model.Inventario;
+
 import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -22,22 +21,6 @@ public class Libro {
     @Column(nullable = false)
     private String author;
 
-    @Column(nullable = false, unique = true, length = 13)
-    private String isbn;
-
-    @Column(nullable = false)
-    @Temporal(TemporalType.DATE)
-    private Date publicationDate;
-
-    @Column(nullable = false)
-    private String publisher;
-
-    @Column(nullable = false, length = 50)
-    private String edition;
-
-    @Column
-    private Integer numberOfPages;
-
     @Enumerated(EnumType.STRING)
     @Column(length = 8)
     private Status status = Status.ACTIVE;
@@ -46,6 +29,9 @@ public class Libro {
         ACTIVE,
         INACTIVE
     }
+
+    @Column(nullable = false)
+    private String description;
 
     @ManyToMany
     @JoinTable(
@@ -59,27 +45,21 @@ public class Libro {
 
     }
 
-    public Libro(Integer bookId, String title, String author, String isbn, Date publicationDate, String publisher, String edition, Integer numberOfPages, Status status) {
+    public Libro(Integer bookId, String title, String author, Status status, String description, Set<Categoria> categorias) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
-        this.isbn = isbn;
-        this.publicationDate = publicationDate;
-        this.publisher = publisher;
-        this.edition = edition;
-        this.numberOfPages = numberOfPages;
         this.status = status;
+        this.description = description;
+        this.categorias = categorias;
     }
 
-    public Libro(String title, String author, String isbn, Date publicationDate, String publisher, String edition, Integer numberOfPages, Status status) {
+    public Libro(String title, String author, Status status, String description, Set<Categoria> categorias) {
         this.title = title;
         this.author = author;
-        this.isbn = isbn;
-        this.publicationDate = publicationDate;
-        this.publisher = publisher;
-        this.edition = edition;
-        this.numberOfPages = numberOfPages;
         this.status = status;
+        this.description = description;
+        this.categorias = categorias;
     }
 
     public Integer getBookId() {
@@ -106,51 +86,27 @@ public class Libro {
         this.author = author;
     }
 
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public Date getPublicationDate() {
-        return publicationDate;
-    }
-
-    public void setPublicationDate(Date publicationDate) {
-        this.publicationDate = publicationDate;
-    }
-
-    public String getPublisher() {
-        return publisher;
-    }
-
-    public void setPublisher(String publisher) {
-        this.publisher = publisher;
-    }
-
-    public String getEdition() {
-        return edition;
-    }
-
-    public void setEdition(String edition) {
-        this.edition = edition;
-    }
-
-    public Integer getNumberOfPages() {
-        return numberOfPages;
-    }
-
-    public void setNumberOfPages(Integer numberOfPages) {
-        this.numberOfPages = numberOfPages;
-    }
-
     public Status getStatus() {
         return status;
     }
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
     }
 }
