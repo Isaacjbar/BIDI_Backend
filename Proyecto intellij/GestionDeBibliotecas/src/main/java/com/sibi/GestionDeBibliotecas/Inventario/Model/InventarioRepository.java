@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface InventarioRepository extends JpaRepository<Inventario, Integer> {
+    List<Inventario> findByStatus(Inventario.Status status);
 }

@@ -22,6 +22,10 @@ public class Categoria {
     @Column(name = "status", length = 8, nullable = false)
     private Status status = Status.ACTIVE;
 
+    public Categoria(String categoryName, Status status) {
+
+    }
+
     public enum Status {
         ACTIVE,
         INACTIVE
@@ -30,4 +34,52 @@ public class Categoria {
     @OneToMany(mappedBy = "categoria")
     @JsonIgnore
     private List<LibroCategoria> libroCategorias;
+
+    public Categoria() {
+    }
+
+    public Categoria(Long categoryId, String categoryName, Status status, List<LibroCategoria> libroCategorias) {
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.status = status;
+        this.libroCategorias = libroCategorias;
+    }
+
+    public Categoria(String categoryName, Status status, List<LibroCategoria> libroCategorias) {
+        this.categoryName = categoryName;
+        this.status = status;
+        this.libroCategorias = libroCategorias;
+    }
+
+    public Long getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public List<LibroCategoria> getLibroCategorias() {
+        return libroCategorias;
+    }
+
+    public void setLibroCategorias(List<LibroCategoria> libroCategorias) {
+        this.libroCategorias = libroCategorias;
+    }
 }

@@ -27,4 +27,61 @@ public class PrestamoDTO {
     public interface Registrar {}
     public interface Modificar {}
     public interface CambiarEstado {}
+
+    // Getters and Setters
+    public Long getPrestamoId() {
+        return prestamoId;
+    }
+
+    public void setPrestamoId(Long prestamoId) {
+        this.prestamoId = prestamoId;
+    }
+
+    public Long getUsuarioId() {
+        return usuarioId;
+    }
+
+    public void setUsuarioId(Long usuarioId) {
+        this.usuarioId = usuarioId;
+    }
+
+    public Long getInventarioId() {
+        return inventarioId;
+    }
+
+    public void setInventarioId(Long inventarioId) {
+        this.inventarioId = inventarioId;
+    }
+
+    public java.util.Date getFechaPrestamo() {
+        return fechaPrestamo;
+    }
+
+    public void setFechaPrestamo(java.util.Date fechaPrestamo) {
+        this.fechaPrestamo = fechaPrestamo;
+    }
+
+    public java.util.Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(java.util.Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    public java.util.Date getFechaDevolucion() {
+        return fechaDevolucion;
+    }
+
+    public void setFechaDevolucion(java.util.Date fechaDevolucion) {
+        this.fechaDevolucion = fechaDevolucion;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
 }
