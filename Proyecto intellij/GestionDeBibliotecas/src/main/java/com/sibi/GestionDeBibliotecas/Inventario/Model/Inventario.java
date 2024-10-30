@@ -1,9 +1,11 @@
 package com.sibi.GestionDeBibliotecas.Inventario.Model;
 
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
+import com.sibi.GestionDeBibliotecas.Prestamo.Model.Prestamo;
 import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.math.BigInteger;
+import java.util.List;
 
 @Entity
 @Table(name = "inventory")
@@ -11,83 +13,29 @@ public class Inventario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer inventoryId;
-
-    @Column(nullable = false)
-    private Integer availableCopies;
-
-    @Column(nullable = false)
-    private Integer totalCopies;
-
-    @Enumerated(EnumType.STRING)
-    @Column(length = 8)
-    private Status status = Status.ACTIVE;
+    @Column(name = "inventory_id")
+    private Long inventarioId;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
     private Libro libro;
 
-    public enum Status {
-        ACTIVE,
-        INACTIVE
+    @Column(name = "available_copies", nullable = false)
+    private int copiasDisponibles;
+
+    @Column(name = "total_copies", nullable = false)
+    private int copiasTotales;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", length = 8, nullable = false)
+    private Estado estado = Estado.ACTIVO;
+
+    public enum Estado {
+        ACTIVO,
+        INACTIVO
     }
 
-    public Inventario() {
-
-    }
-
-    public Inventario(Integer inventoryId, Integer availableCopies, Integer totalCopies, Status status, Libro libro) {
-        this.inventoryId = inventoryId;
-        this.availableCopies = availableCopies;
-        this.totalCopies = totalCopies;
-        this.status = status;
-        this.libro = libro;
-    }
-
-    public Inventario(Libro libro, Status status, Integer totalCopies, Integer availableCopies) {
-        this.libro = libro;
-        this.status = status;
-        this.totalCopies = totalCopies;
-        this.availableCopies = availableCopies;
-    }
-
-    public Integer getInventoryId() {
-        return inventoryId;
-    }
-
-    public void setInventoryId(Integer inventoryId) {
-        this.inventoryId = inventoryId;
-    }
-
-    public Integer getAvailableCopies() {
-        return availableCopies;
-    }
-
-    public void setAvailableCopies(Integer availableCopies) {
-        this.availableCopies = availableCopies;
-    }
-
-    public Integer getTotalCopies() {
-        return totalCopies;
-    }
-
-    public void setTotalCopies(Integer totalCopies) {
-        this.totalCopies = totalCopies;
-    }
-
-    public Status getStatus() {
-        return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
-
-    public Libro getLibro() {
-        return libro;
-    }
-
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
+    @OneToMany(mappedBy = "inventario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Prestamo> prestamos;
 }
