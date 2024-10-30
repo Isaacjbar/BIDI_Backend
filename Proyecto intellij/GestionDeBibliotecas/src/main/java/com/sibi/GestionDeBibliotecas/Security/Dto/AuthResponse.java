@@ -1,4 +1,4 @@
-package com.intellij.AplicacionesWeb.Security.Dto;
+package com.sibi.GestionDeBibliotecas.Security.Dto;
 
 public class AuthResponse {
     private String jwt;

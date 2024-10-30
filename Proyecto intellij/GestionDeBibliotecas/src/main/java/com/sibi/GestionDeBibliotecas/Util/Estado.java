@@ -1,2 +1,6 @@
-package com.sibi.GestionDeBibliotecas.Util;public class Status {
+package com.sibi.GestionDeBibliotecas.Util;
+
+public enum Estado {
+    ACTIVO,
+    INACTIVO
 }

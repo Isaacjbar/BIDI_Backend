@@ -1,4 +1,7 @@
 package com.sibi.GestionDeBibliotecas.Util;
 
-public class Rol {
+public enum Rol {
+    ADMINISTRADOR,
+    CLIENTE,
+    INVITADO
 }

@@ -1,4 +1,4 @@
-package com.intellij.AplicacionesWeb.Security;
+package com.sibi.GestionDeBibliotecas.Security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -47,4 +47,5 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

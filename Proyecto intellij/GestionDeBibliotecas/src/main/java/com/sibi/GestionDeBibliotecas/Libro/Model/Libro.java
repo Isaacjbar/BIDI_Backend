@@ -1,7 +1,6 @@
 package com.sibi.GestionDeBibliotecas.Libro.Model;
 
 import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
-import com.sibi.GestionDeBibliotecas.Categoria.Model.Categoria;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,4 +36,71 @@ public class Libro {
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<LibroCategoria> libroCategorias;
+
+    // Constructors
+    public Libro() {}
+
+    public Libro(String title, String author, String description, Status status) {
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.status = status;
+    }
+
+    public Libro(Long bookId, String title, String author, String description, Status status) {
+        this.bookId = bookId;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.status = status;
+    }
+
+    // Getters and Setters
+    public Long getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<LibroCategoria> getLibroCategorias() {
+        return libroCategorias;
+    }
+
+    public void setLibroCategorias(List<LibroCategoria> libroCategorias) {
+        this.libroCategorias = libroCategorias;
+    }
 }
