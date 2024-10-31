@@ -36,7 +36,10 @@ public class CategoriaService {
 
     @Transactional
     public ResponseEntity<Message> save(CategoriaDTO dto) {
-        Categoria categoria = new Categoria(dto.getCategoryName(), dto.getStatus());
+        if (dto.getCategoryName().length() > 100) {
+            return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        Categoria categoria = new Categoria(dto.getCategoryName());
         categoriaRepository.save(categoria);
         logger.info("El registro de la categoría ha sido realizado correctamente");
         return new ResponseEntity<>(new Message(categoria, "La categoría se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
@@ -46,8 +49,17 @@ public class CategoriaService {
     public ResponseEntity<Message> update(CategoriaDTO dto) {
         return categoriaRepository.findById(dto.getCategoryId())
                 .map(categoria -> {
-                    categoria.setCategoryName(dto.getCategoryName());
-                    categoria.setStatus(dto.getStatus());
+                    // Actualiza solo si el valor no es null en el DTO
+                    if (dto.getCategoryName() != null) {
+                        if (dto.getCategoryName().length() > 100) {
+                            return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                        }
+                        categoria.setCategoryName(dto.getCategoryName());
+                    }
+                    if (dto.getStatus() != null) {
+                        categoria.setStatus(dto.getStatus());
+                    }
+                    // Guarda los cambios en la base de datos
                     categoriaRepository.save(categoria);
                     logger.info("La actualización de la categoría ha sido realizada correctamente");
                     return new ResponseEntity<>(new Message(categoria, "La categoría se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);

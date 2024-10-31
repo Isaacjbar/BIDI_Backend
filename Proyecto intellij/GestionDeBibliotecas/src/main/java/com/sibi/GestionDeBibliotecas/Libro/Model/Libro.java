@@ -54,6 +54,11 @@ public class Libro {
         this.description = description;
         this.status = status;
     }
+    public Libro(String author, String title, String description) {
+        this.author = author;
+        this.title = title;
+        this.description = description;
+    }
 
     // Getters and Setters
     public Long getBookId() {

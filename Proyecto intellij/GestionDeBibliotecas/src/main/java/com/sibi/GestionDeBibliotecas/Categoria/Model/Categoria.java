@@ -15,29 +15,27 @@ public class Categoria {
     @Column(name = "category_id")
     private Long categoryId;
 
-    @Column(name = "category_name", columnDefinition = "VARCHAR(100)", nullable = false)
+    @Column(name = "categoryName", columnDefinition = "VARCHAR(100)", nullable = false)
     private String categoryName;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 8, nullable = false)
     private Status status = Status.ACTIVE;
 
-    public Categoria(String categoryName, Status status) {
-
-    }
-
-    public enum Status {
-        ACTIVE,
-        INACTIVE
-    }
-
     @OneToMany(mappedBy = "categoria")
     @JsonIgnore
     private List<LibroCategoria> libroCategorias;
 
+    // Constructor vacío
     public Categoria() {
     }
 
+    // Constructor que inicializa el nombre y estado de la categoría
+    public Categoria(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    // Constructor adicional para todos los campos
     public Categoria(Long categoryId, String categoryName, Status status, List<LibroCategoria> libroCategorias) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
@@ -45,12 +43,7 @@ public class Categoria {
         this.libroCategorias = libroCategorias;
     }
 
-    public Categoria(String categoryName, Status status, List<LibroCategoria> libroCategorias) {
-        this.categoryName = categoryName;
-        this.status = status;
-        this.libroCategorias = libroCategorias;
-    }
-
+    // Getters y Setters
     public Long getCategoryId() {
         return categoryId;
     }
@@ -81,5 +74,10 @@ public class Categoria {
 
     public void setLibroCategorias(List<LibroCategoria> libroCategorias) {
         this.libroCategorias = libroCategorias;
+    }
+
+    public enum Status {
+        ACTIVE,
+        INACTIVE
     }
 }

@@ -14,7 +14,7 @@ public class LibroDTO {
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El autor no puede estar vacío")
     private String author;
 
-    @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El estado no puede estar vacío")
+    @NotNull(groups = {CambiarEstado.class}, message = "El estado no puede estar vacío")
     private Status status;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
@@ -29,6 +29,12 @@ public class LibroDTO {
         this.author = author;
         this.description = description;
         this.status = status;
+    }
+
+    public LibroDTO(String author, String title, String description) {
+        this.author = author;
+        this.title = title;
+        this.description = description;
     }
 
     // Getters and Setters

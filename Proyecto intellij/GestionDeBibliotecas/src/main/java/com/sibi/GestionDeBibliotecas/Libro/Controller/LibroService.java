@@ -42,7 +42,10 @@ public class LibroService {
         if (dto.getAuthor().length() > 255) {
             return new ResponseEntity<>(new Message("El autor excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(), dto.getStatus());
+        if (dto.getDescription().length() > 250) {
+            return new ResponseEntity<>(new Message("La descripción excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription());
         libroRepository.saveAndFlush(libro);
         logger.info("El registro del libro ha sido realizado correctamente");
         return new ResponseEntity<>(new Message(libro, "El libro se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
@@ -50,26 +53,40 @@ public class LibroService {
 
     @Transactional
     public ResponseEntity<Message> update(LibroDTO dto) {
-        libroRepository.findById(dto.getLibroId()).ifPresentOrElse(
-                libro -> {
-                    if (dto.getTitle().length() > 255) {
-                        throw new IllegalArgumentException("El título excede el número de caracteres");
+        return libroRepository.findById(dto.getLibroId())
+                .map(libro -> {
+                    // Valida el campo `title` solo si no es null y dentro del límite de caracteres
+                    if (dto.getTitle() != null) {
+                        if (dto.getTitle().length() > 255) {
+                            return new ResponseEntity<>(new Message("El título excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                        }
+                        libro.setTitle(dto.getTitle());
                     }
-                    if (dto.getAuthor().length() > 255) {
-                        throw new IllegalArgumentException("El autor excede el número de caracteres");
+
+                    // Valida el campo `author` solo si no es null y dentro del límite de caracteres
+                    if (dto.getAuthor() != null) {
+                        if (dto.getAuthor().length() > 255) {
+                            return new ResponseEntity<>(new Message("El autor excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                        }
+                        libro.setAuthor(dto.getAuthor());
                     }
-                    libro.setTitle(dto.getTitle());
-                    libro.setAuthor(dto.getAuthor());
-                    libro.setDescription(dto.getDescription());
-                    libro.setStatus(dto.getStatus());
-                    libroRepository.saveAndFlush(libro);
+
+                    // Valida el campo `description` solo si no es null y dentro del límite de caracteres
+                    if (dto.getDescription() != null) {
+                        if (dto.getDescription().length() > 250) {
+                            return new ResponseEntity<>(new Message("La descripción excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                        }
+                        libro.setDescription(dto.getDescription());
+                    }
+
+                    // Guarda los cambios en la base de datos
+                    libroRepository.save(libro);
                     logger.info("La actualización del libro ha sido realizada correctamente");
-                },
-                () -> {
-                    throw new IllegalArgumentException("El libro no existe");
-                }
-        );
-        return new ResponseEntity<>(new Message("El libro se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+
+                    // Retorna mensaje de éxito
+                    return new ResponseEntity<>(new Message(libro, "El libro se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+                })
+                .orElseGet(() -> new ResponseEntity<>(new Message("El libro no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND));
     }
 
     @Transactional

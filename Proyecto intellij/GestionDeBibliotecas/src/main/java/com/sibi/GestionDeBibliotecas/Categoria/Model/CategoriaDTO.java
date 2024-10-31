@@ -11,7 +11,7 @@ public class CategoriaDTO {
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El nombre de la categoría no puede estar vacío")
     private String categoryName;
 
-    @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El estado no puede estar vacío")
+    @NotNull(groups = {CambiarEstado.class}, message = "El estado no puede estar vacío")
     private Status status;
 
     public CategoriaDTO() {
@@ -21,6 +21,9 @@ public class CategoriaDTO {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.status = status;
+    }
+    public CategoriaDTO(String categoryName) {
+        this.categoryName = categoryName;
     }
 
     public Integer getCategoryId() {
