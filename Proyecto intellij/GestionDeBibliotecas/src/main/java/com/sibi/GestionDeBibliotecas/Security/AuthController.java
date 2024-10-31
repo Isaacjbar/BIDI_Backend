@@ -1,9 +1,9 @@
 package com.sibi.GestionDeBibliotecas.Security;
 
-import com.intellij.AplicacionesWeb.Security.Dto.AuthRequest;
-import com.intellij.AplicacionesWeb.Security.Dto.AuthResponse;
-import com.intellij.AplicacionesWeb.User.Model.User;
-import com.intellij.AplicacionesWeb.User.Model.UserRepository;
+import com.sibi.GestionDeBibliotecas.Security.Dto.AuthRequest;
+import com.sibi.GestionDeBibliotecas.Security.Dto.AuthResponse;
+import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
+import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -22,10 +22,10 @@ public class AuthController {
 
     private final JwtUtil jwtUtil;
 
-    private final UserRepository userRepository;
+    private final UsuarioRepository userRepository;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, UserRepository userRepository) {
+    public AuthController(AuthenticationManager authenticationManager, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, UsuarioRepository userRepository) {
         this.authenticationManager = authenticationManager;
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
@@ -44,11 +44,11 @@ public class AuthController {
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
         final String jwt = jwtUtil.generateToken(userDetails);
 
-        User user = userRepository.findByUsername(authRequest.getUsername())
+        Usuario user = userRepository.findByNombre(authRequest.getUsername())
                 .orElseThrow(() -> new Exception("Usuario no encontrado"));
 
         long expirationTime = jwtUtil.getExpirationTime();
 
-        return new AuthResponse(jwt, user.getId(), user.getUsername(), expirationTime);
+        return new AuthResponse(jwt, user.getUsuarioId(), user.getNombre(), expirationTime);
     }
 }

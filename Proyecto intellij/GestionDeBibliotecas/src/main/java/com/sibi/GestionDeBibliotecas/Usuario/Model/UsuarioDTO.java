@@ -28,7 +28,7 @@ public class UsuarioDTO {
     private String codigo;
     private Date codigoGeneradoEn;
 
-    public Integer getUsuarioId() {
+    public Long getUsuarioId() {
         return usuarioId;
     }
 
