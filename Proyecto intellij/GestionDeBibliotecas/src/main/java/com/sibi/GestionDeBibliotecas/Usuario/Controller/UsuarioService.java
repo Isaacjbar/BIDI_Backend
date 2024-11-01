@@ -1,6 +1,5 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Controller;
 
-import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoRepository;
 import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioDTO;
@@ -18,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,13 +28,19 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final UserDetailsServiceImpl userDetailsServiceImpl;
-    private final PrestamoRepository prestamoRepository;
 
     @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository, UserDetailsServiceImpl userDetailsServiceImpl, PrestamoRepository prestamoRepository) {
+    public UsuarioService(UsuarioRepository usuarioRepository, UserDetailsServiceImpl userDetailsServiceImpl) {
         this.usuarioRepository = usuarioRepository;
         this.userDetailsServiceImpl = userDetailsServiceImpl;
-        this.prestamoRepository = prestamoRepository;
+    }
+
+    // --------------------------------------------
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findAll() {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        logger.info("La búsqueda ha sido realizada correctamente");
+        return new ResponseEntity<>(new Message(usuarios, "Listado de usuarios", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------
@@ -60,7 +66,7 @@ public class UsuarioService {
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
 
-        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE, Estado.ACTIVO, usuarioDTO.getNumeroTelefono());
+        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE, usuarioDTO.getNumeroTelefono());
         usuario = usuarioRepository.saveAndFlush(usuario);
 
         if (usuario == null) {
@@ -115,7 +121,7 @@ public class UsuarioService {
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> changeStatus(Long id, Estado nuevoEstado) {
+    public ResponseEntity<Message> changeStatus(Long id) {
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
@@ -123,14 +129,16 @@ public class UsuarioService {
 
         Usuario usuario = usuarioOptional.get();
 
-        if (nuevoEstado == Estado.INACTIVO) {
+        Estado estado = usuario.getEstado().equals(Estado.ACTIVO) ? Estado.INACTIVO : Estado.ACTIVO;
+
+        if (usuario.getEstado().equals(Estado.ACTIVO)) {
             Long prestamosCount = usuarioRepository.countPrestamosByUsuarioId(id);
             if (prestamosCount > 0) {
                 return new ResponseEntity<>(new Message("El usuario tiene préstamos activos y no se puede desactivar", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
             }
         }
 
-        usuario.setEstado(nuevoEstado);
+        usuario.setEstado(estado);
         usuario = usuarioRepository.saveAndFlush(usuario);
 
         if (usuario == null) {
