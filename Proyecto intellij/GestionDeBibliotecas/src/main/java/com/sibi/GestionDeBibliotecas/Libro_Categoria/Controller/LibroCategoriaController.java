@@ -22,9 +22,4 @@ public class LibroCategoriaController {
     public ResponseEntity<Message> getAll() {
         return libroCategoriaService.findAll();
     }
-
-    @PostMapping("/save")
-    public ResponseEntity<Message> save(@Validated(LibroCategoriaDTO.Registrar.class) @RequestBody LibroCategoriaDTO dto) {
-        return libroCategoriaService.save(dto);
-    }
 }

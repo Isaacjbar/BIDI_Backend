@@ -35,7 +35,7 @@ public class Libro {
 
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    private List<LibroCategoria> libroCategorias;
+    private List<LibroCategoria> categorias;
 
     // Constructors
     public Libro() {}
@@ -58,6 +58,13 @@ public class Libro {
         this.author = author;
         this.title = title;
         this.description = description;
+    }
+
+    public Libro(String description, List<LibroCategoria> categorias, String author, String title) {
+        this.description = description;
+        this.categorias = categorias;
+        this.author = author;
+        this.title = title;
     }
 
     // Getters and Setters
@@ -101,11 +108,11 @@ public class Libro {
         this.description = description;
     }
 
-    public List<LibroCategoria> getLibroCategorias() {
-        return libroCategorias;
+    public List<LibroCategoria> getCategorias() {
+        return categorias;
     }
 
-    public void setLibroCategorias(List<LibroCategoria> libroCategorias) {
-        this.libroCategorias = libroCategorias;
+    public void setCategorias(List<LibroCategoria> categorias) {
+        this.categorias = categorias;
     }
 }

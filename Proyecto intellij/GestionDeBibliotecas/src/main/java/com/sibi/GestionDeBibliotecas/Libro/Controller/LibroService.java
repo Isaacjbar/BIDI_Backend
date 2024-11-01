@@ -1,8 +1,14 @@
 package com.sibi.GestionDeBibliotecas.Libro.Controller;
 
+import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaDTO;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
 import com.sibi.GestionDeBibliotecas.Libro.Model.LibroDTO;
 import com.sibi.GestionDeBibliotecas.Libro.Model.LibroRepository;
+import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
+import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoriaDTO;
+import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoriaRepository;
+import com.sibi.GestionDeBibliotecas.Categoria.Model.Categoria;
+import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaRepository;
 import com.sibi.GestionDeBibliotecas.Util.Message;
 import com.sibi.GestionDeBibliotecas.Util.TypesResponse;
 import org.slf4j.Logger;
@@ -22,9 +28,15 @@ public class LibroService {
 
     private final LibroRepository libroRepository;
 
+    private final CategoriaRepository categoriaRepository;
+
+    private final LibroCategoriaRepository libroCategoriaRepository;
+
     @Autowired
-    public LibroService(LibroRepository libroRepository) {
+    public LibroService(LibroRepository libroRepository, CategoriaRepository categoriaRepository, LibroCategoriaRepository libroCategoriaRepository) {
         this.libroRepository = libroRepository;
+        this.categoriaRepository = categoriaRepository;
+        this.libroCategoriaRepository = libroCategoriaRepository;
     }
 
     @Transactional(readOnly = true)
@@ -36,6 +48,7 @@ public class LibroService {
 
     @Transactional
     public ResponseEntity<Message> save(LibroDTO dto) {
+        // Validación de campos
         if (dto.getTitle().length() > 255) {
             return new ResponseEntity<>(new Message("El título excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -45,11 +58,27 @@ public class LibroService {
         if (dto.getDescription().length() > 250) {
             return new ResponseEntity<>(new Message("La descripción excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription());
-        libroRepository.saveAndFlush(libro);
-        logger.info("El registro del libro ha sido realizado correctamente");
-        return new ResponseEntity<>(new Message(libro, "El libro se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
+
+        // Crear y guardar el libro
+        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(), dto.getStatus());
+        libro = libroRepository.saveAndFlush(libro);
+
+        // Crear las relaciones en base a CategoriaDTO
+        if (dto.getCategorias() != null) { // Cambiado a 'getCategorias()' en lugar de 'getLibroCategorias()'
+            for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
+                Categoria categoria = categoriaRepository.findById(categoriaDTO.getCategoryId())
+                        .orElseThrow(() -> new IllegalArgumentException("Categoría no encontrada: " + categoriaDTO.getCategoryId()));
+
+                // Crear y guardar la relación en LibroCategoria
+                LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
+                libroCategoriaRepository.save(libroCategoria);
+            }
+        }
+
+        logger.info("El registro del libro y su asociación con categorías ha sido realizado correctamente");
+        return new ResponseEntity<>(new Message(libro, "El libro y sus categorías se registraron correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
     }
+
 
     @Transactional
     public ResponseEntity<Message> update(LibroDTO dto) {

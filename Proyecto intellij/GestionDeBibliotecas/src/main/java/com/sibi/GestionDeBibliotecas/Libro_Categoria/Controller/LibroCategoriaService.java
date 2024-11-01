@@ -35,17 +35,4 @@ public class LibroCategoriaService {
         logger.info("La búsqueda de relaciones libro-categoría ha sido realizada correctamente");
         return new ResponseEntity<>(new Message(libroCategorias, "Listado de relaciones libro-categoría", TypesResponse.SUCCESS), HttpStatus.OK);
     }
-
-    @Transactional
-    public ResponseEntity<Message> save(LibroCategoriaDTO dto) {
-        Libro libro = new Libro();
-        libro.setBookId(dto.getLibroId());
-        Categoria categoria = new Categoria();
-        categoria.setCategoryId(dto.getCategoriaId());
-
-        LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
-        libroCategoriaRepository.saveAndFlush(libroCategoria);
-        logger.info("El registro de la relación libro-categoría ha sido realizado correctamente");
-        return new ResponseEntity<>(new Message(libroCategoria, "La relación libro-categoría se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
-    }
 }

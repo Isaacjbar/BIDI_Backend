@@ -3,40 +3,38 @@ package com.sibi.GestionDeBibliotecas.Libro_Categoria.Model;
 import jakarta.validation.constraints.NotNull;
 
 public class LibroCategoriaDTO {
-    @NotNull(groups = {Modificar.class}, message = "El id del libro no puede ser nulo")
-    private Long libroId;
+    @NotNull(groups = {Registrar.class, Modificar.class}, message = "El id del libro no puede ser nulo")
+    private Integer libroId;
 
-    @NotNull(groups = {Modificar.class}, message = "El id de la categoría no puede ser nulo")
-    private Long categoriaId;
+    @NotNull(groups = {Registrar.class, Modificar.class}, message = "El id de la categoría no puede ser nulo")
+    private Integer categoriaId;
 
     public interface Registrar {}
     public interface Modificar {}
-    public interface CambiarEstado {}
-
     public LibroCategoriaDTO() {
     }
-    public LibroCategoriaDTO(Long libroId, Long categoriaId) {
+    public LibroCategoriaDTO(Integer libroId, Integer categoriaId) {
         this.libroId = libroId;
         this.categoriaId = categoriaId;
     }
 
-    public LibroCategoriaDTO(Long libroId) {
+    public LibroCategoriaDTO(Integer libroId) {
         this.libroId = libroId;
     }
 
-    public Long getLibroId() {
+    public Integer getLibroId() {
         return libroId;
     }
 
-    public void setLibroId(Long libroId) {
+    public void setLibroId(Integer libroId) {
         this.libroId = libroId;
     }
 
-    public Long getCategoriaId() {
+    public Integer getCategoriaId() {
         return categoriaId;
     }
 
-    public void setCategoriaId(Long categoriaId) {
+    public void setCategoriaId(Integer categoriaId) {
         this.categoriaId = categoriaId;
     }
 }

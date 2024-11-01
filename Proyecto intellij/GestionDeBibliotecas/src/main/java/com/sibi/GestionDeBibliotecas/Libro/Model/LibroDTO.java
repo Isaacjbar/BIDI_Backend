@@ -1,8 +1,12 @@
 package com.sibi.GestionDeBibliotecas.Libro.Model;
 
+import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaDTO;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro.Status;
+import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
+import java.util.List;
 
 public class LibroDTO {
     @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El id no puede ser nulo")
@@ -20,6 +24,8 @@ public class LibroDTO {
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
     private String description;
 
+    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
+    private List<CategoriaDTO> categorias; // Cambiado a CategoriaDTO en lugar de LibroCategoria
     // Constructors
     public LibroDTO() {}
 
@@ -31,10 +37,19 @@ public class LibroDTO {
         this.status = status;
     }
 
-    public LibroDTO(String author, String title, String description) {
+    public LibroDTO(String author, String title, String description, List<CategoriaDTO> categorias) {
         this.author = author;
         this.title = title;
         this.description = description;
+        this.categorias = categorias;
+    }
+
+    public List<CategoriaDTO> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<CategoriaDTO> libroCategorias) {
+        this.categorias = libroCategorias;
     }
 
     // Getters and Setters
