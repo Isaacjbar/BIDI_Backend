@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -41,6 +42,18 @@ public class UsuarioService {
         List<Usuario> usuarios = usuarioRepository.findAll();
         logger.info("La búsqueda ha sido realizada correctamente");
         return new ResponseEntity<>(new Message(usuarios, "Listado de usuarios", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    // --------------------------------------------
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> findById(Long id) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        Usuario usuario = usuarioOptional.get();
+        logger.info("La búsqueda ha sido realizada correctamente");
+        return new ResponseEntity<>(new Message(usuario, "Usuario", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------
@@ -148,4 +161,27 @@ public class UsuarioService {
         logger.info("La actualización ha sido realizada correctamente");
         return new ResponseEntity<>(new Message(usuario, "El estado del usuario se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
+/* En desarrollo
+    // --------------------------------------------
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> recoverPassword(String correo, String nuevaContrasena) {
+        if (nuevaContrasena.length() > 255) {
+            return new ResponseEntity<>(new Message("La contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreo(correo);
+
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+
+        Usuario usuario = usuarioOptional.get();
+        String hashPassword = userDetailsServiceImpl.encodePassword(nuevaContrasena);
+
+        usuario.setContrasena(hashPassword);
+        usuarioRepository.saveAndFlush(usuario);
+
+        logger.info("La contraseña del usuario ha sido actualizada correctamente");
+        return new ResponseEntity<>(new Message("La contraseña se ha actualizado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+    }*/
 }

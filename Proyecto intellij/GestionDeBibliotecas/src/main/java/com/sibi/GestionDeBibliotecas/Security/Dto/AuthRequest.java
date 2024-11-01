@@ -1,25 +1,25 @@
 package com.sibi.GestionDeBibliotecas.Security.Dto;
 
 public class AuthRequest {
-    private String username;
-    private String password;
+    private String correo;
+    private String contrasena;
 
     public AuthRequest() {
     }
 
-    public String getUsername() {
-        return username;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasena() {
+        return contrasena;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 }

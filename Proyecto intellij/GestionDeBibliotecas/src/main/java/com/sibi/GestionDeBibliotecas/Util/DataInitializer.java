@@ -2,8 +2,6 @@ package com.sibi.GestionDeBibliotecas.Util;
 
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
-import com.sibi.GestionDeBibliotecas.Util.Estado;
-import com.sibi.GestionDeBibliotecas.Util.Rol;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +23,6 @@ public class DataInitializer {
                         "admin@example.com",
                         passwordEncoder.encode("admin123"),
                         Rol.ADMINISTRADOR,
-                        Estado.ACTIVO,
                         "555-1234"
                 );
                 usuarioRepository.saveAndFlush(adminUser);
@@ -39,7 +36,6 @@ public class DataInitializer {
                         "cliente@example.com",
                         passwordEncoder.encode("cliente123"),
                         Rol.CLIENTE,
-                        Estado.ACTIVO,
                         "555-5678"
                 );
                 usuarioRepository.saveAndFlush(clienteUser);
@@ -53,7 +49,6 @@ public class DataInitializer {
                         "invitado@example.com",
                         passwordEncoder.encode("invitado123"),
                         Rol.INVITADO,
-                        Estado.INACTIVO,
                         "555-9876"
                 );
                 usuarioRepository.saveAndFlush(invitadoUser);

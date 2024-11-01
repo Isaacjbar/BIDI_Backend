@@ -11,7 +11,6 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -37,19 +36,32 @@ public class AuthController {
     public AuthResponse login(@RequestBody AuthRequest authRequest) throws Exception {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
+                    new UsernamePasswordAuthenticationToken(authRequest.getCorreo(), authRequest.getContrasena()));
         } catch (BadCredentialsException e) {
-            throw new Exception("Usuario o contraseña incorrectos", e);
+            throw new Exception("Correo o contraseña incorrectos", e);
         }
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getUsername());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getCorreo());
         final String jwt = jwtUtil.generateToken(userDetails);
 
-        Usuario user = userRepository.findByNombre(authRequest.getUsername())
+        Usuario user = userRepository.findByCorreo(authRequest.getCorreo())
                 .orElseThrow(() -> new Exception("Usuario no encontrado"));
 
         long expirationTime = jwtUtil.getExpirationTime();
 
         return new AuthResponse(jwt, user.getUsuarioId(), user.getNombre(), expirationTime);
     }
+
+
+    /* En desarrollo
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout() {
+        // Limpiar el contexto de seguridad
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            // Puedes realizar cualquier acción adicional aquí si es necesario
+            SecurityContextHolder.clearContext();
+        }
+        return new ResponseEntity<>("Logout exitoso", HttpStatus.OK);
+    }*/
 }
