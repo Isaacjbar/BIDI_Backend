@@ -65,7 +65,7 @@ public class Usuario {
         this.codigoGeneradoEn = codigoGeneradoEn;
     }
 
-    public Usuario(String nombre, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono) {
+    public Usuario(String nombre, String correo, String contrasena, Rol rol, String numeroTelefono) {
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;
