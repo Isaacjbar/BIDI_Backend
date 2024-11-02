@@ -178,7 +178,7 @@ public class UsuarioService {
         Usuario usuario = usuarioOptional.get();
         String hashPassword = userDetailsServiceImpl.encodePassword(nuevaContrasena);
 
-        usuario.setContrasena(hashPassword);
+        usuario.setPassword(hashPassword);
         usuarioRepository.saveAndFlush(usuario);
 
         logger.info("La contraseña del usuario ha sido actualizada correctamente");

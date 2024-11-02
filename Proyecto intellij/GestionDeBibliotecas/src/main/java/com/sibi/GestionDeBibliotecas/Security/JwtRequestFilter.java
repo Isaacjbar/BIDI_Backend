@@ -41,7 +41,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             try {
-                email = jwtUtil.extractUsername(jwt); // Asegúrate de que este método extraiga el correo
+                email = jwtUtil.extractUserEmail(jwt); // Asegúrate de que este mét0do extraiga el correo
             } catch (Exception e) {
                 // Manejo de excepción si el token no es válido o está malformado
                 logger.error("Error al extraer el correo del token: {}", e.getMessage());

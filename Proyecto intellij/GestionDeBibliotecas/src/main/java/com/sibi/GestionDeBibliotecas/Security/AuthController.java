@@ -2,63 +2,72 @@ package com.sibi.GestionDeBibliotecas.Security;
 
 import com.sibi.GestionDeBibliotecas.Security.Dto.AuthRequest;
 import com.sibi.GestionDeBibliotecas.Security.Dto.AuthResponse;
+import com.sibi.GestionDeBibliotecas.Security.Dto.AuthService;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
+import com.sibi.GestionDeBibliotecas.Util.Message;
+import com.sibi.GestionDeBibliotecas.Util.TypesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class AuthController {
 
-    private final AuthenticationManager authenticationManager;
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsServiceImpl userDetailsService;
     private final JwtUtil jwtUtil;
     private final UsuarioRepository userRepository;
+    private final AuthService authService;
 
     @Autowired
-    public AuthController(AuthenticationManager authenticationManager, PasswordEncoder passwordEncoder, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, UsuarioRepository userRepository) {
-        this.authenticationManager = authenticationManager;
+    public AuthController(PasswordEncoder passwordEncoder, UserDetailsServiceImpl userDetailsService, JwtUtil jwtUtil, UsuarioRepository userRepository, AuthService authService) {
         this.passwordEncoder = passwordEncoder;
         this.userDetailsService = userDetailsService;
         this.jwtUtil = jwtUtil;
         this.userRepository = userRepository;
+        this.authService = authService;
     }
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest authRequest) throws Exception {
         // Busca al usuario por correo
-        Usuario user = userRepository.findByCorreo(authRequest.getCorreo())
+        Usuario user = userRepository.findByCorreo(authRequest.getEmail())
                 .orElseThrow(() -> new Exception("Usuario no encontrado"));
 
-        // Verifica si la contraseña ingresada coincide con la almacenada (hasheada)
-        if (!passwordEncoder.matches(authRequest.getContrasena(), user.getContrasena())) {
+        // Verifica si la contraseña ingresada coincide con la almacenada (hashed)
+        if (!passwordEncoder.matches(authRequest.getPassword(), user.getContrasena())) {
             throw new Exception("Correo o contraseña incorrectos");
         }
 
-        // Si la autenticación es exitosa, genera el JWT
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getCorreo());
+        // Genera el JWT
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails);
+
+        // Aquí podrías verificar si el token es inválido
+        if (authService.isTokenInvalid(jwt)) {
+            throw new Exception("Token inválido");
+        }
 
         long expirationTime = jwtUtil.getExpirationTime();
 
         return new AuthResponse(jwt, user.getUsuarioId(), user.getCorreo(), expirationTime);
     }
 
-    /* En desarrollo
     @PostMapping("/logout")
-    public ResponseEntity<String> logout() {
-        // Limpiar el contexto de seguridad
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            // Puedes realizar cualquier acción adicional aquí si es necesario
-            SecurityContextHolder.clearContext();
-        }
-        return new ResponseEntity<>("Logout exitoso", HttpStatus.OK);
-    }*/
+    public ResponseEntity<Message> logout(@RequestHeader("Authorization") String token) {
+        // Extrae el token sin el prefijo "Bearer "
+        String jwt = token.substring(7); // Asumiendo que el token se pasa con el prefijo "Bearer"
+        authService.invalidateToken(jwt);
+        Message responseMessage = new Message("Logout exitoso", TypesResponse.SUCCESS);
+
+        //logger.info("El usuario ha cerrado sesión exitosamente");
+        return new ResponseEntity<>(responseMessage, HttpStatus.OK);
+    }
 }

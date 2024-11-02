@@ -26,7 +26,7 @@ public class JwtUtil {
         return Keys.hmacShaKeyFor(secret.getBytes());
     }
 
-    public String extractUsername(String token) {
+    public String extractUserEmail(String token) {
         return extractClaim(token, Claims::getSubject);
     }
 
@@ -71,7 +71,7 @@ public class JwtUtil {
     }
 
     public Boolean validateToken(String token, UserDetails userDetails) {
-        final String email = extractUsername(token); // Cambiado a email
+        final String email = extractUserEmail(token); // Cambiado a email
         return (email.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 }
