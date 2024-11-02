@@ -60,11 +60,11 @@ public class LibroService {
         }
 
         // Crear y guardar el libro
-        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(), dto.getStatus());
+        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription());
         libro = libroRepository.saveAndFlush(libro);
 
         // Crear las relaciones en base a CategoriaDTO
-        if (dto.getCategorias() != null) { // Cambiado a 'getCategorias()' en lugar de 'getLibroCategorias()'
+        if (dto.getCategorias() != null) {
             for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
                 Categoria categoria = categoriaRepository.findById(categoriaDTO.getCategoryId())
                         .orElseThrow(() -> new IllegalArgumentException("Categoría no encontrada: " + categoriaDTO.getCategoryId()));
@@ -82,7 +82,7 @@ public class LibroService {
 
     @Transactional
     public ResponseEntity<Message> update(LibroDTO dto) {
-        return libroRepository.findById(dto.getLibroId())
+        return libroRepository.findById(dto.getBookId())
                 .map(libro -> {
                     // Valida el campo `title` solo si no es null y dentro del límite de caracteres
                     if (dto.getTitle() != null) {
@@ -108,29 +108,51 @@ public class LibroService {
                         libro.setDescription(dto.getDescription());
                     }
 
+                    // Actualiza la lista de categorías si no es null
+                    if (dto.getCategorias() != null) {
+                        // Eliminar todas las relaciones actuales entre el libro y sus categorías
+                        libroCategoriaRepository.deleteAllByLibro(libro);
+
+                        // Crear nuevas relaciones con las categorías proporcionadas en el DTO
+                        for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
+                            Categoria categoria = categoriaRepository.findById(categoriaDTO.getCategoryId())
+                                    .orElseThrow(() -> new IllegalArgumentException("Categoría no encontrada: " + categoriaDTO.getCategoryId()));
+
+                            // Crear y guardar la nueva relación
+                            LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
+                            libroCategoriaRepository.save(libroCategoria);
+                        }
+                    }
+
                     // Guarda los cambios en la base de datos
                     libroRepository.save(libro);
-                    logger.info("La actualización del libro ha sido realizada correctamente");
+                    logger.info("La actualización del libro y sus categorías ha sido realizada correctamente");
 
                     // Retorna mensaje de éxito
-                    return new ResponseEntity<>(new Message(libro, "El libro se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+                    return new ResponseEntity<>(new Message(libro, "El libro y sus categorías se actualizaron correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
                 })
                 .orElseGet(() -> new ResponseEntity<>(new Message("El libro no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND));
     }
 
+
     @Transactional
     public ResponseEntity<Message> changeStatus(LibroDTO dto) {
-        libroRepository.findById(dto.getLibroId()).ifPresentOrElse(
-                libro -> {
-                    libro.setStatus(!libro.getStatus().equals(Libro.Status.INACTIVE) ? Libro.Status.INACTIVE : Libro.Status.ACTIVE);
-                    libroRepository.saveAndFlush(libro);
-                    logger.info("La actualización del estado del libro ha sido realizada correctamente");
-                },
-                () -> {
-                    throw new IllegalArgumentException("El libro no existe");
-                }
-        );
-        return new ResponseEntity<>(new Message("El estado del libro se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+        return libroRepository.findById(dto.getBookId()).map(libro -> {
+            // Validar si el nuevo estado proporcionado en el DTO es diferente al estado actual
+            if (dto.getStatus() != null && !dto.getStatus().equals(libro.getStatus())) {
+                // Actualizar el estado solo si es diferente
+                libro.setStatus(dto.getStatus());
+                libroRepository.saveAndFlush(libro);
+                logger.info("La actualización del estado del libro ha sido realizada correctamente. Nuevo estado: {}", libro.getStatus());
+            } else {
+                logger.info("No hubo cambios en el estado del libro, ya tenía el estado proporcionado. Estado actual: {}", libro.getStatus());
+            }
+
+            // Incluir el estado del libro en el mensaje de respuesta
+            return new ResponseEntity<>(new Message("El estado del libro se actualizó correctamente. Estado actual: " + libro.getStatus(), TypesResponse.SUCCESS), HttpStatus.OK);
+        }).orElseGet(() -> {
+            throw new IllegalArgumentException("El libro no existe");
+        });
     }
     @Transactional(readOnly = true)
     public ResponseEntity<Message> findByStatus(String estado) {

@@ -4,13 +4,14 @@ import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaDTO;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro.Status;
 import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.List;
 
 public class LibroDTO {
     @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El id no puede ser nulo")
-    private Integer libroId;
+    private Integer bookId;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El título no puede estar vacío")
     private String title;
@@ -24,13 +25,13 @@ public class LibroDTO {
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
     private String description;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
+    @NotEmpty(groups = {Registrar.class, Modificar.class}, message = "La lista de categorias no puede estar vacía")
     private List<CategoriaDTO> categorias; // Cambiado a CategoriaDTO en lugar de LibroCategoria
     // Constructors
     public LibroDTO() {}
 
-    public LibroDTO(Integer libroId, String title, String author, String description, Status status) {
-        this.libroId = libroId;
+    public LibroDTO(Integer bookId, String title, String author, String description, Status status) {
+        this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.description = description;
@@ -52,13 +53,12 @@ public class LibroDTO {
         this.categorias = libroCategorias;
     }
 
-    // Getters and Setters
-    public Integer getLibroId() {
-        return libroId;
+    public Integer getBookId() {
+        return bookId;
     }
 
-    public void setLibroId(Integer libroId) {
-        this.libroId = libroId;
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
     }
 
     public String getTitle() {
