@@ -3,13 +3,13 @@ package com.sibi.GestionDeBibliotecas.Security.Dto;
 public class AuthResponse {
     private String jwt;
     private Long userId;
-    private String username;
+    private String email;
     private long expiration;
 
-    public AuthResponse(String jwt, Long userId, String username, long expiration) {
+    public AuthResponse(String jwt, Long userId, String email, long expiration) { // Cambiado aquí también
         this.jwt = jwt;
         this.userId = userId;
-        this.username = username;
+        this.email = email;
         this.expiration = expiration;
     }
 
@@ -29,12 +29,12 @@ public class AuthResponse {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public long getExpiration() {

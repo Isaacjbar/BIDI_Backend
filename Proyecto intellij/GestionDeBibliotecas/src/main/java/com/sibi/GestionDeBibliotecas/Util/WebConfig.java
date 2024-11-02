@@ -9,12 +9,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**") // Permite todas las rutas
-                .allowedOrigins("*") // Permite desde todos los origenes
-                .allowedMethods("GET", "POST", "PUT", "DELETE") // Permite los métodos HTTP especificados
-                .allowedHeaders("*")// Permite todos los headers
-                .allowCredentials(true); // Permite enviar cookies y autenticación
-//        .allowedHeaders("Authorization", "Content-Type")// Permite todos los headers
-//                .allowCredentials(true); // Permite enviar cookies y autenticación
+        registry.addMapping("/**")
+                .allowedOrigins("http://localhost:8080/sibi/v1") // Cambia a tu dominio real
+                .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                .allowedHeaders("*")
+                .allowCredentials(true);
     }
 }
