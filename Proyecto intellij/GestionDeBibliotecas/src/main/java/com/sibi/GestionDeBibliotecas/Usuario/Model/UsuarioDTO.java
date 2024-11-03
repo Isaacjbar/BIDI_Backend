@@ -1,5 +1,6 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Model;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
@@ -13,6 +14,7 @@ public class UsuarioDTO {
     private String nombre;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El correo no puede estar vacío")
+    @Email(groups = {Registrar.class, Modificar.class}, message = "El correo debe tener un formato válido")
     private String correo;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La contraseña no puede estar vacía")

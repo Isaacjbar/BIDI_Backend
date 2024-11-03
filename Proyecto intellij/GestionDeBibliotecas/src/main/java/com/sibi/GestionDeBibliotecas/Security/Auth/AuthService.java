@@ -1,4 +1,4 @@
-package com.sibi.GestionDeBibliotecas.Security.Dto;
+package com.sibi.GestionDeBibliotecas.Security.Auth;
 
 import org.springframework.stereotype.Service;
 

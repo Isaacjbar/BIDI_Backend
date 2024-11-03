@@ -1,8 +1,8 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Model;
 
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.Prestamo;
-import com.sibi.GestionDeBibliotecas.Util.Estado;
-import com.sibi.GestionDeBibliotecas.Util.Rol;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

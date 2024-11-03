@@ -1,4 +1,4 @@
-package com.sibi.GestionDeBibliotecas.Util;
+package com.sibi.GestionDeBibliotecas.Util.Enum;
 
 public enum Rol {
     ADMINISTRADOR,

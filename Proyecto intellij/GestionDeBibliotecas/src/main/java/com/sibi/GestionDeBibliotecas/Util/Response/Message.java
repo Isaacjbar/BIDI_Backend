@@ -1,4 +1,6 @@
-package com.sibi.GestionDeBibliotecas.Util;
+package com.sibi.GestionDeBibliotecas.Util.Response;
+
+import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
 
 public class Message {
     private String text;

@@ -1,4 +1,4 @@
-package com.sibi.GestionDeBibliotecas.Util;
+package com.sibi.GestionDeBibliotecas.Util.Response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

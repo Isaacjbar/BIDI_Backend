@@ -1,12 +1,13 @@
-package com.sibi.GestionDeBibliotecas.Security;
+package com.sibi.GestionDeBibliotecas.Security.Auth;
 
-import com.sibi.GestionDeBibliotecas.Security.Dto.AuthRequest;
-import com.sibi.GestionDeBibliotecas.Security.Dto.AuthResponse;
-import com.sibi.GestionDeBibliotecas.Security.Dto.AuthService;
+import com.sibi.GestionDeBibliotecas.Security.Auth.Dto.AuthRequest;
+import com.sibi.GestionDeBibliotecas.Security.Auth.Dto.AuthResponse;
+import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtUtil;
+import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
-import com.sibi.GestionDeBibliotecas.Util.Message;
-import com.sibi.GestionDeBibliotecas.Util.TypesResponse;
+import com.sibi.GestionDeBibliotecas.Util.Response.Message;
+import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

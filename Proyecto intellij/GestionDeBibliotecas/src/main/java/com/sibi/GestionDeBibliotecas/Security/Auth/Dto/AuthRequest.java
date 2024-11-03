@@ -1,4 +1,4 @@
-package com.sibi.GestionDeBibliotecas.Security.Dto;
+package com.sibi.GestionDeBibliotecas.Security.Auth.Dto;
 
 public class AuthRequest {
     private String email;

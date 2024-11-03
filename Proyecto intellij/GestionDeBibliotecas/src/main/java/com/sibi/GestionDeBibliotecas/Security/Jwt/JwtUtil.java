@@ -1,4 +1,4 @@
-package com.sibi.GestionDeBibliotecas.Security;
+package com.sibi.GestionDeBibliotecas.Security.Jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

@@ -4,22 +4,27 @@ import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioDTO;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
-import com.sibi.GestionDeBibliotecas.Util.Estado;
-import com.sibi.GestionDeBibliotecas.Util.Message;
-import com.sibi.GestionDeBibliotecas.Util.Rol;
-import com.sibi.GestionDeBibliotecas.Util.TypesResponse;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
+import com.sibi.GestionDeBibliotecas.Util.Response.Message;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
+import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
+import com.sibi.GestionDeBibliotecas.Util.Services.EmailDto;
+import com.sibi.GestionDeBibliotecas.Util.Services.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 @Transactional
@@ -29,11 +34,13 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final UserDetailsServiceImpl userDetailsServiceImpl;
+    private final EmailService emailService;
 
     @Autowired
-    public UsuarioService(UsuarioRepository usuarioRepository, UserDetailsServiceImpl userDetailsServiceImpl) {
+    public UsuarioService(UsuarioRepository usuarioRepository, UserDetailsServiceImpl userDetailsServiceImpl, EmailService emailService) {
         this.usuarioRepository = usuarioRepository;
         this.userDetailsServiceImpl = userDetailsServiceImpl;
+        this.emailService = emailService;
     }
 
     // --------------------------------------------
@@ -161,27 +168,36 @@ public class UsuarioService {
         logger.info("La actualización ha sido realizada correctamente");
         return new ResponseEntity<>(new Message(usuario, "El estado del usuario se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
-/* En desarrollo
+
     // --------------------------------------------
-    @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> recoverPassword(String correo, String nuevaContrasena) {
-        if (nuevaContrasena.length() > 255) {
-            return new ResponseEntity<>(new Message("La contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+    // 1. Endpoint para solicitar la recuperación de contraseña
+    @PostMapping("/reset-password")
+    public ResponseEntity<Message> requestPasswordReset(@Validated @RequestBody EmailDto emailDto) {
+        try {
+            if (!usuarioRepository.findByCorreo(emailDto.getCorreo()).isPresent()) {
+                return new ResponseEntity<>(new Message("El correo no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+            }
+
+            String token = UUID.randomUUID().toString();
+            usuarioService.saveToken(emailDto.getCorreo(), token); // Almacena el token y la fecha en la base de datos
+
+            // Enviar correo sin el token en la URL
+            emailService.sendEmail(emailDto.getCorreo(), "Recuperación de contraseña",
+                    "Para recuperar tu contraseña, haz clic en el siguiente enlace: " +
+                            "https://localhost:8080/sibi/reset-password");
+
+            return new ResponseEntity<>(new Message("Correo de recuperación enviado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(new Message("Error al enviar el correo: " + e.getMessage(), TypesResponse.ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
 
-        Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreo(correo);
+    public void saveToken(String email, String token) {
+        Usuario usuario = usuarioRepository.findByCorreo(email)
+                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
 
-        if (!usuarioOptional.isPresent()) {
-            return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
-        }
-
-        Usuario usuario = usuarioOptional.get();
-        String hashPassword = userDetailsServiceImpl.encodePassword(nuevaContrasena);
-
-        usuario.setPassword(hashPassword);
-        usuarioRepository.saveAndFlush(usuario);
-
-        logger.info("La contraseña del usuario ha sido actualizada correctamente");
-        return new ResponseEntity<>(new Message("La contraseña se ha actualizado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
-    }*/
+        usuario.setCodigo(token); // Asigna el token al atributo `codigo`
+        usuario.setCodigoGeneradoEn(new Date(System.currentTimeMillis())); // Establece la fecha actual
+        usuarioRepository.save(usuario); // Guarda el usuario actualizado
+    }
 }

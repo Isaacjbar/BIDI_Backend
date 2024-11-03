@@ -1,7 +1,7 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Controller;
 
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioDTO;
-import com.sibi.GestionDeBibliotecas.Util.Message;
+import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -18,7 +18,7 @@ public class UsuarioController {
         this.usuarioService = usuarioService;
     }
 
-    @PreAuthorize("hasAuthority(T(com.sibi.GestionDeBibliotecas.Util.Rol).ADMINISTRADOR.name())")
+    @PreAuthorize("hasAuthority(T(com.sibi.GestionDeBibliotecas.Util.Enum.Rol).ADMINISTRADOR.name())")
     @GetMapping("/find-all")
     public ResponseEntity<Message> getAll() {
         return usuarioService.findAll();

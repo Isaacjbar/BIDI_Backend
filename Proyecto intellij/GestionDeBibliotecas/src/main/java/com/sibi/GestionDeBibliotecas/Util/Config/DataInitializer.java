@@ -1,7 +1,8 @@
-package com.sibi.GestionDeBibliotecas.Util;
+package com.sibi.GestionDeBibliotecas.Util.Config;
 
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
