@@ -1,12 +1,12 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.Prestamo;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import jakarta.persistence.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -43,7 +43,7 @@ public class Usuario {
     private String codigo;
 
     @Column(name = "code_generated_at")
-    private java.util.Date codigoGeneradoEn;
+    private Date codigoGeneradoEn;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -52,7 +52,7 @@ public class Usuario {
     public Usuario() {
 
     }
-    
+
     public Usuario(Long usuarioId, String nombre, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono, String codigo, Date codigoGeneradoEn) {
         this.usuarioId = usuarioId;
         this.nombre = nombre;
@@ -70,7 +70,6 @@ public class Usuario {
         this.correo = correo;
         this.contrasena = contrasena;
         this.rol = rol;
-        this.estado = estado;
         this.numeroTelefono = numeroTelefono;
     }
 

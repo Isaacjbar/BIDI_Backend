@@ -1,33 +1,32 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Model;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.*;
 
 import java.sql.Date;
 
 public class UsuarioDTO {
-    @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El id no puede ser nulo")
+
+    @NotNull(groups = {Modificar.class, CambiarEstado.class, Consultar.class}, message = "Error con el identificador de usuario")
     private Long usuarioId;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El nombre no puede estar vacío")
     private String nombre;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El correo no puede estar vacío")
-    @Email(groups = {Registrar.class, Modificar.class}, message = "El correo debe tener un formato válido")
+    @NotBlank(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo no puede estar vacío")
+    @Email(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo debe tener un formato válido")
     private String correo;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La contraseña no puede estar vacía")
+    @NotBlank(groups = {Registrar.class, Modificar.class, Recuperacion.class}, message = "La contraseña no puede estar vacía")
     private String contrasena;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "Hubo un creando tus datos, intenta de nuevo")
     private String rol;
-
-    @NotBlank(groups = {Modificar.class, CambiarEstado.class}, message = "El estado no puede estar vacío")
     private String estado;
-
     private String numeroTelefono;
+
+    @NotBlank(groups = {Validacion.class}, message = "El código no puede estar vacío")
+    @Max(value = 6, groups = {Validacion.class}, message = "El código no debe exceder el número de caracteres")
     private String codigo;
+
     private Date codigoGeneradoEn;
 
     public Long getUsuarioId() {
@@ -109,5 +108,17 @@ public class UsuarioDTO {
     }
 
     public interface CambiarEstado {
+    }
+
+    public interface Solicitud {
+    }
+
+    public interface Recuperacion {
+    }
+
+    public interface Validacion {
+    }
+
+    public interface Consultar {
     }
 }

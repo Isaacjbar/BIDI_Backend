@@ -1,7 +1,7 @@
 package com.sibi.GestionDeBibliotecas.Inventario.Controller;
 
 import com.sibi.GestionDeBibliotecas.Inventario.Model.InventarioDTO;
-import com.sibi.GestionDeBibliotecas.Util.Message;
+import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

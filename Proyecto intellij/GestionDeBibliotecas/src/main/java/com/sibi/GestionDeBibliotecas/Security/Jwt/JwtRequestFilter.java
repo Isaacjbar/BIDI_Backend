@@ -36,22 +36,20 @@ public class JwtRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = request.getHeader("Authorization");
 
-        String email = null; // Cambiado de username a email
+        String email = null;
         String jwt = null;
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
             try {
-                email = jwtUtil.extractUserEmail(jwt); // Asegúrate de que este mét0do extraiga el correo
+                email = jwtUtil.extractUserEmail(jwt);
             } catch (Exception e) {
-                // Manejo de excepción si el token no es válido o está malformado
                 logger.error("Error al extraer el correo del token: {}", e.getMessage());
             }
         }
 
-        // Validar el token y autenticar al usuario si el contexto de seguridad está vacío
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = this.userDetailsService.loadUserByUsername(email); // Cambiado aquí
+            UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =

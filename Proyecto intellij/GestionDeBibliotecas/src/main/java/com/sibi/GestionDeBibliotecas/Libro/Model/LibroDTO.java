@@ -2,7 +2,6 @@ package com.sibi.GestionDeBibliotecas.Libro.Model;
 
 import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaDTO;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro.Status;
-import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

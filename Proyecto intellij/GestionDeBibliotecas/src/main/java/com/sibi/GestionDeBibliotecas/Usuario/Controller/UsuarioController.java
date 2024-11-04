@@ -25,11 +25,11 @@ public class UsuarioController {
     }
 
     @GetMapping("/find-user/{id}")
-    public ResponseEntity<Message> findById(@PathVariable Long id) {
-        return usuarioService.findById(id);
+    public ResponseEntity<Message> findById(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto) {
+        return usuarioService.findById(dto);
     }
 
-    @PostMapping("/save")
+    @PostMapping("/register")
     public ResponseEntity<Message> save(@Validated(UsuarioDTO.Registrar.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.save(dto);
     }
@@ -40,7 +40,22 @@ public class UsuarioController {
     }
 
     @PutMapping("/change-status/{id}")
-    public ResponseEntity<Message> changeStatus(@Validated(UsuarioDTO.CambiarEstado.class) @PathVariable Long id) {
-        return usuarioService.changeStatus(id);
+    public ResponseEntity<Message> changeStatus(@Validated(UsuarioDTO.CambiarEstado.class) @RequestBody UsuarioDTO dto) {
+        return usuarioService.changeStatus(dto);
+    }
+
+    @PutMapping("/request-password-reset")
+    public ResponseEntity<Message> requestPasswordReset(@Validated(UsuarioDTO.Solicitud.class) @RequestBody UsuarioDTO dto) {
+        return usuarioService.requestPasswordReset(dto);
+    }
+
+    @PutMapping("/validate-token")
+    public ResponseEntity<Message> validateToken(@Validated(UsuarioDTO.Validacion.class) @RequestBody UsuarioDTO dto) {
+        return usuarioService.validateToken(dto);
+    }
+
+    @PutMapping("/reset-password")
+    public ResponseEntity<Message> resetPassword(@Validated(UsuarioDTO.Recuperacion.class) @RequestBody UsuarioDTO dto) {
+        return usuarioService.resetPassword(dto);
     }
 }

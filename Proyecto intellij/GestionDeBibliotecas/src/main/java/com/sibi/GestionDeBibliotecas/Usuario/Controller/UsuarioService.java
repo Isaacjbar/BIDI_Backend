@@ -5,10 +5,9 @@ import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioDTO;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
-import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
-import com.sibi.GestionDeBibliotecas.Util.Services.EmailDto;
+import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import com.sibi.GestionDeBibliotecas.Util.Services.EmailService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,14 +16,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
+import java.sql.Date;
 import java.sql.SQLException;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -53,8 +51,8 @@ public class UsuarioService {
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> findById(Long id) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+    public ResponseEntity<Message> findById(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioDTO.getUsuarioId());
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
@@ -75,13 +73,15 @@ public class UsuarioService {
         if (usuarioDTO.getContrasena().length() > 255) {
             return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioDTO.getNumeroTelefono().length() > 15) {
+        if (usuarioDTO.getNumeroTelefono().length() > 10) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
         String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
-        if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
-            return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        if (correoDuplicate != null) {
+            if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
+                return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            }
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
@@ -94,7 +94,7 @@ public class UsuarioService {
         }
 
         logger.info("El registro ha sido realizada correctamente");
-        return new ResponseEntity<>(new Message(usuario, "El usuario se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
+        return new ResponseEntity<>(new Message(usuario, "El usuario se registró correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------
@@ -118,8 +118,10 @@ public class UsuarioService {
         }
 
         String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
-        if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
-            return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        if (correoDuplicate != null) {
+            if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
+                return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            }
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
@@ -141,8 +143,8 @@ public class UsuarioService {
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> changeStatus(Long id) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(id);
+    public ResponseEntity<Message> changeStatus(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioDTO.getUsuarioId());
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
@@ -152,7 +154,7 @@ public class UsuarioService {
         Estado estado = usuario.getEstado().equals(Estado.ACTIVO) ? Estado.INACTIVO : Estado.ACTIVO;
 
         if (usuario.getEstado().equals(Estado.ACTIVO)) {
-            Long prestamosCount = usuarioRepository.countPrestamosByUsuarioId(id);
+            Long prestamosCount = usuarioRepository.countPrestamosByUsuarioId(usuarioDTO.getUsuarioId());
             if (prestamosCount > 0) {
                 return new ResponseEntity<>(new Message("El usuario tiene préstamos activos y no se puede desactivar", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
             }
@@ -165,39 +167,79 @@ public class UsuarioService {
             return new ResponseEntity<>(new Message("El estado del usuario no se actualizó", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
 
-        logger.info("La actualización ha sido realizada correctamente");
+        logger.info("El cambio de estado ha sido realizado correctamente");
         return new ResponseEntity<>(new Message(usuario, "El estado del usuario se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------
-    // 1. Endpoint para solicitar la recuperación de contraseña
-    @PostMapping("/reset-password")
-    public ResponseEntity<Message> requestPasswordReset(@Validated @RequestBody EmailDto emailDto) {
-        try {
-            if (!usuarioRepository.findByCorreo(emailDto.getCorreo()).isPresent()) {
-                return new ResponseEntity<>(new Message("El correo no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
-            }
-
-            String token = UUID.randomUUID().toString();
-            usuarioService.saveToken(emailDto.getCorreo(), token); // Almacena el token y la fecha en la base de datos
-
-            // Enviar correo sin el token en la URL
-            emailService.sendEmail(emailDto.getCorreo(), "Recuperación de contraseña",
-                    "Para recuperar tu contraseña, haz clic en el siguiente enlace: " +
-                            "https://localhost:8080/sibi/reset-password");
-
-            return new ResponseEntity<>(new Message("Correo de recuperación enviado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(new Message("Error al enviar el correo: " + e.getMessage(), TypesResponse.ERROR), HttpStatus.INTERNAL_SERVER_ERROR);
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> requestPasswordReset(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreo(usuarioDTO.getCorreo());
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("Usuario con el correo proporcionado no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
+
+        Usuario usuario = usuarioOptional.get();
+
+        String caracteres = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", codigo;
+        char[] caracter = new char[6];
+
+        for (int i = 0; i < caracter.length; i++) {
+            int indice = (int) (Math.random() * 62);
+            caracter[i] = caracteres.charAt(indice);
+        }
+        codigo = new String(caracter);
+
+        usuario.setCodigo(codigo);
+        usuario.setCodigoGeneradoEn(new Date(System.currentTimeMillis()));
+        usuarioRepository.saveAndFlush(usuario);
+
+        emailService.sendEmail(usuarioDTO.getCorreo(), "Recuperación de contraseña, tu código de verificación es: " + codigo,
+                "Para recuperar tu contraseña, haz clic en el siguiente enlace: " +
+                        "https://localhost:8080/sibi/validate-token");
+
+        return new ResponseEntity<>(new Message("Correo de recuperación enviado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
-    public void saveToken(String email, String token) {
-        Usuario usuario = usuarioRepository.findByCorreo(email)
-                .orElseThrow(() -> new IllegalArgumentException("Usuario no encontrado"));
+    public ResponseEntity<Message> validateToken(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreoAndCodigo(usuarioDTO.getCorreo(), usuarioDTO.getCodigo());
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("El código proporcionado no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
 
-        usuario.setCodigo(token); // Asigna el token al atributo `codigo`
-        usuario.setCodigoGeneradoEn(new Date(System.currentTimeMillis())); // Establece la fecha actual
-        usuarioRepository.save(usuario); // Guarda el usuario actualizado
+        Usuario usuario = usuarioOptional.get();
+
+        Date codigoGeneradoEn = usuario.getCodigoGeneradoEn();
+        Instant codigoGeneradoInstant = codigoGeneradoEn.toInstant();
+        Instant ahora = Instant.now();
+
+        long minutosTranscurridos = ChronoUnit.MINUTES.between(codigoGeneradoInstant, ahora);
+        if (minutosTranscurridos > 15) {
+            return new ResponseEntity<>(new Message("El código ha expirado", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+
+        return new ResponseEntity<>(new Message("El código es válido", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    // --------------------------------------------
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> resetPassword(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreo(usuarioDTO.getCorreo());
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("Hubo un error con la recuperación, vuelve a intentarlo", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+
+        Usuario usuario = usuarioOptional.get();
+        String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
+
+        usuario.setContrasena(hashPassword);
+        usuario.setCodigo("");
+        usuario.setCodigoGeneradoEn(null);
+        usuario = usuarioRepository.saveAndFlush(usuario);
+
+        if (usuario == null) {
+            return new ResponseEntity<>(new Message("La contraseña no se restableció", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
+        }
+        return new ResponseEntity<>(new Message("Contraseña restablecida correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 }

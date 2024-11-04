@@ -20,7 +20,7 @@ public class EmailService {
         message.setTo(to);
         message.setSubject(subject);
         message.setText(body);
-        message.setFrom("manosmexicanas0@gmail.com"); // Cambia esto por tu dirección de Gmail
+        message.setFrom("manosmexicanas0@gmail.com");
 
         emailSender.send(message);
     }
