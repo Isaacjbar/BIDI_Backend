@@ -4,7 +4,7 @@ import com.sibi.GestionDeBibliotecas.Prestamo.Model.Prestamo;
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoDTO;
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoRepository;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
-import com.sibi.GestionDeBibliotecas.Inventario.Model.Inventario;
+import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
 import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
 import org.slf4j.Logger;
@@ -41,10 +41,10 @@ public class PrestamoService {
         Usuario usuario = new Usuario();
         usuario.setUsuarioId(dto.getUsuarioId());
 
-        Inventario inventario = new Inventario();
-        inventario.setInventarioId(dto.getInventarioId().intValue()); // Convert Long to Integer
+        Libro libro = new Libro();
+        libro.setBookId(dto.getLibroId());
 
-        Prestamo prestamo = new Prestamo(usuario, inventario, dto.getFechaPrestamo(), dto.getFechaVencimiento(), Prestamo.Status.valueOf(dto.getEstado().toUpperCase()));
+        Prestamo prestamo = new Prestamo(usuario, libro, dto.getFechaPrestamo(), dto.getFechaVencimiento(), Prestamo.Status.valueOf(dto.getEstado().toUpperCase()));
         prestamoRepository.saveAndFlush(prestamo);
         logger.info("El registro del préstamo ha sido realizado correctamente");
         return new ResponseEntity<>(new Message(prestamo, "El préstamo se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
@@ -52,15 +52,15 @@ public class PrestamoService {
 
     @Transactional
     public ResponseEntity<Message> update(PrestamoDTO dto) {
-        prestamoRepository.findById(dto.getPrestamoId().intValue()).ifPresentOrElse(
+        prestamoRepository.findById(dto.getPrestamoId()).ifPresentOrElse(
                 prestamo -> {
                     Usuario usuario = new Usuario();
-                    usuario.setUsuarioId(dto.getUsuarioId()); // Convert Long to Integer
+                    usuario.setUsuarioId(dto.getUsuarioId());
                     prestamo.setUsuario(usuario);
 
-                    Inventario inventario = new Inventario();
-                    inventario.setInventarioId(dto.getInventarioId().intValue()); // Convert Long to Integer
-                    prestamo.setInventario(inventario);
+                    Libro libro = new Libro();
+                    libro.setBookId(dto.getLibroId());
+                    prestamo.setLibro(libro);
 
                     prestamo.setFechaPrestamo(dto.getFechaPrestamo());
                     prestamo.setFechaVencimiento(dto.getFechaVencimiento());
@@ -78,9 +78,9 @@ public class PrestamoService {
 
     @Transactional
     public ResponseEntity<Message> changeStatus(PrestamoDTO dto) {
-        prestamoRepository.findById(dto.getPrestamoId().intValue()).ifPresentOrElse(
+        prestamoRepository.findById(dto.getPrestamoId()).ifPresentOrElse(
                 prestamo -> {
-                    prestamo.setStatus(prestamo.getStatus().equals(Prestamo.Status.ACTIVE) ? Prestamo.Status.ACTIVE : Prestamo.Status.INACTIVE);
+                    prestamo.setStatus(prestamo.getStatus().equals(Prestamo.Status.ACTIVE) ? Prestamo.Status.INACTIVE : Prestamo.Status.ACTIVE);
                     prestamoRepository.saveAndFlush(prestamo);
                     logger.info("La actualización del estado del préstamo ha sido realizada correctamente");
                 },

@@ -5,13 +5,13 @@ import jakarta.validation.constraints.NotNull;
 
 public class PrestamoDTO {
     @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El id no puede ser nulo")
-    private Long prestamoId;
+    private Integer prestamoId;
 
     @NotNull(groups = {Registrar.class, Modificar.class}, message = "El usuario no puede ser nulo")
     private Long usuarioId;
 
-    @NotNull(groups = {Registrar.class, Modificar.class}, message = "El inventario no puede ser nulo")
-    private Long inventarioId;
+    @NotNull(groups = {Registrar.class, Modificar.class}, message = "El libro no puede ser nulo")
+    private Long libroId;
 
     @NotNull(groups = {Registrar.class, Modificar.class}, message = "La fecha de préstamo no puede ser nula")
     private java.util.Date fechaPrestamo;
@@ -29,11 +29,11 @@ public class PrestamoDTO {
     public interface CambiarEstado {}
 
     // Getters and Setters
-    public Long getPrestamoId() {
+    public Integer getPrestamoId() {
         return prestamoId;
     }
 
-    public void setPrestamoId(Long prestamoId) {
+    public void setPrestamoId(Integer prestamoId) {
         this.prestamoId = prestamoId;
     }
 
@@ -45,12 +45,12 @@ public class PrestamoDTO {
         this.usuarioId = usuarioId;
     }
 
-    public Long getInventarioId() {
-        return inventarioId;
+    public Long getLibroId() {
+        return libroId;
     }
 
-    public void setInventarioId(Long inventarioId) {
-        this.inventarioId = inventarioId;
+    public void setLibroId(Long libroId) {
+        this.libroId = libroId;
     }
 
     public java.util.Date getFechaPrestamo() {

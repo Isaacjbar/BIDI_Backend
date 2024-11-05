@@ -1,6 +1,7 @@
 package com.sibi.GestionDeBibliotecas.Libro.Model;
 
 import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
+import com.sibi.GestionDeBibliotecas.Prestamo.Model.Prestamo;
 import jakarta.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,6 +29,9 @@ public class Libro {
     @Column(name = "description", columnDefinition = "VARCHAR(250)")
     private String description;
 
+    @Column(name = "copies", nullable = false)
+    private int copias;
+
     public enum Status {
         ACTIVE,
         INACTIVE
@@ -37,34 +41,27 @@ public class Libro {
     @JsonIgnore
     private List<LibroCategoria> categorias;
 
+    @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    private List<Prestamo> prestamos;
+
     // Constructors
     public Libro() {}
 
-    public Libro(String title, String author, String description, Status status) {
+    public Libro(String title, String author, String description, int copias) {
         this.title = title;
         this.author = author;
         this.description = description;
-        this.status = status;
+        this.copias = copias;
     }
 
-    public Libro(Long bookId, String title, String author, String description, Status status) {
+    public Libro(Long bookId, String title, String author, String description, Status status, int copias) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.description = description;
         this.status = status;
-    }
-    public Libro(String author, String title, String description) {
-        this.author = author;
-        this.title = title;
-        this.description = description;
-    }
-
-    public Libro(String description, List<LibroCategoria> categorias, String author, String title) {
-        this.description = description;
-        this.categorias = categorias;
-        this.author = author;
-        this.title = title;
+        this.copias = copias;
     }
 
     // Getters and Setters
@@ -108,11 +105,27 @@ public class Libro {
         this.description = description;
     }
 
+    public int getCopias() {
+        return copias;
+    }
+
+    public void setCopias(int copias) {
+        this.copias = copias;
+    }
+
     public List<LibroCategoria> getCategorias() {
         return categorias;
     }
 
     public void setCategorias(List<LibroCategoria> categorias) {
         this.categorias = categorias;
+    }
+
+    public List<Prestamo> getPrestamos() {
+        return prestamos;
+    }
+
+    public void setPrestamos(List<Prestamo> prestamos) {
+        this.prestamos = prestamos;
     }
 }

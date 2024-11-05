@@ -24,34 +24,34 @@ public class LibroDTO {
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
     private String description;
 
-    @NotEmpty(groups = {Registrar.class, Modificar.class}, message = "La lista de categorias no puede estar vacía")
-    private List<CategoriaDTO> categorias; // Cambiado a CategoriaDTO en lugar de LibroCategoria
+    @NotNull(groups = {Registrar.class, Modificar.class}, message = "El número de copias no puede ser nulo")
+    private int copias;
+
+    @NotEmpty(groups = {Registrar.class, Modificar.class}, message = "La lista de categorías no puede estar vacía")
+    private List<CategoriaDTO> categorias;
+
     // Constructors
     public LibroDTO() {}
 
-    public LibroDTO(Integer bookId, String title, String author, String description, Status status) {
+    public LibroDTO(Integer bookId, String title, String author, String description, Status status, int copias, List<CategoriaDTO> categorias) {
         this.bookId = bookId;
         this.title = title;
         this.author = author;
         this.description = description;
         this.status = status;
-    }
-
-    public LibroDTO(String author, String title, String description, List<CategoriaDTO> categorias) {
-        this.author = author;
-        this.title = title;
-        this.description = description;
+        this.copias = copias;
         this.categorias = categorias;
     }
 
-    public List<CategoriaDTO> getCategorias() {
-        return categorias;
+    public LibroDTO(String author, String title, String description, int copias, List<CategoriaDTO> categorias) {
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.copias = copias;
+        this.categorias = categorias;
     }
 
-    public void setCategorias(List<CategoriaDTO> libroCategorias) {
-        this.categorias = libroCategorias;
-    }
-
+    // Getters and Setters
     public Integer getBookId() {
         return bookId;
     }
@@ -90,6 +90,22 @@ public class LibroDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public int getCopias() {
+        return copias;
+    }
+
+    public void setCopias(int copias) {
+        this.copias = copias;
+    }
+
+    public List<CategoriaDTO> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(List<CategoriaDTO> categorias) {
+        this.categorias = categorias;
     }
 
     public interface Registrar {}

@@ -59,7 +59,7 @@ public class LibroService {
         }
 
         // Crear y guardar el libro
-        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription());
+        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(),dto.getCopias());
         libro = libroRepository.saveAndFlush(libro);
 
         // Crear las relaciones en base a CategoriaDTO

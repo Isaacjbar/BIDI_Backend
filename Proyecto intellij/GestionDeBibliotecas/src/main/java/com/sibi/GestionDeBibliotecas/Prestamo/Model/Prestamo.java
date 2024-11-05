@@ -1,7 +1,7 @@
 package com.sibi.GestionDeBibliotecas.Prestamo.Model;
 
-import com.sibi.GestionDeBibliotecas.Inventario.Model.Inventario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
+import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,15 +11,15 @@ public class Prestamo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "loan_id")
-    private Long prestamoId;
+    private Integer prestamoId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "inventory_id")
-    private Inventario inventario;
+    @JoinColumn(name = "book_id")
+    private Libro libro;
 
     @Column(name = "loan_date", nullable = false)
     private java.util.Date fechaPrestamo;
@@ -42,20 +42,20 @@ public class Prestamo {
     // Constructors
     public Prestamo() {}
 
-    public Prestamo(Usuario usuario, Inventario inventario, java.util.Date fechaPrestamo, java.util.Date fechaVencimiento, Status status) {
+    public Prestamo(Usuario usuario, Libro libro, java.util.Date fechaPrestamo, java.util.Date fechaVencimiento, Status status) {
         this.usuario = usuario;
-        this.inventario = inventario;
+        this.libro = libro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaVencimiento = fechaVencimiento;
         this.status = status;
     }
 
     // Getters and Setters
-    public Long getPrestamoId() {
+    public Integer getPrestamoId() {
         return prestamoId;
     }
 
-    public void setPrestamoId(Long prestamoId) {
+    public void setPrestamoId(Integer prestamoId) {
         this.prestamoId = prestamoId;
     }
 
@@ -67,12 +67,12 @@ public class Prestamo {
         this.usuario = usuario;
     }
 
-    public Inventario getInventario() {
-        return inventario;
+    public Libro getLibro() {
+        return libro;
     }
 
-    public void setInventario(Inventario inventario) {
-        this.inventario = inventario;
+    public void setLibro(Libro libro) {
+        this.libro = libro;
     }
 
     public java.util.Date getFechaPrestamo() {
