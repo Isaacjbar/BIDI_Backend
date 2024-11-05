@@ -65,9 +65,10 @@ public class LibroService {
         // Crear las relaciones en base a CategoriaDTO
         if (dto.getCategorias() != null) {
             for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
-                Categoria categoria = categoriaRepository.findById(categoriaDTO.getCategoryId())
-                        .orElseThrow(() -> new IllegalArgumentException("Categoría no encontrada: " + categoriaDTO.getCategoryId()));
-
+                Categoria categoria = categoriaRepository.findByCategoryIdAndStatus(categoriaDTO.getCategoryId(),Categoria.Status.ACTIVE);
+                if (categoria == null) {
+                    new IllegalArgumentException("Categoría no encontrada o en estado inactivo: " + categoriaDTO.getCategoryId());
+                }
                 // Crear y guardar la relación en LibroCategoria
                 LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
                 libroCategoriaRepository.save(libroCategoria);

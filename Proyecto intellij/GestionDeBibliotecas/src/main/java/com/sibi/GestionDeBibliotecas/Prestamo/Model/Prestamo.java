@@ -1,5 +1,6 @@
 package com.sibi.GestionDeBibliotecas.Prestamo.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
 import jakarta.persistence.*;
@@ -13,12 +14,15 @@ public class Prestamo {
     @Column(name = "loan_id")
     private Integer prestamoId;
 
+
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private Usuario usuario;
 
     @ManyToOne
     @JoinColumn(name = "book_id")
+    @JsonIgnore
     private Libro libro;
 
     @Column(name = "loan_date", nullable = false)

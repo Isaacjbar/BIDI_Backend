@@ -1671,3 +1671,345 @@ java.lang.IllegalArgumentException: El préstamo no existe
 2024-11-04T20:14:36.077-06:00  INFO 7520 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-04T20:14:36.085-06:00  INFO 7520 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-11-04T20:14:36.101-06:00  INFO 7520 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-04T22:13:22.525-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 2536 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-04T22:13:22.525-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-04T22:13:23.909-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-04T22:13:24.021-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 101 ms. Found 5 JPA repository interfaces.
+2024-11-04T22:13:24.881-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-04T22:13:24.903-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-04T22:13:24.903-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-04T22:13:24.979-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-04T22:13:24.980-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2386 ms
+2024-11-04T22:13:25.253-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-04T22:13:25.360-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-04T22:13:25.423-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-04T22:13:25.872-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-04T22:13:25.910-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-04T22:13:26.680-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b5b53c6
+2024-11-04T22:13:26.684-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-04T22:13:26.834-06:00  WARN 2536 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-04T22:13:26.836-06:00  WARN 2536 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-04T22:13:28.714-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-04T22:13:29.273-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:13:30.276-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-04T22:13:31.000-06:00  WARN 2536 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-04T22:13:31.049-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-04T22:13:32.096-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-04T22:13:32.115-06:00  INFO 2536 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 10.302 seconds (process running for 11.69)
+2024-11-04T22:14:00.048-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:15:00.008-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:15:14.140-06:00  INFO 2536 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-04T22:15:14.142-06:00  INFO 2536 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-04T22:15:14.142-06:00  INFO 2536 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-11-04T22:15:14.516-06:00  INFO 2536 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] c.s.G.P.Controller.PrestamoService       : La búsqueda de préstamos ha sido realizada correctamente
+2024-11-04T22:16:00.006-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:17:00.002-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:17:43.541-06:00  INFO 2536 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.C.Controller.CategoriaService      : La búsqueda de categorías ha sido realizada correctamente
+2024-11-04T22:18:00.007-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:18:16.383-06:00  INFO 2536 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Libro.Controller.LibroService      : El registro del libro y su asociación con categorías ha sido realizado correctamente
+2024-11-04T22:19:00.013-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:20:00.012-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:21:00.017-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:22:00.007-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:23:00.014-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:24:00.016-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:25:00.011-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:26:00.008-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:27:00.010-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:28:00.001-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:29:00.030-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:30:00.005-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:31:00.011-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:32:00.003-06:00  INFO 2536 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:32:56.328-06:00  INFO 2536 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:32:56.349-06:00  INFO 2536 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-04T22:32:56.378-06:00  INFO 2536 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-04T22:33:02.627-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 16352 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-04T22:33:02.628-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-04T22:33:03.631-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-04T22:33:03.755-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 5 JPA repository interfaces.
+2024-11-04T22:33:04.418-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-04T22:33:04.442-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-04T22:33:04.442-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-04T22:33:04.512-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-04T22:33:04.513-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1823 ms
+2024-11-04T22:33:04.739-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-04T22:33:04.827-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-04T22:33:04.877-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-04T22:33:05.380-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-04T22:33:05.430-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-04T22:33:05.997-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6480a063
+2024-11-04T22:33:05.999-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-04T22:33:06.064-06:00  WARN 16352 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-04T22:33:06.065-06:00  WARN 16352 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-04T22:33:07.250-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-04T22:33:07.641-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:33:08.155-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-04T22:33:08.736-06:00  WARN 16352 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-04T22:33:08.770-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-04T22:33:09.406-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-04T22:33:09.420-06:00  INFO 16352 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 7.33 seconds (process running for 8.273)
+2024-11-04T22:33:18.940-06:00  INFO 16352 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-04T22:33:18.940-06:00  INFO 16352 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-04T22:33:18.947-06:00  INFO 16352 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 7 ms
+2024-11-04T22:33:19.168-06:00  INFO 16352 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.C.Controller.CategoriaService      : La búsqueda de categorías ha sido realizada correctamente
+2024-11-04T22:33:31.167-06:00  INFO 16352 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros ha sido realizada correctamente
+2024-11-04T22:34:00.075-06:00  INFO 16352 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:34:24.589-06:00  INFO 16352 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:34:24.591-06:00  INFO 16352 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-04T22:34:24.604-06:00  INFO 16352 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-04T22:34:29.021-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 16428 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-04T22:34:29.024-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-04T22:34:29.814-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-04T22:34:29.912-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 87 ms. Found 5 JPA repository interfaces.
+2024-11-04T22:34:30.478-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-04T22:34:30.493-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-04T22:34:30.493-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-04T22:34:30.546-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-04T22:34:30.546-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1454 ms
+2024-11-04T22:34:30.743-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-04T22:34:30.796-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-04T22:34:30.824-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-04T22:34:31.106-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-04T22:34:31.130-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-04T22:34:31.570-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@50f3ba6a
+2024-11-04T22:34:31.573-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-04T22:34:31.659-06:00  WARN 16428 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-04T22:34:31.661-06:00  WARN 16428 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-04T22:34:32.672-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-04T22:34:33.035-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:34:33.396-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-04T22:34:33.823-06:00  WARN 16428 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-04T22:34:33.855-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-04T22:34:34.361-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-04T22:34:34.372-06:00  INFO 16428 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 5.876 seconds (process running for 6.596)
+2024-11-04T22:34:39.166-06:00  INFO 16428 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-04T22:34:39.167-06:00  INFO 16428 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-04T22:34:39.169-06:00  INFO 16428 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2024-11-04T22:34:39.289-06:00  INFO 16428 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros ha sido realizada correctamente
+2024-11-04T22:34:39.382-06:00  WARN 16428 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Ignoring exception, response committed already: org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)
+2024-11-04T22:34:39.383-06:00  WARN 16428 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotWritableException: Could not write JSON: Document nesting depth (1001) exceeds the maximum allowed (1000, from `StreamWriteConstraints.getMaxNestingDepth()`)]
+2024-11-04T22:35:00.034-06:00  INFO 16428 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:35:26.978-06:00  INFO 16428 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:35:26.978-06:00  INFO 16428 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-04T22:35:26.994-06:00  INFO 16428 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-04T22:35:30.697-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 16064 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-04T22:35:30.700-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-04T22:35:31.441-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-04T22:35:31.558-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 5 JPA repository interfaces.
+2024-11-04T22:35:32.129-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-04T22:35:32.144-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-04T22:35:32.144-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-04T22:35:32.199-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-04T22:35:32.199-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1443 ms
+2024-11-04T22:35:32.385-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-04T22:35:32.445-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-04T22:35:32.476-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-04T22:35:32.770-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-04T22:35:32.795-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-04T22:35:33.100-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e426dd2
+2024-11-04T22:35:33.102-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-04T22:35:33.153-06:00  WARN 16064 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-04T22:35:33.154-06:00  WARN 16064 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-04T22:35:34.162-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-04T22:35:34.488-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:35:34.874-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-04T22:35:35.331-06:00  WARN 16064 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-04T22:35:35.364-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-04T22:35:35.886-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-04T22:35:35.898-06:00  INFO 16064 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 5.671 seconds (process running for 6.431)
+2024-11-04T22:35:57.596-06:00  INFO 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-04T22:35:57.599-06:00  INFO 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-04T22:35:57.599-06:00  INFO 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-11-04T22:35:58.216-06:00  INFO 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros ha sido realizada correctamente
+2024-11-04T22:36:00.077-06:00  INFO 16064 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:37:00.008-06:00  INFO 16064 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:37:11.386-06:00  WARN 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 1048, SQLState: 23000
+2024-11-04T22:37:11.391-06:00 ERROR 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : Column 'category_id' cannot be null
+2024-11-04T22:37:11.409-06:00 ERROR 16064 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/sibi] threw exception [Request processing failed: org.springframework.dao.DataIntegrityViolationException: could not execute statement [Column 'category_id' cannot be null] [insert into book_category (category_id,created_at,book_id) values (?,?,?)]; SQL [insert into book_category (category_id,created_at,book_id) values (?,?,?)]; constraint [null]] with root cause
+
+java.sql.SQLIntegrityConstraintViolationException: Column 'category_id' cannot be null
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:118) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:912) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1054) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdateInternal(ClientPreparedStatement.java:1003) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeLargeUpdate(ClientPreparedStatement.java:1312) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeUpdate(ClientPreparedStatement.java:988) ~[mysql-connector-j-8.3.0.jar:8.3.0]
+	at com.zaxxer.hikari.pool.ProxyPreparedStatement.executeUpdate(ProxyPreparedStatement.java:61) ~[HikariCP-5.1.0.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyPreparedStatement.executeUpdate(HikariProxyPreparedStatement.java) ~[HikariCP-5.1.0.jar:na]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.id.insert.GetGeneratedKeysDelegate.performMutation(GetGeneratedKeysDelegate.java:116) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.mutation.internal.MutationExecutorSingleNonBatched.performNonBatchedOperations(MutationExecutorSingleNonBatched.java:47) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.jdbc.mutation.internal.AbstractMutationExecutor.execute(AbstractMutationExecutor.java:55) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.doStaticInserts(InsertCoordinatorStandard.java:194) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.coordinateInsert(InsertCoordinatorStandard.java:132) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.persister.entity.mutation.InsertCoordinatorStandard.insert(InsertCoordinatorStandard.java:95) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:85) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:671) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:292) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:273) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:323) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:391) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:305) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:224) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:137) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:175) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.persist(DefaultPersistEventListener.java:93) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:77) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:54) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.event.service.internal.EventListenerGroupImpl.fireEventOnEachListener(EventListenerGroupImpl.java:127) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:757) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:741) ~[hibernate-core-6.5.3.Final.jar:6.5.3.Final]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.ExtendedEntityManagerCreator$ExtendedEntityManagerInvocationHandler.invoke(ExtendedEntityManagerCreator.java:364) ~[spring-orm-6.1.13.jar:6.1.13]
+	at jdk.proxy2/jdk.proxy2.$Proxy130.persist(Unknown Source) ~[na:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.orm.jpa.SharedEntityManagerCreator$SharedEntityManagerInvocationHandler.invoke(SharedEntityManagerCreator.java:319) ~[spring-orm-6.1.13.jar:6.1.13]
+	at jdk.proxy2/jdk.proxy2.$Proxy130.persist(Unknown Source) ~[na:na]
+	at org.springframework.data.jpa.repository.support.SimpleJpaRepository.save(SimpleJpaRepository.java:626) ~[spring-data-jpa-3.3.4.jar:3.3.4]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker$RepositoryFragmentMethodInvoker.lambda$new$0(RepositoryMethodInvoker.java:277) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.doInvoke(RepositoryMethodInvoker.java:170) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryMethodInvoker.invoke(RepositoryMethodInvoker.java:158) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition$RepositoryFragments.invoke(RepositoryComposition.java:516) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryComposition.invoke(RepositoryComposition.java:285) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.RepositoryFactorySupport$ImplementationMethodExecutionInterceptor.invoke(RepositoryFactorySupport.java:628) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.doInvoke(QueryExecutorMethodInterceptor.java:173) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.data.repository.core.support.QueryExecutorMethodInterceptor.invoke(QueryExecutorMethodInterceptor.java:148) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.projection.DefaultMethodInvokingMethodInterceptor.invoke(DefaultMethodInvokingMethodInterceptor.java:70) ~[spring-data-commons-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:138) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.data.jpa.repository.support.CrudMethodMetadataPostProcessor$CrudMethodMetadataPopulatingMethodInterceptor.invoke(CrudMethodMetadataPostProcessor.java:165) ~[spring-data-jpa-3.3.4.jar:3.3.4]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.interceptor.ExposeInvocationInterceptor.invoke(ExposeInvocationInterceptor.java:97) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.JdkDynamicAopProxy.invoke(JdkDynamicAopProxy.java:223) ~[spring-aop-6.1.13.jar:6.1.13]
+	at jdk.proxy2/jdk.proxy2.$Proxy135.save(Unknown Source) ~[na:na]
+	at com.sibi.GestionDeBibliotecas.Libro.Controller.LibroService.save(LibroService.java:74) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:196) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:379) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:119) ~[spring-tx-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:184) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:768) ~[spring-aop-6.1.13.jar:6.1.13]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:720) ~[spring-aop-6.1.13.jar:6.1.13]
+	at com.sibi.GestionDeBibliotecas.Libro.Controller.LibroService$$SpringCGLIB$$0.save(<generated>) ~[classes/:na]
+	at com.sibi.GestionDeBibliotecas.Libro.Controller.LibroController.save(LibroController.java:33) ~[classes/:na]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.30.jar:6.0]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.30.jar:6.0]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:110) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$3(FilterChainProxy.java:231) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:365) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:100) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:131) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at com.sibi.GestionDeBibliotecas.Security.Jwt.JwtRequestFilter.doFilterInternal(JwtRequestFilter.java:63) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191) ~[spring-security-web-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195) ~[spring-webmvc-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230) ~[spring-security-config-6.3.3.jar:6.3.3]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar:6.1.13]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.30.jar:10.1.30]
+	at java.base/java.lang.Thread.run(Thread.java:1583) ~[na:na]
+
+2024-11-04T22:38:00.009-06:00  INFO 16064 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-04T22:38:14.236-06:00  INFO 16064 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-04T22:38:14.236-06:00  INFO 16064 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-04T22:38:14.260-06:00  INFO 16064 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
