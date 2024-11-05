@@ -2013,3 +2013,74 @@ java.sql.SQLIntegrityConstraintViolationException: Column 'category_id' cannot b
 2024-11-04T22:38:14.236-06:00  INFO 16064 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-04T22:38:14.236-06:00  INFO 16064 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-11-04T22:38:14.260-06:00  INFO 16064 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-05T11:09:12.337-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 23 with PID 4632 (C:\Users\CC10-SD24\Desktop\reps\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by CC10-SD24 in C:\Users\CC10-SD24\Desktop\reps\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-05T11:09:12.379-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-05T11:09:27.992-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-05T11:09:30.640-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2460 ms. Found 5 JPA repository interfaces.
+2024-11-05T11:09:42.472-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-05T11:09:43.130-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-05T11:09:43.131-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-05T11:09:43.624-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-05T11:09:43.625-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 30267 ms
+2024-11-05T11:09:49.141-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-05T11:09:52.762-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-05T11:09:55.232-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-05T11:10:00.494-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-05T11:10:01.534-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-05T11:10:19.723-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2e426dd2
+2024-11-05T11:10:19.752-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-05T11:10:20.730-06:00  WARN 4632 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-05T11:10:20.731-06:00  WARN 4632 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-05T11:10:27.848-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-05T11:10:38.624-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-05T11:10:39.465-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-05T11:10:40.123-06:00  WARN 4632 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-05T11:10:40.181-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-05T11:10:43.723-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-05T11:10:43.819-06:00  INFO 4632 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 99.933 seconds (process running for 120.12)
+2024-11-05T11:11:00.013-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:12:00.013-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:13:00.003-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:14:00.006-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:15:00.015-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:16:00.004-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:17:00.012-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:18:00.013-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:19:00.001-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:20:00.006-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:21:00.010-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:22:00.004-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:23:00.005-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:24:00.007-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:25:00.010-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:26:00.012-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:27:00.014-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:28:00.011-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:29:00.000-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:30:00.008-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:31:00.008-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:32:00.009-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:33:00.010-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:34:00.013-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:35:00.008-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:36:00.003-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:37:00.000-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:38:00.008-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:39:00.000-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:40:00.014-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:41:00.008-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:42:00.006-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:43:00.006-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:44:00.008-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:45:00.003-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:46:00.007-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:47:00.006-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:48:00.006-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:49:00.003-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:50:00.003-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:51:00.002-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:52:00.000-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:53:00.003-06:00  INFO 4632 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-05T11:53:39.135-06:00  INFO 4632 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-05T11:53:39.151-06:00  INFO 4632 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-05T11:53:39.195-06:00  INFO 4632 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

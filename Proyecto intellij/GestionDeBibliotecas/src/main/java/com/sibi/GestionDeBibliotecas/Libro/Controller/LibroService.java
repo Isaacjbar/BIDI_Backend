@@ -57,6 +57,9 @@ public class LibroService {
         if (dto.getDescription().length() > 250) {
             return new ResponseEntity<>(new Message("La descripción excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
+        if (dto.getCopias() < 0) {
+            return new ResponseEntity<>(new Message("El numero de copias ", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
 
         // Crear y guardar el libro
         Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(),dto.getCopias());
@@ -67,7 +70,7 @@ public class LibroService {
             for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
                 Categoria categoria = categoriaRepository.findByCategoryIdAndStatus(categoriaDTO.getCategoryId(),Categoria.Status.ACTIVE);
                 if (categoria == null) {
-                    new IllegalArgumentException("Categoría no encontrada o en estado inactivo: " + categoriaDTO.getCategoryId());
+                    return new ResponseEntity<>(new Message("La categoria no existe o está inactiva", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
                 }
                 // Crear y guardar la relación en LibroCategoria
                 LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
