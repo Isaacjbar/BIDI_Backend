@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Transactional
@@ -58,30 +59,44 @@ public class LibroService {
             return new ResponseEntity<>(new Message("La descripción excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
         if (dto.getCopias() < 0) {
-            return new ResponseEntity<>(new Message("El numero de copias ", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new Message("El número de copias es menor a cero", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if (dto.getCategorias() == null || dto.getCategorias().isEmpty()) {
+            return new ResponseEntity<>(new Message("No añadiste categorías", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        // Crear y guardar el libro
-        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(),dto.getCopias());
+        // Crear el libro sin guardarlo aún
+        Libro libro = new Libro(dto.getTitle(), dto.getAuthor(), dto.getDescription(), dto.getCopias());
+
+        // Lista para almacenar las categorías activas
+        List<Categoria> categoriasActivas = new ArrayList<>();
+
+        // Procesar las categorías proporcionadas
+        for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
+            Categoria categoria = categoriaRepository.findByCategoryIdAndStatus(categoriaDTO.getCategoryId(), Categoria.Status.ACTIVE);
+
+            if (categoria != null) {
+                categoriasActivas.add(categoria);
+            }
+        }
+
+        // Verificar si hay al menos una categoría activa
+        if (categoriasActivas.isEmpty()) {
+            return new ResponseEntity<>(new Message("No hay categorías activas asociadas al libro", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        // Guardar el libro
         libro = libroRepository.saveAndFlush(libro);
 
-        // Crear las relaciones en base a CategoriaDTO
-        if (dto.getCategorias() != null) {
-            for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
-                Categoria categoria = categoriaRepository.findByCategoryIdAndStatus(categoriaDTO.getCategoryId(),Categoria.Status.ACTIVE);
-                if (categoria == null) {
-                    return new ResponseEntity<>(new Message("La categoria no existe o está inactiva", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-                }
-                // Crear y guardar la relación en LibroCategoria
-                LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
-                libroCategoriaRepository.save(libroCategoria);
-            }
+        // Crear y guardar las relaciones en LibroCategoria
+        for (Categoria categoria : categoriasActivas) {
+            LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
+            libroCategoriaRepository.save(libroCategoria);
         }
 
         logger.info("El registro del libro y su asociación con categorías ha sido realizado correctamente");
         return new ResponseEntity<>(new Message(libro, "El libro y sus categorías se registraron correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
     }
-
 
     @Transactional
     public ResponseEntity<Message> update(LibroDTO dto) {
@@ -111,17 +126,37 @@ public class LibroService {
                         libro.setDescription(dto.getDescription());
                     }
 
+                    // Valida el campo `copias` solo si es mayor o igual a cero
+                    if (dto.getCopias() < 0) {
+                        return new ResponseEntity<>(new Message("El número de copias es menor a cero", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                    }
+                    libro.setCopias(dto.getCopias());
+
                     // Actualiza la lista de categorías si no es null
                     if (dto.getCategorias() != null) {
+                        // Lista para almacenar las categorías activas
+                        List<Categoria> categoriasActivas = new ArrayList<>();
+
+                        // Procesar las categorías proporcionadas
+                        for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
+                            Categoria categoria = categoriaRepository.findByCategoryIdAndStatus(
+                                    categoriaDTO.getCategoryId(), Categoria.Status.ACTIVE);
+
+                            if (categoria != null) {
+                                categoriasActivas.add(categoria);
+                            }
+                        }
+
+                        // Verificar si hay al menos una categoría activa
+                        if (categoriasActivas.isEmpty()) {
+                            return new ResponseEntity<>(new Message("No hay categorías activas para asociar al libro", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                        }
+
                         // Eliminar todas las relaciones actuales entre el libro y sus categorías
                         libroCategoriaRepository.deleteAllByLibro(libro);
 
-                        // Crear nuevas relaciones con las categorías proporcionadas en el DTO
-                        for (CategoriaDTO categoriaDTO : dto.getCategorias()) {
-                            Categoria categoria = categoriaRepository.findById(categoriaDTO.getCategoryId())
-                                    .orElseThrow(() -> new IllegalArgumentException("Categoría no encontrada: " + categoriaDTO.getCategoryId()));
-
-                            // Crear y guardar la nueva relación
+                        // Crear y guardar las nuevas relaciones con las categorías activas
+                        for (Categoria categoria : categoriasActivas) {
                             LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
                             libroCategoriaRepository.save(libroCategoria);
                         }
@@ -136,6 +171,7 @@ public class LibroService {
                 })
                 .orElseGet(() -> new ResponseEntity<>(new Message("El libro no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND));
     }
+
 
 
     @Transactional
@@ -154,7 +190,8 @@ public class LibroService {
             // Incluir el estado del libro en el mensaje de respuesta
             return new ResponseEntity<>(new Message("El estado del libro se actualizó correctamente. Estado actual: " + libro.getStatus(), TypesResponse.SUCCESS), HttpStatus.OK);
         }).orElseGet(() -> {
-            throw new IllegalArgumentException("El libro no existe");
+            return new ResponseEntity<>(new Message("El libro no existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+
         });
     }
     @Transactional(readOnly = true)
