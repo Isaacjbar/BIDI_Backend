@@ -49,7 +49,8 @@ public class UsuarioController {
         return usuarioService.requestPasswordReset(dto);
     }
 
-    @PutMapping("/validate-token")
+    @PreAuthorize("hasAuthority(T(com.sibi.GestionDeBibliotecas.Util.Enum.Rol).INVITADO.name())")
+    @PostMapping("/validate-token")
     public ResponseEntity<Message> validateToken(@Validated(UsuarioDTO.Validacion.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.validateToken(dto);
     }
