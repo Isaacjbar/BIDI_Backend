@@ -46,12 +46,11 @@ public class Prestamo {
     // Constructors
     public Prestamo() {}
 
-    public Prestamo(Usuario usuario, Libro libro, java.util.Date fechaPrestamo, java.util.Date fechaVencimiento, Status status) {
+    public Prestamo(Usuario usuario, Libro libro, java.util.Date fechaPrestamo, java.util.Date fechaVencimiento) {
         this.usuario = usuario;
         this.libro = libro;
         this.fechaPrestamo = fechaPrestamo;
         this.fechaVencimiento = fechaVencimiento;
-        this.status = status;
     }
 
     // Getters and Setters

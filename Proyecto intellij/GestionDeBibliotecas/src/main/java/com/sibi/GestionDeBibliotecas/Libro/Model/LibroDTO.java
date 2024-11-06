@@ -12,22 +12,22 @@ public class LibroDTO {
     @NotNull(groups = {Modificar.class, CambiarEstado.class}, message = "El id no puede ser nulo")
     private Integer bookId;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El título no puede estar vacío")
+    @NotBlank(groups = {Registrar.class}, message = "El título no puede estar vacío")
     private String title;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El autor no puede estar vacío")
+    @NotBlank(groups = {Registrar.class}, message = "El autor no puede estar vacío")
     private String author;
 
     @NotNull(groups = {CambiarEstado.class}, message = "El estado no puede estar vacío")
     private Status status;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "La descripción no puede estar vacía")
+    @NotBlank(groups = {Registrar.class}, message = "La descripción no puede estar vacía")
     private String description;
 
-    @NotNull(groups = {Registrar.class, Modificar.class}, message = "El número de copias no puede ser nulo")
+    @NotNull(groups = {Registrar.class}, message = "El número de copias no puede ser nulo")
     private int copias;
 
-    @NotEmpty(groups = {Registrar.class, Modificar.class}, message = "La lista de categorías no puede estar vacía")
+    @NotEmpty(groups = {Registrar.class}, message = "La lista de categorías no puede estar vacía")
     private List<CategoriaDTO> categorias;
 
     // Constructors

@@ -79,15 +79,12 @@ public class LibroService {
                 categoriasActivas.add(categoria);
             }
         }
-
         // Verificar si hay al menos una categoría activa
         if (categoriasActivas.isEmpty()) {
             return new ResponseEntity<>(new Message("No hay categorías activas asociadas al libro", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-
         // Guardar el libro
         libro = libroRepository.saveAndFlush(libro);
-
         // Crear y guardar las relaciones en LibroCategoria
         for (Categoria categoria : categoriasActivas) {
             LibroCategoria libroCategoria = new LibroCategoria(libro, categoria);
@@ -163,7 +160,7 @@ public class LibroService {
                     }
 
                     // Guarda los cambios en la base de datos
-                    libroRepository.save(libro);
+                    libroRepository.saveAndFlush(libro);
                     logger.info("La actualización del libro y sus categorías ha sido realizada correctamente");
 
                     // Retorna mensaje de éxito

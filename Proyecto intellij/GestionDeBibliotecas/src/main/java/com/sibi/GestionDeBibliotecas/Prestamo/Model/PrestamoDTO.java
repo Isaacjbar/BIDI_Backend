@@ -13,15 +13,13 @@ public class PrestamoDTO {
     @NotNull(groups = {Registrar.class, Modificar.class}, message = "El libro no puede ser nulo")
     private Long libroId;
 
-    @NotNull(groups = {Registrar.class, Modificar.class}, message = "La fecha de préstamo no puede ser nula")
     private java.util.Date fechaPrestamo;
 
-    @NotNull(groups = {Registrar.class, Modificar.class}, message = "La fecha de vencimiento no puede ser nula")
     private java.util.Date fechaVencimiento;
 
     private java.util.Date fechaDevolucion;
 
-    @NotBlank(groups = {Modificar.class, CambiarEstado.class}, message = "El estado no puede estar vacío")
+    @NotBlank(groups = {CambiarEstado.class}, message = "El estado no puede estar vacío")
     private String estado;
 
     public interface Registrar {}

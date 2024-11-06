@@ -33,11 +33,6 @@ public class PrestamoController {
         return prestamoService.save(dto);
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Message> update(@Validated(PrestamoDTO.Modificar.class) @RequestBody PrestamoDTO dto) {
-        return prestamoService.update(dto);
-    }
-
     @PutMapping("/change-status")
     public ResponseEntity<Message> changeStatus(@Validated(PrestamoDTO.CambiarEstado.class) @RequestBody PrestamoDTO dto) {
         return prestamoService.changeStatus(dto);
