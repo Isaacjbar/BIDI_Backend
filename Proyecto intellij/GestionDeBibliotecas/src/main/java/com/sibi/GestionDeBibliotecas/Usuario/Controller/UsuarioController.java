@@ -44,12 +44,11 @@ public class UsuarioController {
         return usuarioService.changeStatus(dto);
     }
 
-    @PutMapping("/request-password-reset")
+    @PostMapping("/request-password-reset")
     public ResponseEntity<Message> requestPasswordReset(@Validated(UsuarioDTO.Solicitud.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.requestPasswordReset(dto);
     }
 
-    @PreAuthorize("hasAuthority(T(com.sibi.GestionDeBibliotecas.Util.Enum.Rol).INVITADO.name())")
     @PostMapping("/validate-token")
     public ResponseEntity<Message> validateToken(@Validated(UsuarioDTO.Validacion.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.validateToken(dto);
