@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,7 @@ public class LibroService {
         return new ResponseEntity<>(new Message(libros, "Listado de libros", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> save(LibroDTO dto) {
         // Validación de campos
         if (dto.getTitle().length() > 255) {
@@ -95,7 +96,7 @@ public class LibroService {
         return new ResponseEntity<>(new Message(libro, "El libro y sus categorías se registraron correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> update(LibroDTO dto) {
         return libroRepository.findById(dto.getBookId())
                 .map(libro -> {
@@ -171,7 +172,7 @@ public class LibroService {
 
 
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> changeStatus(LibroDTO dto) {
         return libroRepository.findById(dto.getBookId()).map(libro -> {
             // Validar si el nuevo estado proporcionado en el DTO es diferente al estado actual
