@@ -23,6 +23,11 @@ public class PrestamoController {
         return prestamoService.findAll();
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<Message> getAllByUsuario(@PathVariable Long userId) {
+        return prestamoService.findAllByUsuario(userId);
+    }
+
     @GetMapping("/status/{estado}")
     public ResponseEntity<Message> getByStatus(@PathVariable String estado) {
         return prestamoService.findByStatus(estado);
