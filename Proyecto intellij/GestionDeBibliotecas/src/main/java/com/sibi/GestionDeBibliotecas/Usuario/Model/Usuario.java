@@ -24,6 +24,7 @@ public class Usuario {
     @Column(name = "email", columnDefinition = "VARCHAR(100)", nullable = false, unique = true)
     private String correo;
 
+    @JsonIgnore
     @Column(name = "password", columnDefinition = "VARCHAR(255)", nullable = false)
     private String contrasena;
 
@@ -39,9 +40,11 @@ public class Usuario {
     @Column(name = "phone_number", columnDefinition = "VARCHAR(15)")
     private String numeroTelefono;
 
+    @JsonIgnore
     @Column(name = "code", columnDefinition = "VARCHAR(255)")
     private String codigo;
 
+    @JsonIgnore
     @Column(name = "code_generated_at")
     private Date codigoGeneradoEn;
 

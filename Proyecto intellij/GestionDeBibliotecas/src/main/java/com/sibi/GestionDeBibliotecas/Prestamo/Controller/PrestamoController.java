@@ -23,6 +23,11 @@ public class PrestamoController {
         return prestamoService.findAll();
     }
 
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<Message> getAllByUsuario(@PathVariable Long userId) {
+        return prestamoService.findAllByUsuario(userId);
+    }
+
     @GetMapping("/status/{estado}")
     public ResponseEntity<Message> getByStatus(@PathVariable String estado) {
         return prestamoService.findByStatus(estado);
@@ -31,11 +36,6 @@ public class PrestamoController {
     @PostMapping("/save")
     public ResponseEntity<Message> save(@Validated(PrestamoDTO.Registrar.class) @RequestBody PrestamoDTO dto) {
         return prestamoService.save(dto);
-    }
-
-    @PutMapping("/update")
-    public ResponseEntity<Message> update(@Validated(PrestamoDTO.Modificar.class) @RequestBody PrestamoDTO dto) {
-        return prestamoService.update(dto);
     }
 
     @PutMapping("/change-status")
