@@ -1,6 +1,7 @@
 package com.sibi.GestionDeBibliotecas.Security;
 
 import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtRequestFilter;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,6 +30,8 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("auth/login", "user/register", "user/request-password-reset").permitAll() // Permitir acceso sin autenticación
+                        .requestMatchers("/user/update", "/loan/save", "/book/status/**").hasRole(Rol.CLIENTE.name())
+                        .requestMatchers("/user/validate-token", "user/reset-password").hasAnyRole(Rol.CLIENTE.name(), Rol.ADMINISTRADOR.name())
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado

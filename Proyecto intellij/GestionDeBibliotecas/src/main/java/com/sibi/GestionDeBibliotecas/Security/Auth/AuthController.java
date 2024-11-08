@@ -6,10 +6,8 @@ import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtUtil;
 import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
-import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +18,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
-
-    private final static Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     private final PasswordEncoder passwordEncoder;
     private final UserDetailsServiceImpl userDetailsService;
@@ -61,9 +57,16 @@ public class AuthController {
 
     @DeleteMapping("/logout")
     public ResponseEntity<Message> logout(@RequestHeader(value = "Authorization", required = false) String token) throws Exception {
+        if (token == null || token.trim().isEmpty()) {
+            return new ResponseEntity<>(new Message("Hubo un error", TypesResponse.ERROR), HttpStatus.UNAUTHORIZED);
+        }
+        if (!token.startsWith("Bearer ")) {
+            return new ResponseEntity<>(new Message("Hubo un error", TypesResponse.ERROR), HttpStatus.UNAUTHORIZED);
+        }
         if (authService.isTokenInvalid(token)) {
             throw new Exception("Token inválido");
         }
+
         String jwt = token.substring(7);
         authService.invalidateToken(jwt);
 
