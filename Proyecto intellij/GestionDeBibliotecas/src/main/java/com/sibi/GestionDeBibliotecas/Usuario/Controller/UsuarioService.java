@@ -61,7 +61,7 @@ public class UsuarioService {
         return new ResponseEntity<>(new Message(usuario, "Usuario", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
-    // --------------------------------------------
+    // -------------------------------------------- todo validar que tenga un número y una letra mayúscula y al menos 8 caracteres
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> save(UsuarioDTO usuarioDTO) {
         if (usuarioDTO.getNombre().length() > 100) {
@@ -76,6 +76,10 @@ public class UsuarioService {
         if (usuarioDTO.getNumeroTelefono().length() > 10) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
+        /*String regexContrasena = "(?=.*[A-Z])(?=.*\\d).{8,}";
+        if (!usuarioDTO.getContrasena().matches(regexContrasena)) {
+            return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }*/
 
         String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
         if (correoDuplicate != null) {
@@ -116,6 +120,11 @@ public class UsuarioService {
         if (usuarioDTO.getNumeroTelefono().length() > 15) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
+        /*
+        String regexContrasena = "(?=.*[A-Z])(?=.*\\d).{8,}";
+        if (!usuarioDTO.getContrasena().matches(regexContrasena)) {
+            return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }*/
 
         String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
         if (correoDuplicate != null) {
@@ -230,6 +239,7 @@ public class UsuarioService {
         }
 
         Usuario usuario = usuarioOptional.get();
+
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
 
         usuario.setContrasena(hashPassword);
