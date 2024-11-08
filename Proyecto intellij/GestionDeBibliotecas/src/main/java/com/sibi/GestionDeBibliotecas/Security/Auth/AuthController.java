@@ -44,7 +44,7 @@ public class AuthController {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
-        final String jwt = jwtUtil.generateToken(userDetails);
+        final String jwt = jwtUtil.generateToken(userDetails, user.getUsuarioId());  // Aquí pasamos el ID del usuario
 
         if (authService.isTokenInvalid(jwt)) {
             throw new Exception("Token inválido");
@@ -54,6 +54,7 @@ public class AuthController {
 
         return new AuthResponse(jwt, user.getUsuarioId(), user.getCorreo(), expirationTime);
     }
+
 
     @DeleteMapping("/logout")
     public ResponseEntity<Message> logout(@RequestHeader(value = "Authorization", required = false) String token) throws Exception {

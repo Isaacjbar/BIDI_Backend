@@ -58,16 +58,18 @@ public class JwtUtil {
         return expiration;
     }
 
-    public String generateToken(UserDetails userDetails) {
+    public String generateToken(UserDetails userDetails, Long userId) {
         Map<String, Object> claims = new HashMap<>();
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
         claims.put("roles", roles);
+        claims.put("userId", userId);  // Incluimos el ID del usuario en las claims
 
         return createToken(claims, userDetails.getUsername());
     }
+
 
     private String createToken(Map<String, Object> claims, String subject) {
 
@@ -84,4 +86,9 @@ public class JwtUtil {
         final String email = extractUserEmail(token);
         return (email.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+
+    public Long extractUserId(String token) {
+        return extractClaim(token, claims -> claims.get("userId", Long.class));
+    }
+
 }

@@ -2,6 +2,7 @@ package com.sibi.GestionDeBibliotecas.Prestamo.Controller;
 
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoDTO;
 import com.sibi.GestionDeBibliotecas.Util.Response.Message;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -36,6 +37,11 @@ public class PrestamoController {
     @PostMapping("/save")
     public ResponseEntity<Message> save(@Validated(PrestamoDTO.Registrar.class) @RequestBody PrestamoDTO dto) {
         return prestamoService.save(dto);
+    }
+    @PostMapping("/save/for-customer")
+    public ResponseEntity<Message> saveForCustomer(@RequestBody PrestamoDTO dto, HttpServletRequest request) {
+        String token = request.getHeader("Authorization").substring(7);  // Eliminar "Bearer "
+        return prestamoService.saveForCustomer(dto, token);
     }
 
     @PutMapping("/change-status")

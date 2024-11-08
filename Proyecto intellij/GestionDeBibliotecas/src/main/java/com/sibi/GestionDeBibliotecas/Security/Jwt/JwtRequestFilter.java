@@ -56,9 +56,11 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             UserDetails userDetails = this.userDetailsService.loadUserByUsername(email);
 
             if (jwtUtil.validateToken(jwt, userDetails)) {
+                Long userId = jwtUtil.extractUserId(jwt);  // Obtenemos el ID del usuario
                 List<String> roles = jwtUtil.extractClaim(jwt, claims -> (List<String>) claims.get("roles"));
 
                 logger.info("Roles extraídos del JWT: {}", roles);
+                logger.info("ID del usuario extraído del JWT: {}", userId);  // Registramos el ID del usuario
 
                 List<GrantedAuthority> authorities = roles.stream()
                         .map(role -> new SimpleGrantedAuthority(role))

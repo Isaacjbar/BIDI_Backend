@@ -5,6 +5,7 @@ import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoriaReposit
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.Prestamo;
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoDTO;
 import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoRepository;
+import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtUtil;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
@@ -37,11 +38,15 @@ public class PrestamoService {
 
     private final PrestamoRepository prestamoRepository;
 
+    private final JwtUtil jwtUtil; // Agrega JwtUtil aquí
+
     @Autowired
-    public PrestamoService(LibroRepository libroRepository, UsuarioRepository usuarioRepository,PrestamoRepository prestamoRepository) {
+    public PrestamoService(LibroRepository libroRepository, UsuarioRepository usuarioRepository,
+                           PrestamoRepository prestamoRepository, JwtUtil jwtUtil) {
         this.libroRepository = libroRepository;
         this.usuarioRepository = usuarioRepository;
         this.prestamoRepository = prestamoRepository;
+        this.jwtUtil = jwtUtil; // Inicializa JwtUtil aquí
     }
 
     @Transactional(readOnly = true)
@@ -60,6 +65,58 @@ public class PrestamoService {
         }
         Usuario usuario = optionalUsuario.get();
         if (usuario.getEstado()!= Estado.ACTIVO) {
+            return new ResponseEntity<>(new Message("El usuario está inactivo y no puede realizar préstamos", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        // Buscar y validar el libro
+        Optional<Libro> optionalLibro = libroRepository.findById(Math.toIntExact(dto.getLibroId()));
+        if (!optionalLibro.isPresent()) {
+            return new ResponseEntity<>(new Message("El libro no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        Libro libro = optionalLibro.get();
+        if (libro.getStatus() != Libro.Status.ACTIVE) {
+            return new ResponseEntity<>(new Message("El libro está inactivo y no puede ser prestado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if (libro.getCopias() <= 2) {
+            return new ResponseEntity<>(new Message("El libro no tiene suficientes copias para ser prestado", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+
+        // Generar la fecha de préstamo (fecha actual)
+        Date fechaPrestamo = new Date();
+
+        // Calcular la fecha de vencimiento (10 días hábiles a partir de la fecha de préstamo)
+        Date fechaVencimiento = calcularFechaVencimiento(fechaPrestamo, 10);
+
+        // Crear y guardar el préstamo
+        Prestamo prestamo = new Prestamo(usuario, libro, fechaPrestamo, fechaVencimiento);
+        prestamoRepository.saveAndFlush(prestamo);
+
+        // Actualizar el número de copias del libro
+        libro.setCopias(libro.getCopias() - 1);
+        libroRepository.saveAndFlush(libro);
+
+        logger.info("El registro del préstamo ha sido realizado correctamente");
+        return new ResponseEntity<>(new Message(prestamo, "El préstamo se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
+    }
+
+    @Transactional(rollbackFor = {SQLException.class})
+    public ResponseEntity<Message> saveForCustomer(PrestamoDTO dto, String token) {
+
+        // Extraer el ID del usuario autenticado desde el token
+        Long userIdFromToken = jwtUtil.extractUserId(token);  // Asegúrate de pasar el token JWT al método
+
+        // Verificar que el ID del usuario en el DTO coincida con el ID del token
+        if (!userIdFromToken.equals(dto.getUsuarioId())) {
+            return new ResponseEntity<>(new Message("No tienes permiso para realizar este préstamo con otro ID de usuario", TypesResponse.ERROR), HttpStatus.FORBIDDEN);
+        }
+
+        // Buscar y validar el usuario
+        Optional<Usuario> optionalUsuario = usuarioRepository.findById(dto.getUsuarioId());
+        if (!optionalUsuario.isPresent()) {
+            return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        Usuario usuario = optionalUsuario.get();
+        if (usuario.getEstado() != Estado.ACTIVO) {
             return new ResponseEntity<>(new Message("El usuario está inactivo y no puede realizar préstamos", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 

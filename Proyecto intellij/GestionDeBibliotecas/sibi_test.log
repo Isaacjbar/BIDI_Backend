@@ -441,3 +441,139 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-11-08T08:19:19.691-06:00  INFO 15144 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-08T08:19:19.691-06:00  INFO 15144 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-11-08T08:19:19.737-06:00  INFO 15144 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-08T10:54:44.918-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 19016 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-08T10:54:44.921-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-08T10:54:45.909-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08T10:54:45.995-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 77 ms. Found 5 JPA repository interfaces.
+2024-11-08T10:54:46.684-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-08T10:54:46.699-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-08T10:54:46.700-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-08T10:54:46.759-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-08T10:54:46.759-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1783 ms
+2024-11-08T10:54:46.948-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08T10:54:47.029-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-08T10:54:47.076-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-08T10:54:47.422-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08T10:54:47.452-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-08T10:54:47.968-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1a0ffb9b
+2024-11-08T10:54:47.971-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-08T10:54:48.059-06:00  WARN 19016 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08T10:54:48.062-06:00  WARN 19016 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-08T10:54:49.325-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08T10:54:49.641-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08T10:54:50.029-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-08T10:54:50.564-06:00  WARN 19016 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08T10:54:50.600-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-08T10:54:51.122-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-08T10:54:51.134-06:00  INFO 19016 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 6.836 seconds (process running for 7.861)
+2024-11-08T10:55:00.018-06:00  INFO 19016 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T10:55:53.280-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-08T10:55:53.281-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-08T10:55:53.284-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-08T10:55:53.522-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [ADMINISTRADOR]
+2024-11-08T10:55:53.623-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros por estado ha sido realizada correctamente
+2024-11-08T10:56:00.006-06:00  INFO 19016 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T10:56:11.782-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [ADMINISTRADOR]
+2024-11-08T10:56:11.813-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros ha sido realizada correctamente
+2024-11-08T10:57:00.007-06:00  INFO 19016 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T10:58:00.005-06:00  INFO 19016 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T10:59:00.014-06:00  INFO 19016 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T10:59:04.483-06:00  INFO 19016 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [ADMINISTRADOR]
+2024-11-08T10:59:15.129-06:00  INFO 19016 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08T10:59:15.132-06:00  INFO 19016 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-08T10:59:15.140-06:00  INFO 19016 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-08T10:59:19.685-06:00  INFO 164 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 164 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-08T10:59:19.688-06:00  INFO 164 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-08T10:59:20.628-06:00  INFO 164 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08T10:59:20.736-06:00  INFO 164 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 99 ms. Found 5 JPA repository interfaces.
+2024-11-08T10:59:21.327-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-08T10:59:21.341-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-08T10:59:21.341-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-08T10:59:21.396-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-08T10:59:21.396-06:00  INFO 164 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1642 ms
+2024-11-08T10:59:21.572-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08T10:59:21.656-06:00  INFO 164 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-08T10:59:21.695-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-08T10:59:22.015-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08T10:59:22.046-06:00  INFO 164 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-08T10:59:22.467-06:00  INFO 164 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2b9d4b0
+2024-11-08T10:59:22.470-06:00  INFO 164 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-08T10:59:22.516-06:00  WARN 164 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08T10:59:22.517-06:00  WARN 164 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-08T10:59:23.524-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08T10:59:23.722-06:00  INFO 164 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08T10:59:24.251-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-08T10:59:24.720-06:00  WARN 164 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08T10:59:24.749-06:00  INFO 164 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-08T10:59:25.291-06:00  INFO 164 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-08T10:59:25.309-06:00  INFO 164 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 6.101 seconds (process running for 6.928)
+2024-11-08T10:59:31.112-06:00  INFO 164 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-08T10:59:31.112-06:00  INFO 164 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-08T10:59:31.113-06:00  INFO 164 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-08T10:59:31.207-06:00  INFO 164 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [ADMINISTRADOR]
+2024-11-08T10:59:31.243-06:00  INFO 164 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros por estado ha sido realizada correctamente
+2024-11-08T11:00:00.068-06:00  INFO 164 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T11:00:32.917-06:00  INFO 164 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08T11:00:32.920-06:00  INFO 164 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-08T11:00:32.927-06:00  INFO 164 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-08T14:03:18.992-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 12400 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-08T14:03:18.996-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-08T14:03:20.401-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-08T14:03:20.491-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 81 ms. Found 5 JPA repository interfaces.
+2024-11-08T14:03:21.130-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-08T14:03:21.144-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-08T14:03:21.144-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-08T14:03:21.209-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-08T14:03:21.223-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2154 ms
+2024-11-08T14:03:21.429-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-08T14:03:21.494-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-08T14:03:21.541-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-08T14:03:21.872-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-08T14:03:21.903-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-08T14:03:22.540-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5bb99d1d
+2024-11-08T14:03:22.549-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-08T14:03:22.650-06:00  WARN 12400 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-08T14:03:22.650-06:00  WARN 12400 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-08T14:03:23.717-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-08T14:03:24.177-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08T14:03:24.571-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-08T14:03:25.174-06:00  WARN 12400 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-08T14:03:25.218-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-08T14:03:25.789-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-08T14:03:25.803-06:00  INFO 12400 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 7.377 seconds (process running for 9.424)
+2024-11-08T14:04:00.016-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:04:17.093-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-08T14:04:17.093-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-08T14:04:17.095-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-11-08T14:04:17.249-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [ADMINISTRADOR]
+2024-11-08T14:04:17.249-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: null
+2024-11-08T14:04:17.348-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] c.s.G.P.Controller.PrestamoService       : La búsqueda de préstamos ha sido realizada correctamente
+2024-11-08T14:04:26.003-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [ADMINISTRADOR]
+2024-11-08T14:04:26.003-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: null
+2024-11-08T14:04:26.015-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros por estado ha sido realizada correctamente
+2024-11-08T14:05:00.011-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:06:00.012-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:07:00.008-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:07:24.327-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [CLIENTE]
+2024-11-08T14:07:24.327-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: 2
+2024-11-08T14:07:53.277-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-8] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [CLIENTE]
+2024-11-08T14:07:53.277-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-8] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: 2
+2024-11-08T14:08:00.002-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:08:03.160-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [CLIENTE]
+2024-11-08T14:08:03.160-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: 2
+2024-11-08T14:08:03.282-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.P.Controller.PrestamoService       : El registro del préstamo ha sido realizado correctamente
+2024-11-08T14:08:09.241-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [CLIENTE]
+2024-11-08T14:08:09.241-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-2] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: 2
+2024-11-08T14:09:00.004-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:10:00.012-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:11:00.006-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:12:00.008-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:13:00.015-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:13:06.239-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Roles extraídos del JWT: [CLIENTE]
+2024-11-08T14:13:06.239-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : ID del usuario extraído del JWT: 2
+2024-11-08T14:13:06.261-06:00  INFO 12400 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.P.Controller.PrestamoService       : La búsqueda de préstamos ha sido realizada correctamente
+2024-11-08T14:14:00.005-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:15:00.013-06:00  INFO 12400 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-08T14:15:22.341-06:00  INFO 12400 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-08T14:15:22.341-06:00  INFO 12400 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-08T14:15:22.373-06:00  INFO 12400 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

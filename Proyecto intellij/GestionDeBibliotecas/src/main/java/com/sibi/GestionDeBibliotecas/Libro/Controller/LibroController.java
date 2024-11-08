@@ -23,6 +23,11 @@ public class LibroController {
         return libroService.findAll();
     }
 
+    @GetMapping("/for-customer")
+    public ResponseEntity<Message> getAllForCustomer() {
+        return libroService.findByStatus("ACTIVE");
+    }
+
     @GetMapping("/status/{estado}")
     public ResponseEntity<Message> getByStatus(@PathVariable String estado) {
         return libroService.findByStatus(estado);
