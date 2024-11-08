@@ -1,5 +1,6 @@
 package com.sibi.GestionDeBibliotecas.Libro_Categoria.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
 import com.sibi.GestionDeBibliotecas.Categoria.Model.Categoria;
 import jakarta.persistence.*;
@@ -15,10 +16,12 @@ public class LibroCategoria {
 
     @ManyToOne
     @JoinColumn(name = "book_id", nullable = false)
+    @JsonIgnore
     private Libro libro;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
+
     private Categoria categoria;
 
     @Column(name = "created_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP", nullable = false)

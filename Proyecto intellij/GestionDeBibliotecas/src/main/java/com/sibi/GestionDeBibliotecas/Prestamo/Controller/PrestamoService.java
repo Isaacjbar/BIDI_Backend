@@ -20,6 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +51,7 @@ public class PrestamoService {
         return new ResponseEntity<>(new Message(prestamos, "Listado de préstamos", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> save(PrestamoDTO dto) {
         // Buscar y validar el usuario
         Optional<Usuario> optionalUsuario = usuarioRepository.findById(dto.getUsuarioId());
@@ -109,7 +110,7 @@ public class PrestamoService {
         return calendar.getTime();
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> changeStatus(PrestamoDTO dto) {
         Optional<Prestamo> optionalPrestamo = prestamoRepository.findById(dto.getPrestamoId());
 
@@ -164,5 +165,22 @@ public class PrestamoService {
         List<Prestamo> prestamos = prestamoRepository.findByStatus(status);
         logger.info("La búsqueda por estado de los préstamos ha sido realizada correctamente");
         return new ResponseEntity<>(new Message(prestamos, "Listado de préstamos por estado", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findAllByUsuario(Long userId) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findById(userId);
+        if (usuarioOpt.isEmpty()) {
+            logger.warn("Usuario con ID " + userId + " no encontrado.");
+            return new ResponseEntity<>(new Message(null, "Usuario no encontrado", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+        }
+
+        List<Prestamo> prestamos = prestamoRepository.findByUsuario(usuarioOpt.get());
+        if (prestamos.isEmpty()) {
+            logger.info("No se encontraron préstamos para el usuario con ID: " + userId);
+            return new ResponseEntity<>(new Message(null, "No se encontraron préstamos para el usuario", TypesResponse.WARNING), HttpStatus.NOT_FOUND);
+        }
+
+        logger.info("La búsqueda de préstamos para el usuario con ID " + userId + " ha sido realizada correctamente");
+        return new ResponseEntity<>(new Message(prestamos, "Listado de préstamos del usuario", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 }

@@ -38,7 +38,6 @@ public class Libro {
     }
 
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
     private List<LibroCategoria> categorias;
 
     @OneToMany(mappedBy = "libro", cascade = CascadeType.ALL, orphanRemoval = true)

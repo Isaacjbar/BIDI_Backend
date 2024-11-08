@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.SQLException;
 import java.util.List;
 
 @Transactional
@@ -34,7 +35,7 @@ public class CategoriaService {
         return new ResponseEntity<>(new Message(categorias, "Listado de categorías", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> save(CategoriaDTO dto) {
         if (dto.getCategoryName().length() > 100) {
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -45,7 +46,7 @@ public class CategoriaService {
         return new ResponseEntity<>(new Message(categoria, "La categoría se registró correctamente", TypesResponse.SUCCESS), HttpStatus.CREATED);
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> update(CategoriaDTO dto) {
         return categoriaRepository.findById(dto.getCategoryId())
                 .map(categoria -> {
@@ -67,7 +68,7 @@ public class CategoriaService {
                 .orElseGet(() -> new ResponseEntity<>(new Message("La categoría no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND));
     }
 
-    @Transactional
+    @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> changeStatus(CategoriaDTO dto) {
         return categoriaRepository.findById(dto.getCategoryId())
                 .map(categoria -> {

@@ -17,7 +17,6 @@ public class Prestamo {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    @JsonIgnore
     private Usuario usuario;
 
     @ManyToOne
