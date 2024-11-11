@@ -6,6 +6,7 @@ import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtUtil;
 import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
 import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
 import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,11 @@ public class AuthController {
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest authRequest) throws Exception {
-        Usuario user = userRepository.findByCorreo(authRequest.getEmail())
-                .orElseThrow(() -> new Exception("Usuario no encontrado"));
+        Usuario user = userRepository.findByCorreo(authRequest.getEmail()).orElseThrow(() -> new Exception("Usuario no encontrado"));
+
+        if (user.getEstado() != Estado.ACTIVO) {
+            throw new Exception("El usuario está inactivo y no puede realizar préstamos");
+        }
 
         if (!passwordEncoder.matches(authRequest.getPassword(), user.getContrasena())) {
             throw new Exception("Correo o contraseña incorrectos");
