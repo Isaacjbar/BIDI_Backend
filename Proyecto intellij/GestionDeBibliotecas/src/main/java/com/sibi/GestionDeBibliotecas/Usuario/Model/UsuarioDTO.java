@@ -6,7 +6,7 @@ import java.sql.Date;
 
 public class UsuarioDTO {
 
-    @NotNull(groups = {Modificar.class, CambiarEstado.class, Consultar.class}, message = "Error con el identificador de usuario")
+    @NotNull(groups = {Modificar.class, CambiarEstado.class, Consultar.class, Recuperacion.class}, message = "Error con el identificador de usuario")
     private Long usuarioId;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El nombre no puede estar vacío")
@@ -16,7 +16,7 @@ public class UsuarioDTO {
     @Email(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo debe tener un formato válido")
     private String correo;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class, Recuperacion.class}, message = "La contraseña no puede estar vacía")
+    @NotBlank(groups = {Registrar.class, Modificar.class, Validacion.class, Recuperacion.class}, message = "La contraseña no puede estar vacía")
     private String contrasena;
 
     private String rol;
@@ -113,10 +113,10 @@ public class UsuarioDTO {
     public interface Solicitud {
     }
 
-    public interface Recuperacion {
+    public interface Validacion {
     }
 
-    public interface Validacion {
+    public interface Recuperacion {
     }
 
     public interface Consultar {

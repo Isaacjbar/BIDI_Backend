@@ -1,10 +1,12 @@
 package com.sibi.GestionDeBibliotecas.Usuario.Model;
 
+import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,6 +19,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     @Query("SELECT COUNT(p) FROM Prestamo p WHERE p.usuario.usuarioId = :usuarioId")
     Long countPrestamosByUsuarioId(@Param("usuarioId") Long usuarioId);
+
+    List<Usuario> findByEstado(Estado estado);
 
     Optional<Usuario> findByCorreo(String correo);
 

@@ -29,9 +29,9 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("auth/login", "user/register", "user/request-password-reset","/user/validate-token").permitAll() // Permitir acceso sin autenticación
-                        .requestMatchers("/user/update", "/loan/save/for-customer", "/book/for-customer").hasRole(Rol.CLIENTE.name())
-                        .requestMatchers("user/reset-password").hasAnyRole(Rol.CLIENTE.name(), Rol.ADMINISTRADOR.name())
+                        .requestMatchers("/auth/login", "/user/register", "/user/request-password-reset", "/user/reset-password").permitAll() // Permitir acceso sin autenticación
+                        .requestMatchers("/user/update", "/loan/save/for-customer", "/book/for-customer", "/user/find/for-customer", "/user/update/for-customer").hasRole(Rol.CLIENTE.name())
+                        .requestMatchers("/user/find-all", "/user/status", "/user/modify", "/user/change-status", "/user/find", "/user/update").hasRole(Rol.ADMINISTRADOR.name())
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado
