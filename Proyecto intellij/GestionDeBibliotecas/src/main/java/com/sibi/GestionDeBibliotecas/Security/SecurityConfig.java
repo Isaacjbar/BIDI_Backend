@@ -30,8 +30,12 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login", "/user/register", "/user/request-password-reset", "/user/reset-password").permitAll() // Permitir acceso sin autenticación
-                        .requestMatchers("/user/update", "/loan/save/for-customer", "/book/for-customer", "/user/find/for-customer", "/user/update/for-customer").hasRole(Rol.CLIENTE.name())
-                        .requestMatchers("/user/find-all", "/user/status", "/user/modify", "/user/change-status", "/user/find", "/user/update").hasRole(Rol.ADMINISTRADOR.name())
+                        .requestMatchers("/loan/save/for-customer", "/book/for-customer", "/user/update/for-customer", "/user/find/for-customer", "/user/update/for-customer").hasRole(Rol.CLIENTE.name())
+                        .requestMatchers("/user/find-all", "/user/status", "/user/modify", "/user/change-status", "/user/find", "/user/update",
+                                "/category/save", "/category/all", "/category/update", "/category/status", "/category/change-status",
+                                "/book/save", "/book/all", "/book/status", "/book/update", "/book/change-status",
+                                "/loan/user", "/loan/status", "/loan/save", "/loan/change-status",
+                                "/book-category/all").hasRole(Rol.ADMINISTRADOR.name())
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado
