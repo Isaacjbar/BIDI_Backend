@@ -30,8 +30,8 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/login", "/global/user/register", "/global/user/request-password-reset", "/global/user/reset-password").permitAll() // Permitir acceso sin autenticación
-                        .requestMatchers("/customer/**").hasRole(Rol.CLIENTE.name())
-                        .requestMatchers("/admin/**").hasRole(Rol.ADMINISTRADOR.name())
+                        .requestMatchers("/customer/**").hasRole("CLIENTE")
+                        .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado

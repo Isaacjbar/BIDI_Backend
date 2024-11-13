@@ -1,7 +1,10 @@
 package com.sibi.GestionDeBibliotecas.Security;
 
+import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtRequestFilter;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -16,6 +19,7 @@ import java.util.List;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
+    private final static Logger logger = LoggerFactory.getLogger(UserDetailsServiceImpl.class);
     private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -36,6 +40,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
         // Convertimos el único rol a un SimpleGrantedAuthority
         List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(user.getRol().name()));
+        logger.info("Rol asignado al usuario: ROLE_{}", user.getRol().name());
 
         // Retornamos el objeto UserDetails con los datos de usuario y el rol
         return new org.springframework.security.core.userdetails.User(

@@ -39,7 +39,7 @@ public class UserController {
     }
 
     // Consultar perfil cliente
-    @GetMapping("/user/find/for-customer/{id}")
+    @GetMapping("/user/find/for-customer")
     public ResponseEntity<Message> findForCustomer(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto, HttpServletRequest request) {
         return usuarioService.findForCustomer(dto, request.getHeader("Authorization"));
     }

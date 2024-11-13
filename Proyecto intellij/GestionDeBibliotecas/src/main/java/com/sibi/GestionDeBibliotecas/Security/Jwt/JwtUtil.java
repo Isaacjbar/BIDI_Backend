@@ -1,8 +1,11 @@
 package com.sibi.GestionDeBibliotecas.Security.Jwt;
 
+import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,6 +21,7 @@ import java.util.stream.Collectors;
 
 @Component
 public class JwtUtil {
+    private final static Logger logger = LoggerFactory.getLogger(JwtUtil.class);
 
     @Value("${jwt.secret}")
     private String secret;
@@ -63,19 +67,20 @@ public class JwtUtil {
 
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
+                .map(role -> "ROLE_" + role)
                 .collect(Collectors.toList());
         claims.put("roles", roles);
         claims.put("userId", userId);  // Incluimos el ID del usuario en las claims
 
+        logger.info("Estructura de las claims antes de generar el token: {}", claims);
         return createToken(claims, userDetails.getUsername());
     }
-
 
     private String createToken(Map<String, Object> claims, String subject) {
 
         return Jwts.builder()
                 .setClaims(claims)
-                .setSubject(subject) // Usa el correo como sujeto
+                .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + expiration))
                 .signWith(getSigningKey())
@@ -90,5 +95,4 @@ public class JwtUtil {
     public Long extractUserId(String token) {
         return extractClaim(token, claims -> claims.get("userId", Long.class));
     }
-
 }
