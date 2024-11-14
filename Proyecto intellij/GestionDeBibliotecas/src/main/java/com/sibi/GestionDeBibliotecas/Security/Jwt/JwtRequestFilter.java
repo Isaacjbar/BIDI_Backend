@@ -19,6 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +39,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
+        // Log de las cabeceras de la solicitud
+        Enumeration<String> headerNames = request.getHeaderNames();
+        while (headerNames.hasMoreElements()) {
+            String headerName = headerNames.nextElement();
+            String headerValue = request.getHeader(headerName);
+            logger.info("Cabecera: {} = {}", headerName, headerValue);
+        }
+
         final String authorizationHeader = request.getHeader("Authorization");
 
         String email = null;
@@ -45,6 +54,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
         if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
             jwt = authorizationHeader.substring(7);
+            logger.info("Token JWT extraído: {}", jwt);
             try {
                 email = jwtUtil.extractUserEmail(jwt);
             } catch (Exception e) {
@@ -59,8 +69,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 Long userId = jwtUtil.extractUserId(jwt);  // Obtenemos el ID del usuario
                 List<String> roles = jwtUtil.extractClaim(jwt, claims -> (List<String>) claims.get("roles"));
 
-                logger.info("Roles extraídos del JWT: {}", roles);
-                logger.info("ID del usuario extraído del JWT: {}", userId);  // Registramos el ID del usuario
+                logger.info("Datos del usuario extraídos del JWT: Correo = {}, ID de usuario = {}, Roles = {}", email, userId, roles);
 
                 List<GrantedAuthority> authorities = roles.stream()
                         .map(role -> new SimpleGrantedAuthority(role))
