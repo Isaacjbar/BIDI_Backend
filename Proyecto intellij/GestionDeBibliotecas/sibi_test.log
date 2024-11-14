@@ -1097,3 +1097,196 @@ Caused by: java.sql.SQLException: Access denied for user 'root'@'localhost' (usi
 2024-11-12T22:08:40.687-06:00  INFO 3772 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2024-11-12T22:08:40.695-06:00  INFO 3772 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-11-12T22:08:40.711-06:00  INFO 3772 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-13T20:27:31.633-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 13540 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-13T20:27:31.635-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-13T20:27:32.678-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13T20:27:32.826-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 138 ms. Found 5 JPA repository interfaces.
+2024-11-13T20:27:33.501-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-13T20:27:33.520-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-13T20:27:33.521-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-13T20:27:33.598-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-13T20:27:33.599-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1916 ms
+2024-11-13T20:27:33.817-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13T20:27:33.924-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13T20:27:33.979-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-13T20:27:34.434-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13T20:27:34.483-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-13T20:27:35.130-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61eab26b
+2024-11-13T20:27:35.140-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-13T20:27:35.284-06:00  WARN 13540 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-13T20:27:35.285-06:00  WARN 13540 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-13T20:27:36.527-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13T20:27:36.962-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T20:27:37.382-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13T20:27:37.953-06:00  WARN 13540 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13T20:27:37.985-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-13T20:27:38.604-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-13T20:27:38.622-06:00  INFO 13540 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 7.377 seconds (process running for 9.526)
+2024-11-13T20:27:49.033-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13T20:27:49.033-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-13T20:27:49.033-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-11-13T20:27:49.082-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:27:49.083-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:27:49.083-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:27:49.083-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:27:49.083-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = f72d9b32-5f43-4dc9-8531-6b8328dd185d
+2024-11-13T20:27:49.084-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:27:49.084-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:27:49.084-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:27:49.084-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 59
+2024-11-13T20:28:00.024-06:00  INFO 13540 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:29:00.021-06:00  INFO 13540 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:29:25.989-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:29:25.989-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:29:25.989-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:29:25.989-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:29:25.997-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = 368681a6-cb75-466e-84c5-c2f60ba975ee
+2024-11-13T20:29:25.997-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:29:25.997-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:29:25.999-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:29:25.999-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-9] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 59
+2024-11-13T20:29:35.575-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:29:35.575-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:29:35.575-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:29:35.575-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:29:35.575-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = 11a1e64b-0dde-4839-907c-bbe9bd00a036
+2024-11-13T20:29:35.575-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:29:35.577-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:29:35.577-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:29:35.577-06:00  INFO 13540 --- [GestionDeBibliotecas] [http-nio-8080-exec-10] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 59
+2024-11-13T20:29:50.813-06:00  INFO 13540 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T20:29:50.816-06:00  INFO 13540 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-13T20:29:50.834-06:00  INFO 13540 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-13T20:30:12.302-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 16316 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-13T20:30:12.304-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-13T20:30:13.238-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13T20:30:13.317-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 5 JPA repository interfaces.
+2024-11-13T20:30:13.907-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-13T20:30:13.923-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-13T20:30:13.923-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-13T20:30:14.013-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-13T20:30:14.013-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1649 ms
+2024-11-13T20:30:14.198-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13T20:30:14.248-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13T20:30:14.279-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-13T20:30:14.546-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13T20:30:14.569-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-13T20:30:14.881-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6480a063
+2024-11-13T20:30:14.882-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-13T20:30:14.926-06:00  WARN 16316 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-13T20:30:14.927-06:00  WARN 16316 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-13T20:30:15.844-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13T20:30:16.170-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T20:30:16.495-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13T20:30:16.923-06:00  WARN 16316 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13T20:30:16.954-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-13T20:30:17.588-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-13T20:30:17.613-06:00  INFO 16316 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 5.831 seconds (process running for 6.852)
+2024-11-13T20:30:37.830-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13T20:30:37.830-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-13T20:30:37.839-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-11-13T20:30:37.886-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:30:37.886-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:30:37.886-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:30:37.886-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:30:37.888-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = 99d74c3d-0ff7-432f-8b71-1dc7128ebb9f
+2024-11-13T20:30:37.888-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:30:37.888-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:30:37.888-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:30:37.888-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 59
+2024-11-13T20:31:00.070-06:00  INFO 16316 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:31:03.381-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:31:03.386-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:31:03.386-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:31:03.386-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:31:03.387-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = e92af592-414b-4164-89d7-1d4d8e5dfba8
+2024-11-13T20:31:03.387-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:31:03.387-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:31:03.387-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:31:03.387-06:00  INFO 16316 --- [GestionDeBibliotecas] [http-nio-8080-exec-4] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 59
+2024-11-13T20:31:21.803-06:00  INFO 16316 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T20:31:21.812-06:00  INFO 16316 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-13T20:31:21.828-06:00  INFO 16316 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-11-13T20:41:28.546-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Starting GestionDeBibliotecasApplication using Java 21.0.4 with PID 11320 (C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas\target\classes started by Isaac in C:\Users\Isaac\Desktop\Repositorios\All_LSNG\BIDI_Backend\Proyecto intellij\GestionDeBibliotecas)
+2024-11-13T20:41:28.549-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : No active profile set, falling back to 1 default profile: "default"
+2024-11-13T20:41:30.182-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-11-13T20:41:30.295-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 5 JPA repository interfaces.
+2024-11-13T20:41:31.032-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-11-13T20:41:31.054-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-13T20:41:31.054-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2024-11-13T20:41:31.118-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring embedded WebApplicationContext
+2024-11-13T20:41:31.118-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2505 ms
+2024-11-13T20:41:31.356-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-11-13T20:41:31.446-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2024-11-13T20:41:31.522-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-11-13T20:41:31.993-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-11-13T20:41:32.037-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-13T20:41:32.821-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5b0e9e0c
+2024-11-13T20:41:32.821-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-13T20:41:32.916-06:00  WARN 11320 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-11-13T20:41:32.920-06:00  WARN 11320 --- [GestionDeBibliotecas] [main] org.hibernate.orm.deprecation            : HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2024-11-13T20:41:34.246-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-11-13T20:41:34.870-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T20:41:35.278-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2024-11-13T20:41:35.911-06:00  WARN 11320 --- [GestionDeBibliotecas] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-13T20:41:35.951-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with UserDetailsService bean with name userDetailsServiceImpl
+2024-11-13T20:41:36.611-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/sibi'
+2024-11-13T20:41:36.624-06:00  INFO 11320 --- [GestionDeBibliotecas] [main] c.s.G.GestionDeBibliotecasApplication    : Started GestionDeBibliotecasApplication in 8.71 seconds (process running for 13.719)
+2024-11-13T20:42:00.064-06:00  INFO 11320 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:43:00.006-06:00  INFO 11320 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:44:00.007-06:00  INFO 11320 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:45:00.006-06:00  INFO 11320 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:45:00.696-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/sibi]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-13T20:45:00.696-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-13T20:45:00.696-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = 16047faf-180c-4aa2-a8fc-97878ffd58ec
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:45:00.724-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 59
+2024-11-13T20:45:01.038-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.UserDetailsServiceImpl    : Rol asignado al usuario: ROLE_ADMINISTRADOR
+2024-11-13T20:45:01.038-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-1] c.s.G.Security.Jwt.JwtUtil               : Estructura de las claims antes de generar el token: {roles=[ROLE_ADMINISTRADOR], userId=1}
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-type = application/json
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: authorization = Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOSVNUUkFET1IiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczMTU1MjMwMSwiZXhwIjoxNzMxNjM4NzAxfQ.QzvxbJd6ZhA8_FWNWXSqqO_GAWnajFE-5DFF9UHTAQo
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = e9945e16-2368-4a9e-b711-7d6b4245363c
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: content-length = 40
+2024-11-13T20:45:47.247-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Token JWT extraído: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOSVNUUkFET1IiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczMTU1MjMwMSwiZXhwIjoxNzMxNjM4NzAxfQ.QzvxbJd6ZhA8_FWNWXSqqO_GAWnajFE-5DFF9UHTAQo
+2024-11-13T20:45:47.363-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.UserDetailsServiceImpl    : Rol asignado al usuario: ROLE_ADMINISTRADOR
+2024-11-13T20:45:47.366-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-5] c.s.G.Security.Jwt.JwtRequestFilter      : Datos del usuario extraídos del JWT: Correo = admin@example.com, ID de usuario = 1, Roles = [ROLE_ADMINISTRADOR]
+2024-11-13T20:45:52.457-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: authorization = Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOSVNUUkFET1IiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczMTU1MjMwMSwiZXhwIjoxNzMxNjM4NzAxfQ.QzvxbJd6ZhA8_FWNWXSqqO_GAWnajFE-5DFF9UHTAQo
+2024-11-13T20:45:52.457-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:45:52.457-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:45:52.459-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:45:52.459-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = 1dc1736e-7c39-4a5c-bf4a-5706268ce6fe
+2024-11-13T20:45:52.459-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:45:52.459-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:45:52.459-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:45:52.459-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Token JWT extraído: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOSVNUUkFET1IiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczMTU1MjMwMSwiZXhwIjoxNzMxNjM4NzAxfQ.QzvxbJd6ZhA8_FWNWXSqqO_GAWnajFE-5DFF9UHTAQo
+2024-11-13T20:45:52.467-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.UserDetailsServiceImpl    : Rol asignado al usuario: ROLE_ADMINISTRADOR
+2024-11-13T20:45:52.480-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Security.Jwt.JwtRequestFilter      : Datos del usuario extraídos del JWT: Correo = admin@example.com, ID de usuario = 1, Roles = [ROLE_ADMINISTRADOR]
+2024-11-13T20:45:52.508-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-3] c.s.G.Libro.Controller.LibroService      : La búsqueda de libros ha sido realizada correctamente
+2024-11-13T20:46:00.007-06:00  INFO 11320 --- [GestionDeBibliotecas] [scheduling-1] c.s.G.Util.Services.CronJobs             : Hello world!
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: authorization = Bearer eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOSVNUUkFET1IiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczMTU1MjMwMSwiZXhwIjoxNzMxNjM4NzAxfQ.QzvxbJd6ZhA8_FWNWXSqqO_GAWnajFE-5DFF9UHTAQo
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: user-agent = PostmanRuntime/7.42.0
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept = */*
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: cache-control = no-cache
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: postman-token = 3d92c878-a815-44a2-a790-f8c155b76eb5
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: host = localhost:8080
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: accept-encoding = gzip, deflate, br
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Cabecera: connection = keep-alive
+2024-11-13T20:46:08.294-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Token JWT extraído: eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0FETUlOSVNUUkFET1IiXSwidXNlcklkIjoxLCJzdWIiOiJhZG1pbkBleGFtcGxlLmNvbSIsImlhdCI6MTczMTU1MjMwMSwiZXhwIjoxNzMxNjM4NzAxfQ.QzvxbJd6ZhA8_FWNWXSqqO_GAWnajFE-5DFF9UHTAQo
+2024-11-13T20:46:08.305-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.UserDetailsServiceImpl    : Rol asignado al usuario: ROLE_ADMINISTRADOR
+2024-11-13T20:46:08.310-06:00  INFO 11320 --- [GestionDeBibliotecas] [http-nio-8080-exec-6] c.s.G.Security.Jwt.JwtRequestFilter      : Datos del usuario extraídos del JWT: Correo = admin@example.com, ID de usuario = 1, Roles = [ROLE_ADMINISTRADOR]
+2024-11-13T20:46:17.669-06:00  INFO 11320 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-11-13T20:46:17.669-06:00  INFO 11320 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-11-13T20:46:17.678-06:00  INFO 11320 --- [GestionDeBibliotecas] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
