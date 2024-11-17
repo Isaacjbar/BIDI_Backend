@@ -21,6 +21,9 @@ public class Usuario {
     @Column(name = "name", columnDefinition = "VARCHAR(100)", nullable = false)
     private String nombre;
 
+    @Column(name = "surname", columnDefinition = "VARCHAR(100)", nullable = false)
+    private String apellidos;
+
     @Column(name = "email", columnDefinition = "VARCHAR(100)", nullable = false, unique = true)
     private String correo;
 
@@ -35,7 +38,6 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 8, nullable = false)
     private Estado estado = Estado.ACTIVO;
-
 
     @Column(name = "phone_number", columnDefinition = "VARCHAR(15)")
     private String numeroTelefono;
@@ -56,9 +58,10 @@ public class Usuario {
 
     }
 
-    public Usuario(Long usuarioId, String nombre, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono, String codigo, Date codigoGeneradoEn) {
+    public Usuario(Long usuarioId, String nombre, String apellidos, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono, String codigo, Date codigoGeneradoEn) {
         this.usuarioId = usuarioId;
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.correo = correo;
         this.contrasena = contrasena;
         this.rol = rol;
@@ -68,8 +71,9 @@ public class Usuario {
         this.codigoGeneradoEn = codigoGeneradoEn;
     }
 
-    public Usuario(String nombre, String correo, String contrasena, Rol rol, String numeroTelefono) {
+    public Usuario(String nombre, String apellidos, String correo, String contrasena, Rol rol, String numeroTelefono) {
         this.nombre = nombre;
+        this.apellidos = apellidos;
         this.correo = correo;
         this.contrasena = contrasena;
         this.rol = rol;
@@ -90,6 +94,14 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getCorreo() {

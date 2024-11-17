@@ -12,6 +12,9 @@ public class UsuarioDTO {
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El nombre no puede estar vacío")
     private String nombre;
 
+    @NotBlank(groups = {Registrar.class, Modificar.class}, message = "Los apellidos no pueden estar vacíos")
+    private String apellidos;
+
     @NotBlank(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo no puede estar vacío")
     @Email(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo debe tener un formato válido")
     private String correo;
@@ -43,6 +46,14 @@ public class UsuarioDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public String getCorreo() {

@@ -10,7 +10,9 @@ import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoDTO;
 import com.sibi.GestionDeBibliotecas.Usuario.Controller.UsuarioService;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioDTO;
 import com.sibi.GestionDeBibliotecas.Util.Response.Message;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -139,13 +141,13 @@ public class AdminController {
 
     // Consultar perfil admin
     @GetMapping("/user/find/{id}")
-    public ResponseEntity<Message> findUser(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto) {
-        return usuarioService.find(dto);
+    public ResponseEntity<Message> findUser(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto, HttpServletRequest request) {
+        return usuarioService.find(dto, request.getHeader("Authorization"));
     }
 
     // Editar perfil admin
     @PutMapping("/user/update")
-    public ResponseEntity<Message> updateUser(@Validated(UsuarioDTO.Modificar.class) @RequestBody UsuarioDTO dto) {
-        return usuarioService.update(dto);
+    public ResponseEntity<Message> updateUser(@Validated(UsuarioDTO.Modificar.class) @RequestBody UsuarioDTO dto, HttpServletRequest request) {
+        return usuarioService.update(dto, request.getHeader("Authorization"));
     }
 }

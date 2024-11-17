@@ -21,6 +21,7 @@ public class DataInitializer {
             if (!optionalAdmin.isPresent()) {
                 Usuario adminUser = new Usuario(
                         "Admin User",
+                        "",
                         "admin@example.com",
                         passwordEncoder.encode("admin123"),
                         Rol.ADMINISTRADOR,
@@ -34,6 +35,7 @@ public class DataInitializer {
             if (!optionalCliente.isPresent()) {
                 Usuario clienteUser = new Usuario(
                         "Cliente User",
+                        "",
                         "cliente@example.com",
                         passwordEncoder.encode("cliente123"),
                         Rol.CLIENTE,
@@ -47,6 +49,7 @@ public class DataInitializer {
             if (!optionalInvitado.isPresent()) {
                 Usuario invitadoUser = new Usuario(
                         "Invitado User",
+                        "",
                         "invitado@example.com",
                         passwordEncoder.encode("invitado123"),
                         Rol.INVITADO,

@@ -20,7 +20,6 @@ public class GlobalController {
         this.usuarioService = usuarioService;
     }
 
-    // **ACCESIBLES POR CUALQUIERA**
     // Registrar usuario cliente
     @PostMapping("/user/register")
     public ResponseEntity<Message> register(@Validated(UsuarioDTO.Registrar.class) @RequestBody UsuarioDTO dto) {

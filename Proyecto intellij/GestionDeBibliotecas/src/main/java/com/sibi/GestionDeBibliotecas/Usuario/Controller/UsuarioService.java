@@ -34,7 +34,7 @@ public class UsuarioService {
     private final UsuarioRepository usuarioRepository;
     private final UserDetailsServiceImpl userDetailsServiceImpl;
     private final EmailService emailService;
-    private final JwtUtil jwtUtil; // Agrega JwtUtil aquí
+    private final JwtUtil jwtUtil;
 
     @Autowired
     public UsuarioService(UsuarioRepository usuarioRepository, UserDetailsServiceImpl userDetailsServiceImpl, EmailService emailService, JwtUtil jwtUtil) {
@@ -54,7 +54,13 @@ public class UsuarioService {
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> find(UsuarioDTO usuarioDTO) {
+    public ResponseEntity<Message> find(UsuarioDTO usuarioDTO, String token) {
+        token = token.substring(7);
+        Long userIdFromToken = jwtUtil.extractUserId(token);
+
+        if (!userIdFromToken.equals(usuarioDTO.getUsuarioId())) {
+            return new ResponseEntity<>(new Message("No tienes permiso para realizar ésta acción con otro ID de usuario", TypesResponse.ERROR), HttpStatus.FORBIDDEN);
+        }
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioDTO.getUsuarioId());
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
@@ -88,6 +94,9 @@ public class UsuarioService {
         if (usuarioDTO.getNombre().length() > 100) {
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
+        if (usuarioDTO.getApellidos().length() > 100) {
+            return new ResponseEntity<>(new Message("Los apellidos exceden el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -111,7 +120,7 @@ public class UsuarioService {
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
 
-        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE, usuarioDTO.getNumeroTelefono());
+        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE, usuarioDTO.getNumeroTelefono());
         usuario = usuarioRepository.saveAndFlush(usuario);
 
         if (usuario == null) {
@@ -131,6 +140,9 @@ public class UsuarioService {
         }
         if (usuarioDTO.getNombre().length() > 100) {
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if (usuarioDTO.getApellidos().length() > 100) {
+            return new ResponseEntity<>(new Message("Los apellidos exceden el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -173,13 +185,22 @@ public class UsuarioService {
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> update(UsuarioDTO usuarioDTO) {
+    public ResponseEntity<Message> update(UsuarioDTO usuarioDTO, String token) {
+        token = token.substring(7);
+        Long userIdFromToken = jwtUtil.extractUserId(token);
+
+        if (!userIdFromToken.equals(usuarioDTO.getUsuarioId())) {
+            return new ResponseEntity<>(new Message("No tienes permiso para realizar ésta acción con otro ID de usuario", TypesResponse.ERROR), HttpStatus.FORBIDDEN);
+        }
         Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioDTO.getUsuarioId());
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("No existes", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
         if (usuarioDTO.getNombre().length() > 100) {
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if (usuarioDTO.getApellidos().length() > 100) {
+            return new ResponseEntity<>(new Message("Los apellidos exceden el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -237,6 +258,9 @@ public class UsuarioService {
 
         if (usuarioDTO.getNombre().length() > 100) {
             return new ResponseEntity<>(new Message("El nombre excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if (usuarioDTO.getApellidos().length() > 100) {
+            return new ResponseEntity<>(new Message("Los apellidos exceden el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
