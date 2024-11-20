@@ -40,7 +40,7 @@ public class AuthController {
         Usuario user = userRepository.findByCorreo(authRequest.getEmail()).orElseThrow(() -> new Exception("Usuario no encontrado"));
 
         if (user.getEstado() != Estado.ACTIVO) {
-            throw new Exception("El usuario está inactivo y no puede realizar préstamos");
+            throw new Exception("El usuario está inactivo");
         }
 
         if (!passwordEncoder.matches(authRequest.getPassword(), user.getContrasena())) {
@@ -48,7 +48,7 @@ public class AuthController {
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
-        final String jwt = jwtUtil.generateToken(userDetails, user.getUsuarioId());  // Aquí pasamos el ID del usuario
+        final String jwt = jwtUtil.generateToken(userDetails, user.getUsuarioId());
 
         if (authService.isTokenInvalid(jwt)) {
             throw new Exception("Token inválido");
@@ -56,9 +56,8 @@ public class AuthController {
 
         long expirationTime = jwtUtil.getExpirationTime();
 
-        return new AuthResponse(jwt, user.getUsuarioId(), user.getCorreo(), expirationTime);
+        return new AuthResponse(jwt, user.getUsuarioId(), user.getCorreo(), expirationTime, user.getRol());
     }
-
 
     @DeleteMapping("/logout")
     public ResponseEntity<Message> logout(@RequestHeader(value = "Authorization", required = false) String token) throws Exception {

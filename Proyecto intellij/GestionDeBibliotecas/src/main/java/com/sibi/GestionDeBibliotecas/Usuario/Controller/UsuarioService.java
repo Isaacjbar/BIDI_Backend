@@ -374,7 +374,7 @@ public class UsuarioService {
 
         emailService.sendEmail(usuarioDTO.getCorreo(), "Recuperación de contraseña, tu código de verificación es: " + codigo,
                 "Para recuperar tu contraseña, haz clic en el siguiente enlace: " +
-                        "http://localhost:8080/sibi/validate-token");
+                        "http://localhost:8080/sibi/global/reset-password");
 
         return new ResponseEntity<>(new Message(usuario, "Correo de recuperación enviado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }

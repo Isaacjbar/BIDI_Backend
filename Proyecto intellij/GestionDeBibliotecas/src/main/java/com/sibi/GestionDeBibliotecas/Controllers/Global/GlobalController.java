@@ -21,25 +21,25 @@ public class GlobalController {
     }
 
     // Registrar usuario cliente
-    @PostMapping("/user/register")
+    @PostMapping("/register")
     public ResponseEntity<Message> register(@Validated(UsuarioDTO.Registrar.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.save(dto);
     }
 
     // Recuperar contraseña cliente parte 1
-    @PostMapping("/user/request-password-reset")
+    @PostMapping("/request-password-reset")
     public ResponseEntity<Message> requestPasswordReset(@Validated(UsuarioDTO.Solicitud.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.requestPasswordReset(dto);
     }
 
     // Recuperar contraseña cliente parte 2
-    @PutMapping("/user/reset-password")
+    @PutMapping("/reset-password")
     public ResponseEntity<Message> resetPassword(@Validated(UsuarioDTO.Validacion.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.resetPassword(dto);
     }
 
     // Recuperar contraseña cliente desde el perfil
-    @PutMapping("/user/reset-password-profile")
+    @PutMapping("/reset-password-profile")
     public ResponseEntity<Message> resetPasswordProfile(@Validated(UsuarioDTO.Recuperacion.class) @RequestBody UsuarioDTO dto, HttpServletRequest request) {
         return usuarioService.resetPasswordProfile(dto, request.getHeader("Authorization"));
     }

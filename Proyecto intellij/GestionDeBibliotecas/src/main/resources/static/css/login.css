@@ -1,0 +1,325 @@
+
+/* Resetea los márgenes, el relleno y establece el box-sizing para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto total de los elementos */
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Estilo para el cuerpo de la página */
+body {
+    background-color: #c9d6ff; /* Color de fondo */
+    background: radial-gradient(circle, rgba(2,0,36,1) -50%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%); /* Aplica un degradado de colores en el fondo */
+    display: flex; /* Usa flexbox para centrar el contenido */
+    align-items: center; /* Alinea los elementos en el centro verticalmente */
+    justify-content: center; /* Alinea los elementos en el centro horizontalmente */
+    flex-direction: column; /* Coloca los elementos en una columna */
+    height: 100vh; /* Altura de la vista completa */
+}
+
+
+/* Icono de libro dentro del logo */
+.book-icon {
+    width: 30px; /* Establece el ancho del icono */
+    height: 30px; /* Establece la altura del icono */
+    fill: white; /* Define el color de relleno del icono como blanco */
+}
+
+  /* Estilos del contenedor del logo */
+.logo-container {
+    display: flex; /* Usa flexbox para alinear los elementos del logo */
+    align-items: center; /* Alinea los elementos verticalmente al centro */
+    transition: transform 0.3s ease; /* Aplica una transición suave al escalar el logo */
+}
+
+  /* Efecto hover en el logo */
+.logo-container:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del logo cuando se pasa el mouse sobre él */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+
+}
+
+  /* Estilo del texto del logo */
+.logo-text {
+    font-size: 1.5rem; /* Tamaño de fuente grande */
+    font-weight: 700; /* Hace que el texto sea grueso */
+    color: white; /* El color del texto es blanco */
+    margin-left: 10px; /* Añade un espacio de 10px entre el logo y el texto */
+}
+
+.footer {
+    padding: 1rem;
+    background-color: #001f4d;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+  /* Estilo de la barra de navegación */
+.navbar {
+    padding: 1rem; /* Añade un espacio interno de 1 rem alrededor del contenido */
+    background-color: #001f4d; /* Define el color de fondo como azul oscuro */
+    color: white; /* Define el color del texto como blanco */
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex; /* Usa flexbox para alinear los elementos de la barra de navegación */
+    justify-content: space-between; /* Espacia los elementos entre los bordes */
+    align-items: center; /* Centra los elementos verticalmente */
+    
+}
+
+/* Contenedor principal de los formularios */
+.container {
+    display: flex; /* Usa flexbox para centrar el contenido */
+    background-color: #fff; /* Color de fondo del contenedor */
+    border-radius: 25px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35); /* Sombra del contenedor */
+    position: relative; /* Posiciona el contenedor de forma relativa para los elementos secundarios */
+    overflow: hidden; /* Oculta el desbordamiento */
+    width: 768px; /* Ancho fijo */
+    max-width: 100%; /* Ancho máximo del 100% */
+    min-height: 490px; /* Altura mínima */
+    margin-top: 150px; /* Centra horizontalmente */
+    margin-bottom: 160px;
+}
+
+
+/* Estilos para párrafos dentro del contenedor */
+.container p {
+    font-size: 14px; /* Tamaño de fuente */
+    line-height: 20px; /* Altura de línea */
+    letter-spacing: 0.3px; /* Espaciado entre letras */
+    margin: 20px 0; /* Márgenes superior e inferior */
+    
+}
+
+/* Estilos para los elementos span dentro del contenedor */
+.container span {
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+
+}
+
+/* Estilo para enlaces dentro del contenedor */
+.container a {
+    color: #333; /* Color del texto del enlace */
+    font-size: 13px; /* Tamaño de fuente */
+    text-decoration: none; /* Sin subrayado */
+    margin: 15px 0 10px; /* Márgenes superior, inferior e izquierdo */
+
+}
+
+/* Estilo para los botones dentro del contenedor */
+.container button {
+    background-color: #0358d9; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    font-size: 12px; /* Tamaño de fuente */
+    padding: 10px 45px; /* Relleno del botón */
+    border: 1px solid transparent; /* Sin borde */
+    border-radius: 8px; /* Bordes redondeados */
+    font-weight: 600; /* Peso de la fuente */
+    letter-spacing: 0.5px; /* Espaciado entre letras */
+    text-transform: uppercase; /* Transformar el texto a mayúsculas */
+    margin-top: 10px; /* Margen superior */
+    cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+.container button:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del logo cuando se pasa el mouse sobre él */
+    transition: transform 0.3s ease; /* Aplica una transición suave al escalar el logo */
+
+}
+
+/* Estilo para el botón oculto */
+.container button.hidden {
+    background-color: transparent; /* Fondo transparente */
+    border-color: #fff; /* Color del borde blanco */
+}
+
+/* Estilo para el formulario dentro del contenedor */
+.container form {
+    background-color: #fff; /* Fondo blanco para el formulario */
+    display: flex; /* Usa flexbox para el formulario */
+    align-items: center; /* Alinea verticalmente */
+    justify-content: center; /* Alinea horizontalmente */
+    flex-direction: column; /* Coloca los elementos en columna */
+    padding: 0 40px; /* Relleno lateral */
+    height: 100%; /* Altura completa del contenedor */
+}
+
+/* Estilo para los campos de entrada dentro del formulario */
+.container input {
+    background-color: #eee; /* Fondo gris claro */
+    border: none; /* Sin borde */
+    margin: 8px 0; /* Márgenes superior e inferior */
+    padding: 10px 15px; /* Relleno interno */
+    font-size: 13px; /* Tamaño de fuente */
+    border-radius: 8px; /* Bordes redondeados */
+    width: 100%; /* Ancho completo */
+    outline: none; /* Sin contorno */
+}
+
+
+
+/* Contenedor para las formularios (inicio y registro) */
+.form-container {
+
+    position: absolute; /* Posición absoluta para superponer formularios */
+    top: 0; /* Parte superior */
+    height: 100%; /* Altura completa */
+    transition: all 0.6s ease-in-out; /* Transición suave para el movimiento */
+    
+}
+
+/* Estilo para el contenedor de inicio de sesión */
+.sign-in {
+    left: 0; /* Alineación a la izquierda */
+    width: 50%; /* Ancho del 50% */
+    z-index: 2; /* Z-index más alto para aparecer por encima */
+    
+}
+
+/* Cuando el contenedor tiene la clase "active", mueve el formulario de inicio de sesión */
+.container.active .sign-in {
+    transform: translateX(100%); /* Mueve el formulario hacia la derecha */
+    
+}
+
+/* Estilo para el contenedor de registro */
+.sign-up {
+    left: 0; /* Alineación a la izquierda */
+    width: 50%; /* Ancho del 50% */
+    opacity: 0; /* Comienza invisible */
+    z-index: 1; /* Z-index más bajo */
+}
+
+/* Cuando el contenedor tiene la clase "active", muestra el formulario de registro */
+.container.active .sign-up {
+    transform: translateX(100%); /* Mueve el formulario hacia la derecha */
+    opacity: 1; /* Hazlo visible */
+    z-index: 5; /* Z-index más alto para aparecer por encima */
+    animation: move 0.6s; /* Aplica la animación de movimiento */
+}
+
+/* Animación de movimiento para el formulario de registro */
+@keyframes move {
+    0%, 49.99% {
+        opacity: 0; /* Comienza invisible */
+        z-index: 1; /* Z-index más bajo */
+    }
+    50%, 100% {
+        opacity: 1; /* Se vuelve visible */
+        z-index: 5; /* Z-index más alto */
+    }
+}
+
+/* Estilo para los íconos de redes sociales */
+.social-icons {
+    margin: 20px 0; /* Márgenes superior e inferior */
+}
+
+/* Estilo para los enlaces de íconos de redes sociales */
+.social-icons a {
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 20%; /* Bordes redondeados */
+    display: inline-flex; /* Usar flexbox para centrar íconos */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    margin: 0 3px; /* Márgenes lateral */
+    width: 40px; /* Ancho fijo */
+    height: 40px; /* Altura fija */
+}
+
+/* Contenedor para la transición entre formularios */
+.toggle-container {
+    position: absolute; /* Posición absoluta para superponer */
+    top: 0; /* Parte superior */
+    left: 50%; /* Alineación a la mitad */
+    width: 50%; /* Ancho del 50% */
+    height: 100%; /* Altura completa */
+    overflow: hidden; /* Oculta desbordamiento */
+    transition: all 0.6s ease-in-out; /* Transición suave */
+    border-radius: 150px 0 0 100px; /* Bordes redondeados en la parte izquierda */
+    z-index: 1000; /* Z-index alto para estar en la parte superior */
+}
+
+/* Cuando el contenedor tiene la clase "active", mueve el contenedor de cambio */
+.container.active .toggle-container {
+    transform: translateX(-100%); /* Mueve el contenedor de cambio a la izquierda */
+    border-radius: 0 150px 100px 0; /* Cambia el radio de borde */
+}
+
+/* Estilo para el panel de cambio */
+.toggle {
+    background-color:#1c34d2 ; /* Color de fondo del panel */
+    height: 100%; /* Altura completa */
+    background: linear-gradient(to right, #014cbd, #00c8ff); /* Gradiente de fondo */
+    color: #fff; /* Color del texto */
+    position: relative; /* Posición relativa para superponer contenido */
+    left: -100%; /* Alineación inicial a la izquierda */
+    height: 100%; /* Altura completa */
+    width: 200%; /* Ancho del 200% para el movimiento */
+    transform: translateX(0); /* Sin desplazamiento inicial */
+    transition: all 0.6s ease-in-out; /* Transición suave */
+}
+
+/* Cuando el contenedor tiene la clase "active", mueve el panel de cambio */
+.container.active .toggle {
+    transform: translateX(50%); /* Mueve el panel a la mitad */
+}
+
+/* Estilo para el panel de texto dentro del contenedor de cambio */
+.toggle-panel {
+    position: absolute; /* Posición absoluta para superponer */
+    width: 50%; /* Ancho del 50% */
+    height: 100%; /* Altura completa */
+    display: flex; /* Usar flexbox */
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Centra horizontalmente */
+    flex-direction: column; /* Coloca elementos en columna */
+    padding: 0 30px; /* Relleno lateral */
+    text-align: center; /* Centra el texto */
+    top: 0; /* Parte superior */
+    transform: translateX(0); /* Sin desplazamiento inicial */
+    transition: all 0.6s ease-in-out; /* Transición suave */
+}
+
+/* Estilo para el panel de texto a la izquierda */
+.toggle-left {
+    transform: translateX(-200%); /* Mueve el panel a la izquierda */
+}
+
+/* Cuando el contenedor tiene la clase "active", mueve el panel de texto izquierdo a la vista */
+.container.active .toggle-left {
+    transform: translateX(0); /* Sin desplazamiento */
+}
+
+/* Estilo para el panel de texto a la derecha */
+.toggle-right {
+    right: 0; /* Alineación a la derecha */
+    transform: translateX(0); /* Sin desplazamiento inicial */
+}
+
+/* Cuando el contenedor tiene la clase "active", mueve el panel de texto derecho fuera de vista */
+.container.active .toggle-right {
+    transform: translateX(200%); /* Mueve el panel a la derecha */
+}
+
+.footer {
+    padding: 1rem;
+    background-color: #001f4d;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
+
+

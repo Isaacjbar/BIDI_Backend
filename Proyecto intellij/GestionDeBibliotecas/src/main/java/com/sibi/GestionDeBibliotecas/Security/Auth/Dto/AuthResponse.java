@@ -1,16 +1,20 @@
 package com.sibi.GestionDeBibliotecas.Security.Auth.Dto;
 
+import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
+
 public class AuthResponse {
     private String jwt;
     private Long userId;
     private String email;
     private long expiration;
+    private Rol role;
 
-    public AuthResponse(String jwt, Long userId, String email, long expiration) { // Cambiado aquí también
+    public AuthResponse(String jwt, Long userId, String email, long expiration, Rol role) {
         this.jwt = jwt;
         this.userId = userId;
         this.email = email;
         this.expiration = expiration;
+        this.role = role;
     }
 
     public String getJwt() {
@@ -43,5 +47,13 @@ public class AuthResponse {
 
     public void setExpiration(long expiration) {
         this.expiration = expiration;
+    }
+
+    public Rol getRole() {
+        return role;
+    }
+
+    public void setRole(Rol role) {
+        this.role = role;
     }
 }

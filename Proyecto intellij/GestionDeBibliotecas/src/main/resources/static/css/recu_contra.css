@@ -1,0 +1,124 @@
+* {
+    margin: 0; /* Elimina el margen predeterminado de todos los elementos */
+    padding: 0; /* Elimina el padding predeterminado de todos los elementos */
+    box-sizing: border-box; /* Ajusta el tamaño del elemento para incluir el padding y borde */
+    font-family: 'Outfit', sans-serif; /* Aplica la fuente Outfit a todo el documento */
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido del body */
+    align-items: center; /* Centra verticalmente el contenido del body */
+    height: 100vh; /* Ocupa el 100% de la altura de la ventana */
+    background: #f0f2f5; /* Color de fondo de reserva */
+    background: radial-gradient(circle, rgba(2,0,36,1) -50%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    /* Aplica un degradado circular al fondo */
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+    width: 500%; /* Ancho del contenedor */
+    max-width: 500px; /* Ancho máximo de 500px para adaptarse a pantallas pequeñas */
+    padding: 20px; /* Espaciado interno */
+}
+
+.form-box {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    background: #ffffff; /* Fondo blanco */
+    padding: 70px; /* Espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra alrededor */
+    text-align: center; /* Centra el texto */
+}
+
+h2 {
+    font-size: 24px; /* Tamaño de fuente */
+    margin-bottom: 10px; /* Margen inferior */
+    color: #333; /* Color del texto */
+}
+
+p {
+    font-size: 14px; /* Tamaño de fuente */
+    color: #666; /* Color del texto */
+    margin-bottom: 20px; /* Margen inferior */
+}
+
+.input-box {
+    position: relative; /* Posiciona los elementos hijos de forma relativa */
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    margin-bottom: 35px; /* Margen inferior */
+}
+
+.input-box i {
+    position: absolute; /* Posiciona el ícono en una ubicación específica */
+    top: 12px; /* Espaciado desde la parte superior */
+    left: 10px; /* Espaciado desde la izquierda */
+    color: #999; /* Color del ícono */
+}
+
+.input-box input {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    padding: 12px 12px 12px 35px; /* Espaciado interno, deja espacio para el ícono */
+    border: 1px solid #ddd; /* Borde de color gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+    outline: none; /* Elimina el borde azul en el foco */
+    transition: border-color 0.3s; /* Transición suave en el cambio de color del borde */
+}
+
+.input-box input:focus {
+    border-color: #333; /* Cambia el color del borde al hacer foco */
+}
+
+.input-box label {
+    position: absolute; /* Posiciona el label encima del input */
+    top: 12px; /* Espaciado desde la parte superior */
+    left: 35px; /* Espaciado desde la izquierda */
+    color: #aaa; /* Color del label */
+    font-size: 14px; /* Tamaño de fuente */
+    pointer-events: none; /* Evita que el label interfiera con el cursor */
+    transition: 0.3s; /* Transición suave */
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -5px; /* Mueve el label hacia arriba */
+    left: 30px; /* Ajusta el posicionamiento horizontal */
+    font-size: 12px; /* Reduce el tamaño de la fuente */
+    color: #333; /* Cambia el color del label */
+}
+
+.submit-btn {
+    width: 100%; /* Ocupa el 100% del ancho del contenedor */
+    padding: 12px; /* Espaciado interno */
+    background-color: #0358d9; /* Color de fondo */
+    border: none; /* Sin borde */
+    color: #fff; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 16px; /* Tamaño de fuente */
+    cursor: pointer; /* Cambia el cursor a pointer */
+    transition: background-color 0.3s; /* Transición en el cambio de color de fondo */
+}
+
+.submit-btn:hover {
+    background-color: #0349b3; /* Cambia el color de fondo al pasar el mouse */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño */
+    transition: transform 0.3s ease; /* Transición suave en la escala */
+}
+
+.back-link {
+    margin-top: 15px; /* Espaciado superior */
+    font-size: 14px; /* Tamaño de fuente */
+}
+
+.back-link a {
+    color: #333; /* Color del enlace */
+    text-decoration: none; /* Elimina el subrayado */
+    transition: color 0.3s; /* Transición en el cambio de color */
+    transform: scale(1.05); /* Aumenta ligeramente el tamaño del logo al pasar el mouse */
+}
+
+.back-link a:hover {
+    color: #555; /* Cambia el color del enlace al pasar el mouse */
+}

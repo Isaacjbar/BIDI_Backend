@@ -29,13 +29,15 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/auth/login", "/global/user/register", "/global/user/request-password-reset", "/global/user/reset-password").permitAll() // Permitir acceso sin autenticación
+                        .requestMatchers("/auth/login", "/global/register", "/global/request-password-reset", "/global/reset-password").permitAll() // Permitir acceso sin autenticación
                         .requestMatchers("/customer/**").hasRole("CLIENTE")
                         .requestMatchers("/admin/**").hasRole("ADMINISTRADOR")
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // Añadir filtro JWT
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)// Añadir filtro JWT
+                .csrf(csrf-> csrf.disable()
+        );
         return http.build();
     }
 

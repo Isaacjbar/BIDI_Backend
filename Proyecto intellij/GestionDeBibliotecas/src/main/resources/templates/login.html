@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <title>Inicio De Sesión BIDI</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo-container">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
+                        <g fill="none" stroke="#fff" stroke-width="2">
+                            <rect x="4" y="4" width="28" height="56" rx="10" ry="10" fill="#fff" />
+                            <rect x="32" y="4" width="28" height="56" rx="10" ry="10" fill="none" stroke="#fff" stroke-width="2" />
+                            <line x1="18" y1="14" x2="46" y2="14" stroke="#fff" />
+                            <line x1="18" y1="24" x2="46" y2="24" stroke="#fff" />
+                            <line x1="18" y1="34" x2="46" y2="34" stroke="#fff" />
+                            <line x1="18" y1="44" x2="46" y2="44" stroke="#fff" />
+                            <line x1="18" y1="54" x2="46" y2="54" stroke="#fff" />
+                        </g>
+                    </svg>
+                </div>
+                <span class="logo-text">BIDI</span>
+            </div>
+        </nav>
+    </header>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form>
+                <h1>Crear Cuenta</h1>
+                <div class="social-icons">
+                    <a href="https://accounts.google.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="https://www.facebook.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://github.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>o usa tu correo para registrarte</span>
+                <input type="text" placeholder="Nombre" id="nameRegister">
+                <input type="email" placeholder="Email" id="emailRegister">
+                <input type="password" placeholder="Contraseña" id="passwordRegister">
+                <input type="password" placeholder="Repetir contraseña" id="passwordRegisterConfirmed">
+                <button id="registerButton">Registrarse</button>
+            </form>
+        </div>
+        <div class="form-container sign-in">
+            <form>
+                <h1>Iniciar Sesión</h1>
+                <div class="social-icons">
+                    <a href="https://accounts.google.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="https://www.facebook.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://github.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com" class="icon" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>o usa tu correo y contraseña</span>
+                <input type="email" placeholder="Email" id="emailLogin">
+                <input type="password" placeholder="Contraseña" id="passwordLogin">
+                <a href="/templates/contra.html">¿Olvidaste tu contraseña?</a>
+                <button id="loginButton">Iniciar Sesión</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>¡Bienvenido de nuevo!</h1>
+                    <p>Ingresa tus datos personales para usar todas las funciones del sitio</p>
+                    <button class="hidden" id="login">Iniciar Sesión</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>¡Hola Amigo!</h1>
+                    <p>Registra con tus datos personales para usar todas las funciones del sitio</p>
+                    <button class="hidden" id="register">Registrarse</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 BIDI. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="/js/login.js"></script>
+    <script src="/js/login_logic.js"></script>
+</body>

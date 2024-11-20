@@ -134,13 +134,13 @@ public class AdminController {
     }
 
     // Cambiar estado de usuarios admin
-    @PutMapping("/user/change-status/{id}")
+    @PutMapping("/user/change-status")
     public ResponseEntity<Message> changeUserStatus(@Validated(UsuarioDTO.CambiarEstado.class) @RequestBody UsuarioDTO dto) {
         return usuarioService.changeStatus(dto);
     }
 
     // Consultar perfil admin
-    @GetMapping("/user/find/{id}")
+    @GetMapping("/user/find")
     public ResponseEntity<Message> findUser(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto, HttpServletRequest request) {
         return usuarioService.find(dto, request.getHeader("Authorization"));
     }
