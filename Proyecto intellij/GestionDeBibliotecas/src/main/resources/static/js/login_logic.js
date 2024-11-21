@@ -17,23 +17,29 @@ document.addEventListener("DOMContentLoaded", function () {
         const password = passwordLogin.value;
 
         try {
-            const response = await fetch("/sibi/auth/login", {
+            const response = await fetch("http://localhost:8080/sibi/auth/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                     "Accept": "*/*"
                 },
-                body: JSON.stringify(
-                    {
-                        email: email,
-                        password: password
-                    }
-                )
+                body: JSON.stringify({
+                    email: email,
+                    password: password
+                }),
+                credentials: 'include'
             });
 
             if (!response.ok) {
                 const error = await response.json();
-                throw new Error(error.message || "Error en el servidor");
+                // Dependiendo del código de error, podemos personalizar el mensaje
+                if (error.message === "Usuario no encontrado") {
+                    throw new Error("Usuario o contraseña incorrectos.");
+                } else if (error.message.includes("Invalid credentials")) {
+                    throw new Error("Credenciales inválidas.");
+                } else {
+                    throw new Error("Error al procesar la solicitud.");
+                }
             }
 
             const authResponse = await response.json();
@@ -41,12 +47,20 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.setItem("jwt", authResponse.jwt);
 
             if (authResponse.role.includes("ADMINISTRADOR")) {
-                window.location.href = "/admin/dashboard"; // Página para el administrador
+                window.location.href = "/GestionDeBibliotecas/templates/contra.html"; // Página para el administrador
             } else if (authResponse.role.includes("CLIENTE")) {
                 window.location.href = "/cliente/dashboard"; // Página para el cliente
             }
+
         } catch (error) {
-            alert("Error: " + error.message);
+            // Aquí mejoramos la alerta para más detalles dependiendo del tipo de error
+            if (error instanceof SyntaxError) {
+                alert("No se especificaron credenciales correctas.");
+            } else if (error instanceof TypeError) {
+                alert("Error de conexión. Verifique su conexión a internet o intente nuevamente.");
+            } else {
+                alert("Error: " + error.message);
+            }
         }
     });
 

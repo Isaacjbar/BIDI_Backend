@@ -1,7 +1,6 @@
 package com.sibi.GestionDeBibliotecas.Security;
 
 import com.sibi.GestionDeBibliotecas.Security.Jwt.JwtRequestFilter;
-import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,8 +34,7 @@ public class SecurityConfig {
                         .anyRequest().authenticated() // Requiere autenticación para cualquier otra solicitud
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado
-                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)// Añadir filtro JWT
-                .csrf(csrf-> csrf.disable()
+                .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class// Añadir filtro JWT
         );
         return http.build();
     }
