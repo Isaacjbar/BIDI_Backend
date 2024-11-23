@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const passwordLogin = document.getElementById("passwordLogin");
 
     const nameRegister = document.getElementById("nameRegister");
+    const surnameRegister = document.getElementById("surnameRegister");
     const emailRegister = document.getElementById("emailRegister");
     const passwordRegister = document.getElementById("passwordRegister");
     const passwordRegisterConfirmed = document.getElementById("passwordRegisterConfirmed");
@@ -32,35 +33,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!response.ok) {
                 const error = await response.json();
-                // Dependiendo del código de error, podemos personalizar el mensaje
                 if (error.message === "Usuario no encontrado") {
-                    throw new Error("Usuario o contraseña incorrectos.");
-                } else if (error.message.includes("Invalid credentials")) {
-                    throw new Error("Credenciales inválidas.");
+                    showAlert('error', 'Error', 'Usuario no encontrado', '');
+                } else if (error.message.includes("Correo o contraseña incorrectos")) {
+                    showAlert('error', 'Error', 'Correo o contraseña incorrectos', '');
+                } else if (error.message === "El usuario está inactivo") {
+                    showAlert('error', 'Error', 'El usuario está inactivo', '');
                 } else {
-                    throw new Error("Error al procesar la solicitud.");
+                    showAlert('error', 'Error', 'Error al procesar la solicitud', '');
                 }
             }
 
             const authResponse = await response.json();
-            alert("Inicio de sesión exitoso. Redirigiendo...");
             localStorage.setItem("jwt", authResponse.jwt);
 
             if (authResponse.role.includes("ADMINISTRADOR")) {
-                window.location.href = "/GestionDeBibliotecas/templates/contra.html"; // Página para el administrador
+                showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/GestionDeBibliotecas/templates/admin/dashboard.html');
             } else if (authResponse.role.includes("CLIENTE")) {
-                window.location.href = "/cliente/dashboard"; // Página para el cliente
+                showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/GestionDeBibliotecas/templates/customer/menu.html');
             }
 
         } catch (error) {
-            // Aquí mejoramos la alerta para más detalles dependiendo del tipo de error
-            if (error instanceof SyntaxError) {
-                alert("No se especificaron credenciales correctas.");
-            } else if (error instanceof TypeError) {
-                alert("Error de conexión. Verifique su conexión a internet o intente nuevamente.");
-            } else {
-                alert("Error: " + error.message);
-            }
+            showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');
         }
     });
 
@@ -68,18 +62,18 @@ document.addEventListener("DOMContentLoaded", function () {
         event.preventDefault();
 
         const name = nameRegister.value;
+        const surname = surnameRegister.value;
         const email = emailRegister.value;
         const password = passwordRegister.value;
         const passwordConfirmed = passwordRegisterConfirmed.value;
 
-        // Validar que las contraseñas coincidan
         if (password !== passwordConfirmed) {
-            alert("Las contraseñas no coinciden");
+            showAlert('error', 'Error', 'Las contraseñas no coinciden.', '');
             return;
         }
 
         try {
-            const response = await fetch("/sibi/global/register", {
+            const response = await fetch("http://localhost:8080/sibi/global/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -87,24 +81,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(
                     {
-                        name: name,
-                        email: email,
-                        password: password
+                        nombre: name,
+                        apellidos: surname,
+                        correo: email,
+                        contrasena: password
                     }
                 )
             });
 
             if (!response.ok) {
-                const error = await response.json();
-                throw new Error(error.message || "Error en el servidor");
+                const errorResponse = await response.json();
+
+                if (typeof errorResponse === 'object' && !errorResponse.text) {
+                    const errorMessages = Object.values(errorResponse).join("\n");
+                    showAlert('error', 'Error', errorMessages, '');
+                } else if (errorResponse.text) {
+                    showAlert('error', 'Error', errorResponse.text, '');
+                }
+                return;
             }
 
-            const registerResponse = await response.json();
-            alert("Registro exitoso. Por favor, inicia sesión." + registerResponse);
-
-            window.location.href = "/sibi/login.html"; // corregir
+            const successResponse = await response.json();
+            showAlert('success', 'Éxito', successResponse.text + 'Por favor, inicia sesión', '/GestionDeBibliotecas/templates/global/login.html');
         } catch (error) {
-            alert("Error: " + error.message);
+            showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');
         }
     });
 });

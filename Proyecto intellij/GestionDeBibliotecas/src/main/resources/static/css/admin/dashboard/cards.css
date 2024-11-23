@@ -1,0 +1,166 @@
+/* Estilos de las cards para asegurar que estén en la capa superior */
+.card-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: 2%;
+    flex-wrap: wrap;
+    gap: 25px;
+    z-index: 3; /* Cards por encima de las olas */
+    text-align: center;
+    padding-bottom: 3em;
+}
+
+.card {
+    width: 230px; 
+    height: 260px;
+    border-radius: 50px;
+    background: #e0e0e0;
+    box-shadow: -1px -1px 1px rgba(255, 255, 255, 0.5);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.3s;
+    z-index: 3;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.card:hover {
+    transform: scale(1.03);
+    transition: transform 0.3s;
+    border: 2px solid transparent; /* Borde transparente, para no añadir un borde sólido */
+    box-shadow: 0 0 15px rgba(63, 81, 181, 0.3), 0 0 30px rgba(33, 150, 243, 0.4); /* Brillo sutil */
+    outline: none; /* Eliminar el outline por defecto */ 
+}
+.card:active {
+    box-shadow: 0 0 20px rgba(33, 150, 243, 0.6), 0 0 40px rgba(63, 81, 181, 0.6); /* Brillo más intenso al hacer clic */
+}
+
+.card:focus-visible{
+    border: 2px solid transparent; /* Borde transparente */
+    box-shadow: 0 0 15px rgba(63, 81, 181, 0.4), 0 0 25px rgba(33, 150, 243, 0.5);  /* Sombra más suave y sutil */
+    outline: none;  /* Eliminar el outline predeterminado */
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    
+}
+
+.card-icon {
+    background:linear-gradient(to bottom, #056dbb, #001f4d);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+    margin-left: 5px;
+    position: relative;
+
+}
+
+.card-icon svg {
+    width: 40px;
+    height: 40px;
+    fill: #c2bfbf;
+}
+
+.status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4CAF50; /* Verde para todos los estados */
+    border: 2px solid #e0e0e0;
+}
+
+.card[data-status="inactivo"] .status-indicator {
+    background-color: #F44336;
+}
+
+
+.card-title {
+    font-size: 1.3em; 
+    font-weight: 600;
+    text-align: center; 
+    width: 130px;
+}
+
+.card-description {
+    color: #555;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.card-data {
+    color: rgb(39 38 38 / 75%);
+    margin-right: 5px;
+}
+  
+.card[data-status="activo"]  {
+    opacity:1;
+}
+
+.card[data-status="inactivo"]  {
+    opacity: 0.6;
+    position: relative;
+}
+
+.card-edit-icon {
+    display: inline; /* Inicialmente oculto */
+    position: absolute;
+    right: 22px;
+    cursor: pointer;
+    fill: #8d8f8d; /* Color del icono de lápiz */
+}
+
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    70% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.edit-mode .card-edit-icon {
+    animation: bounceIn 0.5s ease forwards;
+}
+
+
+/* Sombra para la tarjeta seleccionada */
+.highlight {
+    box-shadow: 0 0 15px 5px rgba(0, 150, 255, 0.7); 
+    transition: box-shadow 0.2s ease;
+}
+
+/* Estilos del botón de activación/desactivación */
+.toggle-button {
+    position: absolute;
+    bottom: 13px;
+    right: 35px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 5; /* Coloca el botón encima de la opacidad */
+}

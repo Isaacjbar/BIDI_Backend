@@ -1,0 +1,199 @@
+/*TODO SOBRE EL NAV*/ 
+
+
+.book-icon {
+    width: 40px;
+    height: 40px;
+    fill: white; 
+}
+
+/* Contenedor del logo y el texto "BIDI" */
+.logo-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.1); 
+}
+
+
+.logo-text {
+    font-size: 1.5rem; 
+    font-weight: 700;
+    color: white;
+    margin-left: 10px; 
+}
+
+
+.profile-icon {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; 
+    transition: transform 0.3s ease; 
+}
+
+.profile-icon svg {
+    width: 32px;
+    height: 32px;
+    stroke: white;
+    transition: transform 0.3s ease; 
+}
+
+
+.profile-icon:hover svg {
+    transform: scale(1.2); 
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #001f4d;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilos de los enlaces */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem; 
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links li:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1.2)!important;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Estilos básicos */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #00264d;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile-icon {
+    margin-left: 20px;
+}
+
+/* El menu hamburguesa lo puedes cambiar de posicion */
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 4px 0;
+}
+
+
+/* Estilos para el menú lateral */
+.side-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 170px;
+    padding-top: 35px;
+    transform: translateX(100%);
+    transition: transform 0.5s ease;
+    display: flex;
+    overflow-x: hidden; /* Para evitar que el pseudo-elemento sobresalga */
+}
+
+/* Pseudo-elemento para el desenfoque de fondo */
+.side-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Color de fondo con transparencia */
+    filter: blur(4px); /* Efecto de desenfoque */
+    z-index: -1; /* Colocar el fondo detrás del contenido */
+}
+
+.side-menu.active {
+    z-index: 1000;
+    display: block;
+    transform: translateX(0);
+}
+
+.side-menu-links {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.side-menu-links li {
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.side-menu-links a {
+    color: #fff; /* Mantener el texto blanco sin desenfoque */
+    text-decoration: none;
+    display: block;
+}
+
+/* Botón de cierre del menú lateral */
+.close-btn {
+    font-size: 24px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+}
+

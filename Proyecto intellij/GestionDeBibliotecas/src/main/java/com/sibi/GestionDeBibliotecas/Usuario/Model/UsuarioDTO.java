@@ -16,7 +16,7 @@ public class UsuarioDTO {
     private String apellidos;
 
     @NotBlank(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo no puede estar vacío")
-    @Email(groups = {Registrar.class, Modificar.class, Solicitud.class}, message = "El correo debe tener un formato válido")
+    @Email(groups = {Registrar.class, Modificar.class, Solicitud.class, Validacion.class}, message = "El correo debe tener un formato válido")
     private String correo;
 
     @NotBlank(groups = {Registrar.class, Modificar.class, Validacion.class, Recuperacion.class}, message = "La contraseña no puede estar vacía")
@@ -27,7 +27,7 @@ public class UsuarioDTO {
     private String numeroTelefono;
 
     @NotBlank(groups = {Validacion.class}, message = "El código no puede estar vacío")
-    @Max(value = 6, groups = {Validacion.class}, message = "El código no debe exceder el número de caracteres")
+    @Size(min = 6, max = 6, groups = {Validacion.class}, message = "El código debe tener exactamente 6 caracteres")
     private String codigo;
 
     private Date codigoGeneradoEn;

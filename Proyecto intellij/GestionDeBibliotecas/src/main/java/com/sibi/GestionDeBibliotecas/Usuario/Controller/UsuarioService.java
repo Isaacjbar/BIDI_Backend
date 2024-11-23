@@ -103,9 +103,6 @@ public class UsuarioService {
         if (usuarioDTO.getContrasena().length() > 255) {
             return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioDTO.getNumeroTelefono().length() > 10) {
-            return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
         String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
         if (!usuarioDTO.getContrasena().matches(contraseña)) {
             return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -120,14 +117,14 @@ public class UsuarioService {
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
 
-        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE, usuarioDTO.getNumeroTelefono());
+        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE);
         usuario = usuarioRepository.saveAndFlush(usuario);
 
         if (usuario == null) {
             return new ResponseEntity<>(new Message("El usuario no se registró", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
 
-        logger.info("El registro ha sido realizada correctamente");
+        logger.info("El registro ha sido realizado correctamente");
         return new ResponseEntity<>(new Message(usuario, "El usuario se registró correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
@@ -372,17 +369,19 @@ public class UsuarioService {
         usuario.setCodigoGeneradoEn(new Date(System.currentTimeMillis()));
         usuarioRepository.saveAndFlush(usuario);
 
-        emailService.sendEmail(usuarioDTO.getCorreo(), "Recuperación de contraseña, tu código de verificación es: " + codigo,
-                "Para recuperar tu contraseña, haz clic en el siguiente enlace: " +
-                        "http://localhost:8080/sibi/global/reset-password");
+        emailService.sendEmail(
+                usuarioDTO.getCorreo(),
+                "Recuperación de contraseña BIDI",
+                "Tu código de verificación es: " + codigo
+        );
 
-        return new ResponseEntity<>(new Message(usuario, "Correo de recuperación enviado correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>(new Message(usuario, "Correo de recuperación enviado correctamente, verifica tu bandeja de entrada", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> resetPassword(UsuarioDTO usuarioDTO) {
-        Optional<Usuario> usuarioOptional = usuarioRepository.findByCodigo(usuarioDTO.getCodigo());
+        Optional<Usuario> usuarioOptional = usuarioRepository.findByCodigoAndCorreo(usuarioDTO.getCodigo(), usuarioDTO.getCorreo());
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("El código proporcionado no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
@@ -407,7 +406,7 @@ public class UsuarioService {
         if (usuario == null) {
             return new ResponseEntity<>(new Message("Hubo un error al restablecer la contraseña", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<>(new Message("Contraseña restablecida correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>(new Message("Contraseña restablecida correctamente, inicia sesión.", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------

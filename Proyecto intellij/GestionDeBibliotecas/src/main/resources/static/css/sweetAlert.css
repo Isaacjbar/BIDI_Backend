@@ -1,0 +1,22 @@
+/* Bloquea el desplazamiento solo cuando la alerta está activa */
+body.swal2-shown {
+    overflow: hidden !important; /* Desactiva el desplazamiento cuando la alerta está mostrada */
+}
+
+/* Estilos para la alerta */
+.my-alert-popup {
+    font-family: 'Arial', sans-serif; /* Cambia la fuente */
+    background-color: white; /* Color de fondo blanco */
+    color: #333333; /* Texto oscuro */
+    border-radius: 10vh; /* Bordes redondeados */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5); /* Sombra */
+    position: fixed; /* Posición fija para que no se mueva */
+    top: 50%; /* Centra verticalmente */
+    left: 50%; /* Centra horizontalmente */
+    transform: translate(-50%, -50%); /* Ajusta la alerta en el centro exacto */
+    z-index: 9999; /* Asegura que la alerta esté encima de otros contenidos */
+    padding: 20px;
+    max-width: 80%; /* Limita el ancho máximo */
+    min-width: 250px; /* Ancho mínimo */
+    overflow: auto; /* Evita que el contenido de la alerta se desborde */
+}

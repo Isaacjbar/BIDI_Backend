@@ -1,0 +1,61 @@
+/* Fondo y animación */
+.background-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2; /* Fondo detrás de las olas */
+    overflow-x: hidden;
+    background: rgb(2, 0, 36);
+    background: radial-gradient(circle, rgba(2, 0, 36, 1) -50%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.content {
+    padding: 25px;
+    overflow-x: auto;
+}
+
+.wave-container {
+    position: fixed; /* Olas fijas sobre el fondo */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Evita interacción */
+    z-index: 1; /* Coloca las olas encima del fondo pero detrás del contenido principal */
+}
+
+/* Estilos de las olas */
+.wave {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: #056dbb;
+    box-shadow: 2px 16px 16px #00d4ff;
+    filter: blur(25px);
+    opacity: 0.7;
+}
+
+.wave.left {
+    left: -150px;
+    top: -100px;
+    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
+}
+
+.wave.right {
+    right: -150px;
+    top: -100px;
+    animation: moveWaveVertical 2.5s infinite ease-in-out alternate;
+}
+
+/* Animación de movimiento vertical */
+@keyframes moveWaveVertical {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(80vh);
+    }
+}

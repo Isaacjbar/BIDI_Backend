@@ -71,7 +71,7 @@ body {
     display: flex; /* Usa flexbox para alinear los elementos de la barra de navegación */
     justify-content: space-between; /* Espacia los elementos entre los bordes */
     align-items: center; /* Centra los elementos verticalmente */
-    
+
 }
 
 /* Contenedor principal de los formularios */
@@ -96,7 +96,7 @@ body {
     line-height: 20px; /* Altura de línea */
     letter-spacing: 0.3px; /* Espaciado entre letras */
     margin: 20px 0; /* Márgenes superior e inferior */
-    
+
 }
 
 /* Estilos para los elementos span dentro del contenedor */
@@ -173,7 +173,7 @@ body {
     top: 0; /* Parte superior */
     height: 100%; /* Altura completa */
     transition: all 0.6s ease-in-out; /* Transición suave para el movimiento */
-    
+
 }
 
 /* Estilo para el contenedor de inicio de sesión */
@@ -181,13 +181,13 @@ body {
     left: 0; /* Alineación a la izquierda */
     width: 50%; /* Ancho del 50% */
     z-index: 2; /* Z-index más alto para aparecer por encima */
-    
+
 }
 
 /* Cuando el contenedor tiene la clase "active", mueve el formulario de inicio de sesión */
 .container.active .sign-in {
     transform: translateX(100%); /* Mueve el formulario hacia la derecha */
-    
+
 }
 
 /* Estilo para el contenedor de registro */
@@ -320,6 +320,3 @@ body {
     bottom: 0;
     left: 0;
 }
-
-
-

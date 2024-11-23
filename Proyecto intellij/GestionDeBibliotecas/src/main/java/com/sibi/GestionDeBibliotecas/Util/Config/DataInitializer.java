@@ -24,8 +24,7 @@ public class DataInitializer {
                         "",
                         "admin@example.com",
                         passwordEncoder.encode("admin123"),
-                        Rol.ADMINISTRADOR,
-                        "555-1234"
+                        Rol.ADMINISTRADOR
                 );
                 usuarioRepository.saveAndFlush(adminUser);
             }
@@ -38,8 +37,7 @@ public class DataInitializer {
                         "",
                         "cliente@example.com",
                         passwordEncoder.encode("cliente123"),
-                        Rol.CLIENTE,
-                        "555-5678"
+                        Rol.CLIENTE
                 );
                 usuarioRepository.saveAndFlush(clienteUser);
             }
@@ -52,8 +50,7 @@ public class DataInitializer {
                         "",
                         "invitado@example.com",
                         passwordEncoder.encode("invitado123"),
-                        Rol.INVITADO,
-                        "555-9876"
+                        Rol.INVITADO
                 );
                 usuarioRepository.saveAndFlush(invitadoUser);
             }

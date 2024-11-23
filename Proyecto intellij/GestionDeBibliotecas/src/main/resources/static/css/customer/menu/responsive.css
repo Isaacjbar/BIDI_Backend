@@ -1,0 +1,297 @@
+@media (max-width: 800px) {
+    .nav-links {
+        display: none;
+    }
+    .menu-toggle {
+        display: block;
+    }
+}
+/* RESPONSIVIDAD */
+
+/* Responsividad para pantallas medianas*/
+@media (max-width: 600px){
+    .section-title {
+        font-size: 1.5em;
+        padding: 3px 10px;
+    }
+    .section-header {
+        flex-direction: column; 
+        align-items: flex-start;
+    }
+    .filter-group {
+        margin-top: 10px;
+        margin-left: 0px !important;
+    }
+    .content{
+        margin-left: 8px;
+    }
+}
+
+@media (max-width: 600px){
+    .status-text {
+        font-size: 1em;
+    }
+    .switch {
+        width: 40px;
+        height: 20 px;
+    }
+    .slider::before {
+        height: 18px;
+        width: 18px;
+    }
+    input:checked + .slider:before {
+        transform: translateX(15px);
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        width: 30px;
+        padding: 8px;
+    }
+    .sidebar .icon {
+        margin: 6px 0;
+    }
+    .sidebar .icon svg {
+        width: 18px;
+        height: 18px;
+    }
+   
+}
+
+@media (max-width: 600px) {
+    .card-container{
+        justify-content: center;
+    }
+    .card {
+        max-width: 230px;
+        height: 230px;
+        padding: 12px;
+    }
+    .card-icon {
+        width: 40px;
+        height: 40px;
+    }
+    .card-icon svg {
+        width: 28px;
+        height: 28px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-description {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 600px) {
+    .modal-container {
+        width: 60%;
+        max-width: 60%;
+        margin: 10% auto;
+    }
+
+    .modal-title {
+        font-size: 20px;
+    }
+
+    .form-group input {
+        padding: 6px;
+    }
+
+    .btn-submit, .btn-cancel {
+        font-size: 14px;
+        padding: 8px 16px;
+    }
+    .modal-header{
+        padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
+    }
+}
+
+/* Responsividad para pantallas muy pequeñas*/
+@media (max-width: 400px) {
+    .section-title {
+        font-size: 1.2em;
+    }
+    .content{
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 400px){
+    .status-text {
+        font-size: 0.9em;
+    }
+    .switch {
+        width: 35px;
+        height: 18px;
+    }
+    .slider::before{
+        height: 15px;
+        width: 15px;
+    }
+}
+    
+
+@media (max-width: 400px) {
+    .sidebar {
+        width: 25px;
+        padding: 6px;
+    }
+    .sidebar .icon {
+        margin: 4px 0;
+    }
+
+    .sidebar .icon svg{
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 400px) {
+    .card-container{
+        margin-left: 1.5%;
+    }
+    .card {
+        max-width: 220px;
+        height: 210px;
+        padding: 10px;
+        border-radius: 40px;
+    }
+    .card-icon {
+        width: 35px;
+        height: 35px;
+    }
+    .card-icon svg {
+        width: 24px;
+        height: 24px;
+    }
+    .card-title {
+        font-size: 1em;
+    }
+    .card-description {
+        font-size: 0.8em;
+    }
+}
+
+@media (max-width: 401px) {
+    .modal-container {
+        width: 80%;
+        max-width: 80%;
+        margin: 15% auto;
+    }
+
+    .modal-title {
+        font-size: 17px;
+    }
+
+    .form-group input {
+        padding: 6px;
+    }
+
+    .btn-submit, .btn-cancel {
+        font-size: 14px;
+        padding: 6px 14px;
+    }
+    .modal-header{
+        padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
+    }
+}
+
+
+
+/* Responsividad para pantallas grandes*/
+@media (min-width: 1200px) {
+    .section-title {
+        font-size: 1.9em; /* Tamaño más moderado del título */
+        padding: 6px 15px;
+    }
+    .filter-group .status-text {
+        font-size: 1.3em; /* Tamaño más moderado para el texto "Inactivos" */
+    }
+    .switch {
+        width: 48px; /* Tamaño moderado del switch */
+        height: 24px;
+    }
+    .sidebar {
+        width: 44px; /* Tamaño de barra lateral ligeramente ajustado */
+        padding: 10px;
+    }
+    .sidebar .icon {
+        margin: 8px 0; /* Espacio ajustado entre los iconos */
+    }
+    .sidebar .icon svg {
+        width: 22px; /* Tamaño moderado de los iconos */
+        height: 22px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card {
+        width: 250px;
+        height: 240px;
+        padding: 18px;
+    }
+    .card-icon {
+        width: 50px;
+        height: 50px;
+    }
+    .card-icon svg {
+        width: 35px;
+        height: 35px;
+    }
+    .card-title {
+        font-size: 1.2em;
+    }
+    .card-description {
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 1200px) {
+    .modal-container {
+        width: 40%;
+        max-width: 50%;
+        margin: 5% auto;
+    }
+
+    .modal-title {
+        font-size: 17px;
+    }
+
+    .form-group input {
+        padding: 6px;
+    }
+
+    .btn-submit, .btn-cancel {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    .modal-header{
+        padding: 20px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="password"] {
+    padding-left: 2rem;    /* Espacio para el icono */
+}
+}
+
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+}

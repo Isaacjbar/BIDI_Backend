@@ -1,0 +1,180 @@
+body {
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+/* Main Content */
+main {
+    flex-grow: 1;
+    margin-left: 5em;
+    padding: 2rem;
+    text-align: left;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background: transparent;
+    z-index: 1;
+}
+
+/* Contenedor del encabezado de la sección */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: nowrap;
+}
+
+/* Fondo y efecto hover para el botón "Registrar" */
+.filter-group {
+    background-color: #001f4d;
+    padding: 5px;
+    border-radius: 8px;
+    display: inline-flex; /* Permite que los elementos se alineen en una sola fila */
+    align-items: center;
+    margin-right: auto; /* Espacio entre los elementos */
+    transition: transform 0.2s ease;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-left: 10px;
+}
+
+.filter-group:hover {
+    transform: scale(1.05); /* Agrandamiento en hover */
+}
+
+/* Contenedor de las acciones */
+.section-actions {
+    display: flex;
+    align-items: center;
+}
+
+/* Estilo del título */
+.section-title {
+    font-size: 1.8em;
+    font-weight: 200;
+    color: #fff;
+    background-color: #001f4d;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin: 0;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    white-space: nowrap;
+}
+
+.section-title:hover {
+    transform: scale(1.05);
+}
+
+/* Botón minimalista */
+.create-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1.2em;
+    font-weight: 200;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Texto de estado */
+.status-text {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: 200;
+}
+
+/* Estilos para el switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    border-radius: 25px;
+    transition: 0.4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+}
+
+input:checked + .slider {
+    background-color: #056dbb;
+}
+
+input:checked + .slider:before {
+    transform: translateX(24px);
+}
+
+/* Barra lateral flotante */
+.sidebar {
+    position: fixed;
+    top: 55%;
+    left: 10px;
+    transform: translateY(-50%);
+    width: 42px;
+    height: auto;
+    background-color: #001f4d;
+    border-radius: 10px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(36, 62, 255, 0.409);
+    transition: width 0.3s ease, padding 0.3s ease;
+}
+
+/* Estilo de los iconos en la barra lateral */
+.sidebar .icon {
+    margin: 8px 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.sidebar .icon:hover {
+    transform: scale(1.1);
+    background-color: #003586;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.sidebar .icon svg {
+    width: 20px;
+    height: 20px;
+    fill: #ffffff;
+}
+
+

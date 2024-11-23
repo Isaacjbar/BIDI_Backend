@@ -71,13 +71,12 @@ public class Usuario {
         this.codigoGeneradoEn = codigoGeneradoEn;
     }
 
-    public Usuario(String nombre, String apellidos, String correo, String contrasena, Rol rol, String numeroTelefono) {
+    public Usuario(String nombre, String apellidos, String correo, String contrasena, Rol rol) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.contrasena = contrasena;
         this.rol = rol;
-        this.numeroTelefono = numeroTelefono;
     }
 
     public Long getUsuarioId() {
