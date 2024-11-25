@@ -7,6 +7,7 @@ import com.sibi.GestionDeBibliotecas.Security.UserDetailsServiceImpl;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
+import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import com.sibi.GestionDeBibliotecas.Util.Enum.TypesResponse;
 import com.sibi.GestionDeBibliotecas.Util.Response.Message;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -36,22 +39,26 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-    public AuthResponse login(@RequestBody AuthRequest authRequest) throws Exception {
-        Usuario user = userRepository.findByCorreo(authRequest.getEmail()).orElseThrow(() -> new Exception("Usuario no encontrado"));
+    public AuthResponse login(@RequestBody AuthRequest authRequest) {
+        Optional<Usuario> userOptional = userRepository.findByCorreo(authRequest.getEmail());
+        if (userOptional.isEmpty()) {
+            return new AuthResponse("", 0L, "Usuario no encontrado", 0, Rol.INVITADO);
+        }
 
+        Usuario user = userOptional.get();
         if (user.getEstado() != Estado.ACTIVO) {
-            throw new Exception("El usuario está inactivo");
+            return new AuthResponse("", 0L, "El usuario está inactivo", 0, Rol.INVITADO);
         }
 
         if (!passwordEncoder.matches(authRequest.getPassword(), user.getContrasena())) {
-            throw new Exception("Correo o contraseña incorrectos");
+            return new AuthResponse("", 0L, "Correo o contraseña incorrectos", 0, Rol.INVITADO);
         }
 
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authRequest.getEmail());
         final String jwt = jwtUtil.generateToken(userDetails, user.getUsuarioId());
 
         if (authService.isTokenInvalid(jwt)) {
-            throw new Exception("Token inválido");
+            return new AuthResponse("", 0L, "Sesión expirada", 0, Rol.INVITADO);
         }
 
         long expirationTime = jwtUtil.getExpirationTime();

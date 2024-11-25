@@ -21,6 +21,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 import java.sql.SQLException;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -366,7 +369,7 @@ public class UsuarioService {
         codigo = new String(caracter);
 
         usuario.setCodigo(codigo);
-        usuario.setCodigoGeneradoEn(new Date(System.currentTimeMillis()));
+        usuario.setCodigoGeneradoEn(LocalDateTime.now());
         usuarioRepository.saveAndFlush(usuario);
 
         emailService.sendEmail(
@@ -388,10 +391,10 @@ public class UsuarioService {
 
         Usuario usuario = usuarioOptional.get();
 
-        Date codigoGeneradoEn = usuario.getCodigoGeneradoEn();
-        Instant codigoGeneradoInstant = codigoGeneradoEn.toInstant();
-        Instant ahora = Instant.now();
-        long minutosTranscurridos = ChronoUnit.MINUTES.between(codigoGeneradoInstant, ahora);
+        LocalDateTime codigoGeneradoEn = usuario.getCodigoGeneradoEn();
+        LocalDateTime ahora = LocalDateTime.now();
+        long minutosTranscurridos = ChronoUnit.MINUTES.between(codigoGeneradoEn, ahora);
+
         if (minutosTranscurridos > 15) {
             return new ResponseEntity<>(new Message("El código ha expirado", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }

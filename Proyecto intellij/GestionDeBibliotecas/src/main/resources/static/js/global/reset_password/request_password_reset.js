@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const requestButton = document.getElementById("requestButton");
-    const email = document.getElementById("email").value;
-    localStorage.setItem("email", email);
 
     requestButton.addEventListener("click", async function (event) {
         event.preventDefault();
+        const email = document.getElementById("email").value;
+        localStorage.setItem('email', email);
 
         try {
             const response = await fetch("http://localhost:8080/sibi/global/request-password-reset", {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             if (data.type === 'SUCCESS') {
-                showAlert('success', 'Éxito', data.message, '/GestionDeBibliotecas/templates/global/new_password.html');
+                showAlert('success', 'Éxito', data.text, '/GestionDeBibliotecas/templates/global/new_password.html');
             }
         } catch (error) {
             showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');

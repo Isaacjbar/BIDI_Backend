@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resetButton.addEventListener("click", async function (event) {
         event.preventDefault();
 
-        const code = document.getElementById("code").value;
+        const code = document.getElementById("code").value.trim();
         const password = document.getElementById("password").value;
         const passwordConfirmed = document.getElementById("passwordConfirmed").value;
 
@@ -33,17 +33,25 @@ document.addEventListener("DOMContentLoaded", function () {
             });
 
             if (!response.ok) {
-                const error = await response.json();
-                showAlert('error', 'Error', error.message, '');
+                const errorResponse = await response.json();
+
+                if (typeof errorResponse === 'object' && !errorResponse.text) {
+                    const errorMessages = Object.values(errorResponse).join(", ");
+                    showAlert('error', 'Error', errorMessages, '');
+                } else if (errorResponse.text) {
+                    showAlert('error', 'Error', errorResponse.text, '');
+                }
+                return;
             }
 
             const data = await response.json();
+
             if (data.type === 'SUCCESS') {
-                showAlert('success', 'Éxito', data.message, '/GestionDeBibliotecas/templates/global/login.html');
+                showAlert('success', 'Éxito', data.text, '/GestionDeBibliotecas/templates/global/login.html');
             }
         } catch (error) {
             showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');
         }
-        localStorage.removeItem("email");
+        localStorage.removeItem('email');
     });
 });

@@ -6,7 +6,7 @@ import com.sibi.GestionDeBibliotecas.Util.Enum.Estado;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -48,7 +48,7 @@ public class Usuario {
 
     @JsonIgnore
     @Column(name = "code_generated_at")
-    private Date codigoGeneradoEn;
+    private LocalDateTime codigoGeneradoEn;
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
@@ -58,7 +58,7 @@ public class Usuario {
 
     }
 
-    public Usuario(Long usuarioId, String nombre, String apellidos, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono, String codigo, Date codigoGeneradoEn) {
+    public Usuario(Long usuarioId, String nombre, String apellidos, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono, String codigo, LocalDateTime codigoGeneradoEn) {
         this.usuarioId = usuarioId;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -151,11 +151,11 @@ public class Usuario {
         this.codigo = codigo;
     }
 
-    public Date getCodigoGeneradoEn() {
+    public LocalDateTime getCodigoGeneradoEn() {
         return codigoGeneradoEn;
     }
 
-    public void setCodigoGeneradoEn(Date codigoGeneradoEn) {
+    public void setCodigoGeneradoEn(LocalDateTime codigoGeneradoEn) {
         this.codigoGeneradoEn = codigoGeneradoEn;
     }
 

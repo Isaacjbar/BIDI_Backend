@@ -1,9 +1,4 @@
 function showAlert(icon, title, text, redirectUrl) {
-    const container = document.getElementById('container');
-    const originalPosition = container.scrollTop;
-
-    container.style.overflow = 'hidden';
-
     Swal.fire({
         icon: icon,
         title: title,
@@ -17,8 +12,6 @@ function showAlert(icon, title, text, redirectUrl) {
             popup: 'my-alert-popup',
         }
     }).then(() => {
-        container.scrollTop = originalPosition;
-
         if (redirectUrl !== "") {
             setTimeout(() => {
                 window.location.href = redirectUrl;

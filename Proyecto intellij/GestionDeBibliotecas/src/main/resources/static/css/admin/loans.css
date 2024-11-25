@@ -1,0 +1,18 @@
+.modal-container{
+    margin: 8% auto; /* Centra el modal en la pantalla */ 
+}
+
+.card-container{
+    gap: 18px;
+}
+
+.card {
+    width: 255px; 
+    height: 250px; 
+}
+
+.card-title{
+    width: 140px; 
+    margin-left: 10px; 
+}
+

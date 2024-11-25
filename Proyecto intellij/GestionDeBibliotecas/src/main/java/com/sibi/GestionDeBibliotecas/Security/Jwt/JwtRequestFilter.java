@@ -47,6 +47,17 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             logger.info("Cabecera: {} = {}", headerName, headerValue);
         }
 
+        // Si es una solicitud OPTIONS, solo retornamos una respuesta vacía y permitimos continuar con la cadena de filtros
+        if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            String origin = request.getHeader("Origin");
+            response.setStatus(HttpServletResponse.SC_OK);
+            response.setHeader("Access-Control-Allow-Origin", origin);
+            response.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            response.setHeader("Access-Control-Allow-Headers", "Authorization, Content-Type, Accept, Origin");
+            response.setHeader("Access-Control-Allow-Credentials", "true");
+            return; // No necesitamos continuar con la cadena de filtros, ya que estamos respondiendo la solicitud OPTIONS
+        }
+
         final String authorizationHeader = request.getHeader("Authorization");
 
         String email = null;

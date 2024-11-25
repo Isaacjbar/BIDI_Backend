@@ -35,7 +35,7 @@ public class SecurityConfig {
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Sin estado
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class// Añadir filtro JWT
-        );
+                );
         return http.build();
     }
 

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de usuarios</title>
+    <link rel="stylesheet" href="/static/css/admin/users/globalStyles.css">
+    <link rel="stylesheet" href="/static/css/admin/users/footer.css">
+    <link rel="stylesheet" href="/static/css/admin/users/navbar.css">
+    <link rel="stylesheet" href="/static/css/admin/users/modal.css">
+    <link rel="stylesheet" href="/static/css/admin/users/waves.css">
+    <link rel="stylesheet" href="/static/css/admin/users/variables.css">
+    <link rel="stylesheet" href="/static/css/admin/users/responsive.css">
+    <link rel="stylesheet" href="/static/css/admin/users/cards.css">
+    <link rel="stylesheet" href="/static/css/sweetAlert.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Iconos-->
+</head>
+<body>
+
+    <div class="background-container">
+        <div class="wave-container">
+            <div class="wave left"></div>
+            <div class="wave right"></div>
+        </div>
+    </div>
+
+
+    <aside class="sidebar">
+        <div class="icon" title="Registrar" onclick="openModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+            </svg>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container" title="Ir al inicio">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
+                        <g fill="none" stroke="#fff" stroke-width="2">
+                            <rect x="4" y="4" width="28" height="56" rx="10" ry="10" fill="#fff" />
+                            <rect x="32" y="4" width="28" height="56" rx="10" ry="10" fill="none" stroke="#fff" stroke-width="2" />
+                            <line x1="18" y1="14" x2="46" y2="14" stroke="#fff" />
+                            <line x1="18" y1="24" x2="46" y2="24" stroke="#fff" />
+                            <line x1="18" y1="34" x2="46" y2="34" stroke="#fff" />
+                            <line x1="18" y1="44" x2="46" y2="44" stroke="#fff" />
+                            <line x1="18" y1="54" x2="46" y2="54" stroke="#fff" />
+                        </g>
+                    </svg>
+                </div>
+                <span class="logo-text">BIDI</span>
+            </div>
+
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#">Usuarios</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Libros</a></li>
+                    <li><a href="#">Préstamos</a></li>
+                </ul>
+
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+
+                <div class="side-menu" id="sideMenu">
+                    <div class="side-menu-background"></div>
+                    <button class="close-btn" onclick="toggleMenu()">x</button>
+                    <ul class="side-menu-links">
+                        <li><a href="#">Usuarios</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Libros</a></li>
+                        <li><a href="#">Préstamos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Ícono de perfil -->
+                <div class="profile-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="white" stroke-width="4">
+                        <circle cx="32" cy="22" r="10"/>
+                        <path d="M16 44c0-8 6-12 16-12s16 4 16 12v6H16z"/>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+        <!-- Contenido Principal -->
+        <main class="content">
+            <div class="section-header">
+                <div class="title-container">
+                <h1 class="section-title">Gestión de Usuarios</h1>
+                </div>
+                <div class="filter-group">
+                    <span class="status-text" id="statusText">Inactivos</span>
+                    <label class="switch">
+                        <input type="checkbox" id="statusSwitch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title">Registro</h2>
+            <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
+        </div>
+        <form id="registerForm">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="Nombres">Nombres: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="Nombres" name="Nombres">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Apellidos">Apellidos: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="Apellidos" name="Apellidos">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="email" name="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="telefono" name="telefono">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmar contraseña: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" name="confirm-password">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeModal('registerModal')">Cancelar</button>
+                <button type="submit" class="btn-submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Edición -->
+<div id="editModal" class="modal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title">Editar Tarjeta</h2>
+            <button class="close-button" onclick="closeModal('editModal')">&times;</button>
+        </div>
+        <form id="editForm">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="editNombres">Nombres:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="editNombres" name="Nombres" value="Nombres">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editApellidos">Apellidos:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="editApellidos" name="Apellidos" value="Apellidos">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Correo electrónico:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="text" id="editEmail" name="email" value="correo@gmail.com">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editTelefono">Teléfono:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="editTelefono" name="telefono" value="7771234567">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editPassword">Contraseña:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="editPassword" name="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="editConfirmPassword">Confirmar contraseña:</label>
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="editConfirmPassword" name="confirm-password">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" onclick="closeModal('editModal')">Cancelar</button>
+                <button type="submit" class="btn btn-submit" >Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Cards -->
+<div class="card-container">
+
+</div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 BIDI. Todos los derechos reservados.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="/static/js/admin/users/cardFunctions.js"></script>
+    <script src="/static/js/admin/users/filterFunctions.js"></script>
+    <script src="/static/js/admin/users/main.js"></script>
+    <script src="/static/js/admin/users/menuFunctions.js"></script>
+    <script src="/static/js/admin/users/modalFunctions.js"></script>
+    <script src="/static/js/admin/users/data.js"></script>
+    <script src="/static/js/sweetAlert.js"></script>
+
+</body>
+</html>
+ 

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Préstamos</title>
+    <link rel="stylesheet" href="../../../global css/cards.css"> 
+    <link rel="stylesheet" href="../../../global css/modal.css">
+    <link rel="stylesheet" href="../../../global css/globalStyles.css">
+    <link rel="stylesheet" href="../../../global css/waves.css">
+    <link rel="stylesheet" href="../../../global css/navbar.css">
+    <link rel="stylesheet" href="../../../global css/responsive.css">
+    <link rel="stylesheet" href="../../../global css/variables.css"> 
+    <link rel="stylesheet" href="../../../global css/footer.css">      
+    <link rel="stylesheet" href="../css/loans.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> <!-- Iconos-->
+</head>
+<body>
+    
+    <div class="background-container">
+        <div class="wave-container">
+            <div class="wave left"></div>
+            <div class="wave right"></div>
+        </div>
+    </div>
+
+
+    <aside class="sidebar">
+        <div class="icon" title="Registrar" onclick="openModal()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="white">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/>
+            </svg>
+        </div>
+    </aside>
+
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo-container" title="Ir al inicio">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="40" height="40" class="book-icon">
+                        <g fill="none" stroke="#fff" stroke-width="2">
+                            <rect x="4" y="4" width="28" height="56" rx="10" ry="10" fill="#fff" />
+                            <rect x="32" y="4" width="28" height="56" rx="10" ry="10" fill="none" stroke="#fff" stroke-width="2" />
+                            <line x1="18" y1="14" x2="46" y2="14" stroke="#fff" />
+                            <line x1="18" y1="24" x2="46" y2="24" stroke="#fff" />
+                            <line x1="18" y1="34" x2="46" y2="34" stroke="#fff" />
+                            <line x1="18" y1="44" x2="46" y2="44" stroke="#fff" />
+                            <line x1="18" y1="54" x2="46" y2="54" stroke="#fff" />
+                        </g>
+                    </svg>
+                </div>
+                <span class="logo-text">BIDI</span>
+            </div>
+    
+            <div class="nav-container">
+                <ul class="nav-links">
+                    <li><a href="#">Usuarios</a></li>
+                    <li><a href="#">Categorías</a></li>
+                    <li><a href="#">Libros</a></li>
+                    <li><a href="#">Préstamos</a></li>
+                </ul>
+    
+                <div class="menu-toggle" onclick="toggleMenu()">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+    
+                <div class="side-menu" id="sideMenu">
+                    <div class="side-menu-background"></div>
+                    <button class="close-btn" onclick="toggleMenu()">x</button>
+                    <ul class="side-menu-links">
+                        <li><a href="#">Usuarios</a></li>
+                        <li><a href="#">Categorías</a></li>
+                        <li><a href="#">Libros</a></li>
+                        <li><a href="#">Préstamos</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Ícono de perfil -->
+                <div class="profile-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32" fill="none" stroke="white" stroke-width="4">
+                        <circle cx="32" cy="22" r="10"/>
+                        <path d="M16 44c0-8 6-12 16-12s16 4 16 12v6H16z"/>
+                    </svg>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+        <!-- Contenido Principal -->
+        <main class="content">
+            <div class="section-header">
+                <div class="title-container">
+                <h1 class="section-title">Gestión de Préstamos</h1>
+                </div>
+                <div class="filter-group">
+                    <span class="status-text" id="statusText">Inactivos</span>
+                    <label class="switch">
+                        <input type="checkbox" id="statusSwitch">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+    <!-- Modal de Registro -->
+    <div id="registerModal" class="modal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title">Registro</h2>
+            <button class="close-button" onclick="closeModal('registerModal')">&times;</button>
+        </div>
+        <form id="registerForm">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="currentDate">Fecha de solicitud: </label>
+                    <div class="input-icon">
+                        <i class="fas fa-calendar"></i>
+                        <p id="currentDate" class="auto-generated-field">Fecha solicitud</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="expirationDate">Fecha de entrega: </label>
+                    <div class="input-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <p id="expirationDate" class="auto-generated-field">Fecha de expiración</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="book">Libro: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-book"></i>
+                        <select id="bookName" name="bookName" required>
+                            <!-- Las opciones de categorías serán cargadas dinámicamente -->
+                            <option value="" disabled selected>Seleccione un libro</option>
+                            <option>El Quijote de la Mancha</option>
+                            <option>El principito</option>
+                            <option>Los Juegos del Hambre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-cancel" onclick="closeModal('registerModal')">Cancelar</button>
+                <button type="submit" class="btn-submit">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Edición -->
+<div id="editModal" class="modal">
+    <div class="modal-container">
+        <div class="modal-header">
+            <h2 class="modal-title">Editar Préstamo</h2>
+            <button class="close-button" onclick="closeModal('editModal')">&times;</button>
+        </div>
+        <form id="editForm">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="currentDate">Fecha de solicitud: </label>
+                    <div class="input-icon">
+                        <i class="fas fa-calendar"></i>
+                        <p id="currentDate" class="auto-generated-field">Fecha solicitud</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="expirationDate">Fecha de entrega: </label>
+                    <div class="input-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                        <p id="expirationDate" class="auto-generated-field">Fecha de expiración</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="book">Libro: <span class="required">*</span></label>
+                    <div class="input-icon">
+                        <i class="fas fa-book"></i>
+                        <select id="editBookName" name="editBookName" required>
+                            <!-- Las opciones de categorías serán cargadas dinámicamente -->
+                            <option value="" disabled selected>Seleccione un libro</option>
+                            <option>El Quijote de la Mancha</option>
+                            <option>El principito</option>
+                            <option>Los Juegos del Hambre</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-cancel" onclick="closeModal('editModal')">Cancelar</button>
+                <button type="submit" class="btn btn-submit" >Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Cards -->
+<div class="card-container">
+    
+</div> 
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 BIDI. Todos los derechos reservados.</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../../../global js/cardFunctions.js"></script> 
+    <script src="../../../global js/main.js"></script> 
+    <script src="../../../global js/menuFunctions.js"></script>
+    <script src="../../../global js/filterFunctions.js"></script>
+    <script src="../../../global js/modalFunctions.js"></script>   
+    <script src="../js/dataLoans.js"></script>
+    <script src="../js/cardLoans.js"></script>
+    
+</body>
+</html>
+ 

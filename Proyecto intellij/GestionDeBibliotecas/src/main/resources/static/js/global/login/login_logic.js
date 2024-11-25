@@ -31,28 +31,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 credentials: 'include'
             });
 
-            if (!response.ok) {
-                const error = await response.json();
-                if (error.message === "Usuario no encontrado") {
-                    showAlert('error', 'Error', 'Usuario no encontrado', '');
-                } else if (error.message.includes("Correo o contraseña incorrectos")) {
-                    showAlert('error', 'Error', 'Correo o contraseña incorrectos', '');
-                } else if (error.message === "El usuario está inactivo") {
-                    showAlert('error', 'Error', 'El usuario está inactivo', '');
-                } else {
-                    showAlert('error', 'Error', 'Error al procesar la solicitud', '');
+            const authResponse = await response.json();
+            console.log(authResponse);
+
+            if (!authResponse.jwt) {
+                showAlert('error', 'Error', authResponse.email, '');
+            } else {
+                localStorage.setItem('jwt', authResponse.jwt);
+                if (authResponse.role.includes("ADMINISTRADOR")) {
+                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/GestionDeBibliotecas/templates/admin/dashboard.html');
+                } else if (authResponse.role.includes("CLIENTE")) {
+                    showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/GestionDeBibliotecas/templates/customer/menu.html');
                 }
             }
-
-            const authResponse = await response.json();
-            localStorage.setItem("jwt", authResponse.jwt);
-
-            if (authResponse.role.includes("ADMINISTRADOR")) {
-                showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/GestionDeBibliotecas/templates/admin/dashboard.html');
-            } else if (authResponse.role.includes("CLIENTE")) {
-                showAlert('success', 'Éxito', 'Inicio de sesión exitoso', '/GestionDeBibliotecas/templates/customer/menu.html');
-            }
-
         } catch (error) {
             showAlert('error', 'Error', 'Hubo un error, vuelve a intentarlo', '');
         }
