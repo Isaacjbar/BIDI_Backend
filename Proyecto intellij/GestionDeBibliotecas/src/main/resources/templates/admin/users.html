@@ -173,6 +173,7 @@
             <button class="close-button" onclick="closeModal('editModal')">&times;</button>
         </div>
         <form id="editForm">
+            <input type="hidden" id="usuarioId" value="Id">
             <div class="modal-body">
                 <div class="form-group">
                     <label for="editNombres">Nombres:</label>
@@ -219,7 +220,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-cancel" onclick="closeModal('editModal')">Cancelar</button>
-                <button type="submit" class="btn btn-submit" >Guardar</button>
+                <button type="submit" class="btn btn-submit" id="buttonUserDataEdit">Guardar</button>
             </div>
         </form>
     </div>

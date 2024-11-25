@@ -99,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.getElementById("editForm").addEventListener("submit", function (event) {
     event.preventDefault();
 
+    const id = document.getElementById("usuarioId").value.trim();
     const nombres = document.getElementById("editNombres").value.trim();
     const apellidos = document.getElementById("editApellidos").value.trim();
     const email = document.getElementById("editEmail").value.trim();
@@ -131,6 +132,7 @@ document.getElementById("editForm").addEventListener("submit", function (event) 
     Swal.fire({
         icon: 'success', title: 'Edición exitosa', text: 'Los datos han sido actualizados exitosamente.',
     }).then(() => {
+        selectedCard.querySelector(".card-title").textContent = id;
         selectedCard.querySelector(".card-title").textContent = nombres;
         selectedCard.querySelectorAll(".card-description span")[1].textContent = apellidos;
         selectedCard.querySelectorAll(".card-description span")[3].textContent = telefono;

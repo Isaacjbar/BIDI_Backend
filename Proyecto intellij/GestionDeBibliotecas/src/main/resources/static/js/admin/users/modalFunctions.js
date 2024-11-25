@@ -26,12 +26,14 @@ function openEditModal(card) {
     selectedCard = card;
     const editModal = document.getElementById("editModal");
 
+    const usuarioId = card.querySelector(".card-title").textContent;
     const nombres = card.querySelector(".card-title").textContent;
     const apellidos = card.querySelectorAll(".card-description span")[1].textContent;
     const telefono = card.querySelectorAll(".card-description span")[3].textContent;
     const email = card.querySelectorAll(".card-description span")[5].textContent;
     const password = card.getAttribute("data-password");
 
+    document.getElementById("usuarioId").value = usuarioId;
     document.getElementById("editNombres").value = nombres;
     document.getElementById("editApellidos").value = apellidos;
     document.getElementById("editTelefono").value = telefono;
