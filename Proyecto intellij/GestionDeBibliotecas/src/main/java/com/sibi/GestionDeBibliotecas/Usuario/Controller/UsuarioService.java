@@ -375,7 +375,7 @@ public class UsuarioService {
         emailService.sendEmail(
                 usuarioDTO.getCorreo(),
                 "Recuperación de contraseña BIDI",
-                "Tu código de verificación es: " + codigo
+                "Accede a este enlace para recuperar tu contraseña: http://127.0.0.1:5500/Global/vistas/new_password.html\nTu código de verificación es: " + codigo
         );
 
         return new ResponseEntity<>(new Message(usuario, "Correo de recuperación enviado correctamente, verifica tu bandeja de entrada", TypesResponse.SUCCESS), HttpStatus.OK);
