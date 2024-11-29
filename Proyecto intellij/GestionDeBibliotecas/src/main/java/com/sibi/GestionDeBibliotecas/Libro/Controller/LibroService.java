@@ -187,7 +187,6 @@ public class LibroService {
             return new ResponseEntity<>(new Message(libro, "El estado del libro se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
         }).orElseGet(() -> {
             return new ResponseEntity<>(new Message("El libro no existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-
         });
     }
     @Transactional(readOnly = true)

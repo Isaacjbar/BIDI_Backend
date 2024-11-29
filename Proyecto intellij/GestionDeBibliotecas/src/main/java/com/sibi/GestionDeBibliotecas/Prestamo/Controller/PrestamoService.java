@@ -207,7 +207,7 @@ public class PrestamoService {
         logger.info("La actualización del estado del préstamo y las copias del libro ha sido realizada correctamente");
         String mensaje = String.format("El estado del préstamo se actualizó correctamente a %s", nuevoEstado);
 
-        return new ResponseEntity<>(new Message(mensaje, TypesResponse.SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>(new Message(prestamo, mensaje,TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
 
