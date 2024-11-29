@@ -58,17 +58,13 @@ public class Usuario {
 
     }
 
-    public Usuario(Long usuarioId, String nombre, String apellidos, String correo, String contrasena, Rol rol, Estado estado, String numeroTelefono, String codigo, LocalDateTime codigoGeneradoEn) {
-        this.usuarioId = usuarioId;
+    public Usuario(String nombre, String apellidos, String correo, String contrasena, Rol rol, String numeroTelefono) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.correo = correo;
         this.contrasena = contrasena;
         this.rol = rol;
-        this.estado = estado;
         this.numeroTelefono = numeroTelefono;
-        this.codigo = codigo;
-        this.codigoGeneradoEn = codigoGeneradoEn;
     }
 
     public Usuario(String nombre, String apellidos, String correo, String contrasena, Rol rol) {

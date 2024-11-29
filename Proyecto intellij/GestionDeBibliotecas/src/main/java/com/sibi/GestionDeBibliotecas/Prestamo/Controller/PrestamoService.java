@@ -179,7 +179,7 @@ public class PrestamoService {
 
         // Verificar si el estado ya es el solicitado
         if ((prestamo.getStatus().equals(Prestamo.Status.ACTIVE) && dto.getEstado().equalsIgnoreCase("ACTIVE")) ||
-                (prestamo.getStatus().equals(Prestamo.Status.INACTIVE) && dto.getEstado().equalsIgnoreCase("INACTIVE"))) {
+                (prestamo.getStatus().equals(Prestamo.Status.INACTIVE) && dto.getEstado().equalsIgnoreCase("INACTIVO"))) {
 
             String mensaje = String.format("El préstamo ya está en estado %s", prestamo.getStatus());
             logger.info(mensaje);

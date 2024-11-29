@@ -18,12 +18,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Date;
 import java.sql.SQLException;
-import java.time.Instant;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
@@ -106,6 +102,11 @@ public class UsuarioService {
         if (usuarioDTO.getContrasena().length() > 255) {
             return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
+        if (!usuarioDTO.getNumeroTelefono().isEmpty()) {
+            if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
+                return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            }
+        }
         String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
         if (!usuarioDTO.getContrasena().matches(contraseña)) {
             return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
@@ -120,7 +121,14 @@ public class UsuarioService {
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
 
-        Usuario usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE);
+        Usuario usuario = null;
+
+        if (usuarioDTO.getNumeroTelefono().isEmpty()) {
+            usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE);
+        } else {
+            usuario = new Usuario(usuarioDTO.getNombre(), usuarioDTO.getApellidos(), usuarioDTO.getCorreo(), hashPassword, Rol.CLIENTE, usuarioDTO.getNumeroTelefono());
+        }
+
         usuario = usuarioRepository.saveAndFlush(usuario);
 
         if (usuario == null) {
@@ -154,23 +162,32 @@ public class UsuarioService {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
+        if (!usuarioDTO.getNumeroTelefono().isEmpty()) {
+            if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
+                return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            }
+        }
+
         String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
         if (!usuarioDTO.getContrasena().matches(contraseña)) {
             return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
-        if (correoDuplicate != null) {
-            if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
-                return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        Usuario usuario = usuarioOptional.get();
+
+        if (!usuarioDTO.getCorreo().trim().equalsIgnoreCase(usuario.getCorreo().trim())) {
+            String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
+            if (correoDuplicate != null) {
+                if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
+                    return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
             }
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
 
-        Usuario usuario = usuarioOptional.get();
-
         usuario.setNombre(usuarioDTO.getNombre());
+        usuario.setApellidos(usuarioDTO.getApellidos());
         usuario.setCorreo(usuarioDTO.getCorreo());
         usuario.setNumeroTelefono(usuarioDTO.getNumeroTelefono());
         usuario.setContrasena(hashPassword);
@@ -211,22 +228,28 @@ public class UsuarioService {
         if (usuarioDTO.getNumeroTelefono().length() > 15) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-
+        if (!usuarioDTO.getNumeroTelefono().isEmpty()) {
+            if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
+                return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            }
+        }
         String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
         if (!usuarioDTO.getContrasena().matches(contraseña)) {
             return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
-        if (correoDuplicate != null) {
-            if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
-                return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        Usuario usuario = usuarioOptional.get();
+
+        if (!usuarioDTO.getCorreo().trim().equalsIgnoreCase(usuario.getCorreo().trim())) {
+            String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
+            if (correoDuplicate != null) {
+                if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
+                    return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
             }
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
-
-        Usuario usuario = usuarioOptional.get();
 
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setCorreo(usuarioDTO.getCorreo());
@@ -268,8 +291,13 @@ public class UsuarioService {
         if (usuarioDTO.getContrasena().length() > 255) {
             return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioDTO.getNumeroTelefono().length() > 15) {
+        if (usuarioDTO.getNumeroTelefono().length() > 10) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        }
+        if (!usuarioDTO.getNumeroTelefono().isEmpty()) {
+            if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
+                return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+            }
         }
 
         String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
@@ -277,16 +305,18 @@ public class UsuarioService {
             return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
-        String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
-        if (correoDuplicate != null) {
-            if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
-                return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+        Usuario usuario = usuarioOptional.get();
+
+        if (!usuarioDTO.getCorreo().trim().equalsIgnoreCase(usuario.getCorreo().trim())) {
+            String correoDuplicate = usuarioRepository.findUsuarioByCorreo(usuarioDTO.getCorreo());
+            if (correoDuplicate != null) {
+                if (usuarioDTO.getCorreo().trim().equalsIgnoreCase(correoDuplicate.trim())) {
+                    return new ResponseEntity<>(new Message("El correo ya existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
             }
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
-
-        Usuario usuario = usuarioOptional.get();
 
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setCorreo(usuarioDTO.getCorreo());
@@ -335,8 +365,10 @@ public class UsuarioService {
     @Transactional(readOnly = true)
     public ResponseEntity<Message> findByStatus(String status) {
         Estado estado;
+        logger.error("Estado antes de la conversión{}", status);
         try {
             estado = Estado.valueOf(status.toUpperCase());
+            logger.error("Estado en la conversión{}", estado);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(new Message("Estado inválido", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }

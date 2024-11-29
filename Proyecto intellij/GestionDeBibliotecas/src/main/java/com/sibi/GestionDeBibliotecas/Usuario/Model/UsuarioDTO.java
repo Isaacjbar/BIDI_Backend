@@ -6,7 +6,7 @@ import java.sql.Date;
 
 public class UsuarioDTO {
 
-    @NotNull(groups = {CambiarEstado.class, Consultar.class, Recuperacion.class}, message = "Error con el identificador de usuario")
+    @NotNull(groups = {CambiarEstado.class, Modificar.class, Consultar.class, Recuperacion.class}, message = "Error con el identificador de usuario")
     private Long usuarioId;
 
     @NotBlank(groups = {Registrar.class, Modificar.class}, message = "El nombre no puede estar vacío")
