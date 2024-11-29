@@ -184,9 +184,7 @@ public class LibroService {
             } else {
                 logger.info("No hubo cambios en el estado del libro, ya tenía el estado proporcionado. Estado actual: {}", libro.getStatus());
             }
-
-            // Incluir el estado del libro en el mensaje de respuesta
-            return new ResponseEntity<>(new Message("El estado del libro se actualizó correctamente. Estado actual: " + libro.getStatus(), TypesResponse.SUCCESS), HttpStatus.OK);
+            return new ResponseEntity<>(new Message(libro, "El estado del libro se actualizó correctamente", TypesResponse.SUCCESS), HttpStatus.OK);
         }).orElseGet(() -> {
             return new ResponseEntity<>(new Message("El libro no existe", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
 
