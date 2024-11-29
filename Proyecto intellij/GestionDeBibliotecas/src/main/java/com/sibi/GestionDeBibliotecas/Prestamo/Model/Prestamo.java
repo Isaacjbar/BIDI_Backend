@@ -21,7 +21,6 @@ public class Prestamo {
 
     @ManyToOne
     @JoinColumn(name = "book_id")
-    @JsonIgnore
     private Libro libro;
 
     @Column(name = "loan_date", nullable = false)
