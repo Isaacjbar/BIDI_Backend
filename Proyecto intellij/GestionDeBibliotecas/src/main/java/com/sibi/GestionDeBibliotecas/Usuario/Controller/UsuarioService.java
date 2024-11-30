@@ -52,6 +52,18 @@ public class UsuarioService {
     }
 
     // --------------------------------------------
+    @Transactional(readOnly = true)
+    public ResponseEntity<Message> findById(UsuarioDTO usuarioDTO) {
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioDTO.getUsuarioId());
+        if (!usuarioOptional.isPresent()) {
+            return new ResponseEntity<>(new Message("El usuario no existe", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
+        }
+        Usuario usuario = usuarioOptional.get();
+        logger.info("La búsqueda ha sido realizada correctamente");
+        return new ResponseEntity<>(new Message(usuario, "Usuario", TypesResponse.SUCCESS), HttpStatus.OK);
+    }
+
+    // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
     public ResponseEntity<Message> find(UsuarioDTO usuarioDTO, String token) {
         token = token.substring(7);
@@ -155,9 +167,7 @@ public class UsuarioService {
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioDTO.getContrasena().length() > 255) {
-            return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
+
         if (usuarioDTO.getNumeroTelefono().length() > 15) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -166,11 +176,6 @@ public class UsuarioService {
             if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
                 return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
             }
-        }
-
-        String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
-        if (!usuarioDTO.getContrasena().matches(contraseña)) {
-            return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
         Usuario usuario = usuarioOptional.get();
@@ -185,12 +190,25 @@ public class UsuarioService {
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
+        String originalPassword = userDetailsServiceImpl.encodePassword(usuario.getContrasena());
+        logger.error("Original: {}, Editada {}", usuario.getContrasena(), usuarioDTO.getContrasena());
 
+        if (!usuarioDTO.getContrasena().isEmpty()) {
+            if (!hashPassword.trim().equalsIgnoreCase(originalPassword.trim())) {
+                if (usuarioDTO.getContrasena().length() > 255) {
+                    return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
+                String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
+                if (!usuarioDTO.getContrasena().matches(contraseña)) {
+                    return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
+                usuario.setContrasena(hashPassword);
+            }
+        }
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setApellidos(usuarioDTO.getApellidos());
         usuario.setCorreo(usuarioDTO.getCorreo());
         usuario.setNumeroTelefono(usuarioDTO.getNumeroTelefono());
-        usuario.setContrasena(hashPassword);
 
         usuario = usuarioRepository.saveAndFlush(usuario);
         if (usuario == null) {
@@ -222,9 +240,6 @@ public class UsuarioService {
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioDTO.getContrasena().length() > 255) {
-            return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
         if (usuarioDTO.getNumeroTelefono().length() > 15) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -232,10 +247,6 @@ public class UsuarioService {
             if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
                 return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
             }
-        }
-        String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
-        if (!usuarioDTO.getContrasena().matches(contraseña)) {
-            return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
         Usuario usuario = usuarioOptional.get();
@@ -250,11 +261,24 @@ public class UsuarioService {
         }
 
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
+        String originalPassword = userDetailsServiceImpl.encodePassword(usuario.getContrasena());
+
+        if (!usuarioDTO.getContrasena().isEmpty()) {
+            if (!hashPassword.trim().equalsIgnoreCase(originalPassword.trim())) {
+                if (usuarioDTO.getContrasena().length() > 255) {
+                    return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
+                String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
+                if (!usuarioDTO.getContrasena().matches(contraseña)) {
+                    return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
+                usuario.setContrasena(hashPassword);
+            }
+        }
 
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setCorreo(usuarioDTO.getCorreo());
         usuario.setNumeroTelefono(usuarioDTO.getNumeroTelefono());
-        usuario.setContrasena(hashPassword);
 
         usuario = usuarioRepository.saveAndFlush(usuario);
         if (usuario == null) {
@@ -288,9 +312,6 @@ public class UsuarioService {
         if (usuarioDTO.getCorreo().length() > 100) {
             return new ResponseEntity<>(new Message("El correo excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
-        if (usuarioDTO.getContrasena().length() > 255) {
-            return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
-        }
         if (usuarioDTO.getNumeroTelefono().length() > 10) {
             return new ResponseEntity<>(new Message("El número de teléfono excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
@@ -298,11 +319,6 @@ public class UsuarioService {
             if (!usuarioDTO.getNumeroTelefono().matches("^[0-9]+$")) {
                 return new ResponseEntity<>(new Message("El número de teléfono solo puede contener números", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
             }
-        }
-
-        String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
-        if (!usuarioDTO.getContrasena().matches(contraseña)) {
-            return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
         }
 
         Usuario usuario = usuarioOptional.get();
@@ -316,12 +332,25 @@ public class UsuarioService {
             }
         }
 
+        String originalPassword = userDetailsServiceImpl.encodePassword(usuario.getContrasena());
         String hashPassword = userDetailsServiceImpl.encodePassword(usuarioDTO.getContrasena());
+
+        if (!usuarioDTO.getContrasena().isEmpty()) {
+            if (!hashPassword.trim().equalsIgnoreCase(originalPassword.trim())) {
+                if (usuarioDTO.getContrasena().length() > 255) {
+                    return new ResponseEntity<>(new Message("La  contraseña excede el número de caracteres", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
+                String contraseña = "(?=.*[A-Z])(?=.*\\d).{8,}";
+                if (!usuarioDTO.getContrasena().matches(contraseña)) {
+                    return new ResponseEntity<>(new Message("La contraseña debe tener al menos 8 caracteres, incluir una letra mayúscula y un número", TypesResponse.WARNING), HttpStatus.BAD_REQUEST);
+                }
+                usuario.setContrasena(hashPassword);
+            }
+        }
 
         usuario.setNombre(usuarioDTO.getNombre());
         usuario.setCorreo(usuarioDTO.getCorreo());
         usuario.setNumeroTelefono(usuarioDTO.getNumeroTelefono());
-        usuario.setContrasena(hashPassword);
 
         usuario = usuarioRepository.saveAndFlush(usuario);
         if (usuario == null) {

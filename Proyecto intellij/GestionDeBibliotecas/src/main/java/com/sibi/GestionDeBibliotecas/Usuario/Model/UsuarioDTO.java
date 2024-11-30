@@ -19,7 +19,7 @@ public class UsuarioDTO {
     @Email(groups = {Registrar.class, Modificar.class, Solicitud.class, Validacion.class}, message = "El correo debe tener un formato válido")
     private String correo;
 
-    @NotBlank(groups = {Registrar.class, Modificar.class, Validacion.class, Recuperacion.class}, message = "La contraseña no puede estar vacía")
+    @NotBlank(groups = {Registrar.class, Validacion.class, Recuperacion.class}, message = "La contraseña no puede estar vacía")
     private String contrasena;
 
     private String rol;

@@ -121,6 +121,12 @@ public class AdminController {
         return usuarioService.findAll();
     }
 
+    // Cargar en el modal el perfil del usuario al editar
+    @GetMapping("/user/find-id")
+    public ResponseEntity<Message> findUser(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto) {
+        return usuarioService.findById(dto);
+    }
+
     // Complemento de consultar usuarios admin
     @GetMapping("/user/status/{estado}")
     public ResponseEntity<Message> findUserByStatus(@PathVariable String estado) {
