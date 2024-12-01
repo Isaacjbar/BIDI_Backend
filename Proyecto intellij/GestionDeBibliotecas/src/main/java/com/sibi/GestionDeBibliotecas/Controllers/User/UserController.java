@@ -6,6 +6,7 @@ import com.sibi.GestionDeBibliotecas.Prestamo.Model.PrestamoDTO;
 import com.sibi.GestionDeBibliotecas.Usuario.Controller.UsuarioService;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioDTO;
 import com.sibi.GestionDeBibliotecas.Util.Response.Message;
+import jakarta.mail.Part;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,12 @@ public class UserController {
     public ResponseEntity<Message> saveForCustomer(@RequestBody PrestamoDTO dto, HttpServletRequest request) {
         String token = request.getHeader("Authorization").substring(7);  // Eliminar "Bearer "
         return prestamoService.saveForCustomer(dto, token);
+    }
+
+    @GetMapping("/loan/{userId}")
+    public ResponseEntity<Message> getAllLoansByUsuario(@PathVariable Long userId,HttpServletRequest request) {
+        String token = request.getHeader("Authorization").substring(7);  // Eliminar "Bearer "
+        return prestamoService.findAllByUsuario(userId,token);
     }
 
     @GetMapping("/book/for-customer")

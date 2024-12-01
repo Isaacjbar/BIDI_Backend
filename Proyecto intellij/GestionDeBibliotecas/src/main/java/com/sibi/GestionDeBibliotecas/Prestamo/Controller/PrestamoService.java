@@ -223,9 +223,16 @@ public class PrestamoService {
         logger.info("La búsqueda por estado de los préstamos ha sido realizada correctamente");
         return new ResponseEntity<>(new Message(prestamos, "Listado de préstamos por estado", TypesResponse.SUCCESS), HttpStatus.OK);
     }
+
     @Transactional(readOnly = true)
-    public ResponseEntity<Message> findAllByUsuario(Long userId) {
+    public ResponseEntity<Message> findAllByUsuario(Long userId,String token) {
         Optional<Usuario> usuarioOpt = usuarioRepository.findById(userId);
+        // Extraer el ID del usuario autenticado desde el token
+        Long userIdFromToken = jwtUtil.extractUserId(token);  // Asegúrate de pasar el token JWT al método
+        // Verificar que el ID del usuario en el DTO coincida con el ID del token
+        if (!userIdFromToken.equals(userId)) {
+            return new ResponseEntity<>(new Message("No tienes permiso para realizar este préstamo con otro ID de usuario", TypesResponse.ERROR), HttpStatus.FORBIDDEN);
+        }
         if (usuarioOpt.isEmpty()) {
             logger.warn("Usuario con ID " + userId + " no encontrado.");
             return new ResponseEntity<>(new Message(null, "Usuario no encontrado", TypesResponse.WARNING), HttpStatus.NOT_FOUND);

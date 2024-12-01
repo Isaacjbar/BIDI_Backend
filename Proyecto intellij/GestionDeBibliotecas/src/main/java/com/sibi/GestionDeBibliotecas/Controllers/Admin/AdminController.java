@@ -95,11 +95,6 @@ public class AdminController {
         return prestamoService.findAll();
     }
 
-    @GetMapping("/loan/user/{userId}")
-    public ResponseEntity<Message> getAllLoansByUsuario(@PathVariable Long userId) {
-        return prestamoService.findAllByUsuario(userId);
-    }
-
     @GetMapping("/loan/status/{estado}")
     public ResponseEntity<Message> getLoanByStatus(@PathVariable String estado) {
         return prestamoService.findByStatus(estado);
