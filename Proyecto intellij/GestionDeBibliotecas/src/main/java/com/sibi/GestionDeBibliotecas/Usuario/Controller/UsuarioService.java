@@ -83,14 +83,14 @@ public class UsuarioService {
 
     // --------------------------------------------
     @Transactional(rollbackFor = {SQLException.class})
-    public ResponseEntity<Message> findForCustomer(UsuarioDTO usuarioDTO, String token) {
+    public ResponseEntity<Message> findForCustomer(Long userId, String token) {
         token = token.substring(7);
         Long userIdFromToken = jwtUtil.extractUserId(token);
 
-        if (!userIdFromToken.equals(usuarioDTO.getUsuarioId())) {
+        if (!userIdFromToken.equals(userId)) {
             return new ResponseEntity<>(new Message("No tienes permiso para realizar ésta acción con otro ID de usuario", TypesResponse.ERROR), HttpStatus.FORBIDDEN);
         }
-        Optional<Usuario> usuarioOptional = usuarioRepository.findById(usuarioDTO.getUsuarioId());
+        Optional<Usuario> usuarioOptional = usuarioRepository.findById(userId);
         if (!usuarioOptional.isPresent()) {
             return new ResponseEntity<>(new Message("No existes", TypesResponse.ERROR), HttpStatus.NOT_FOUND);
         }
@@ -349,6 +349,7 @@ public class UsuarioService {
         }
 
         usuario.setNombre(usuarioDTO.getNombre());
+        usuario.setApellidos(usuarioDTO.getApellidos());
         usuario.setCorreo(usuarioDTO.getCorreo());
         usuario.setNumeroTelefono(usuarioDTO.getNumeroTelefono());
 
@@ -357,7 +358,7 @@ public class UsuarioService {
             return new ResponseEntity<>(new Message("Información editada exitósamente", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
         logger.info("La actualización de usuario ha sido realizada correctamente");
-        return new ResponseEntity<>(new Message(usuario, "Error al editar tu información", TypesResponse.SUCCESS), HttpStatus.OK);
+        return new ResponseEntity<>(new Message(usuario, "Exito al editar tu información", TypesResponse.SUCCESS), HttpStatus.OK);
     }
 
     // --------------------------------------------

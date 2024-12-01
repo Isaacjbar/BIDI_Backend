@@ -46,9 +46,9 @@ public class UserController {
     }
 
     // Consultar perfil cliente
-    @GetMapping("/user/find/for-customer")
-    public ResponseEntity<Message> findForCustomer(@Validated(UsuarioDTO.Consultar.class) @RequestBody UsuarioDTO dto, HttpServletRequest request) {
-        return usuarioService.findForCustomer(dto, request.getHeader("Authorization"));
+    @GetMapping("/user/find/for-customer/{userId}")
+    public ResponseEntity<Message> findForCustomer(@PathVariable Long userId, HttpServletRequest request) {
+        return usuarioService.findForCustomer(userId, request.getHeader("Authorization"));
     }
 
     // Editar perfil cliente
