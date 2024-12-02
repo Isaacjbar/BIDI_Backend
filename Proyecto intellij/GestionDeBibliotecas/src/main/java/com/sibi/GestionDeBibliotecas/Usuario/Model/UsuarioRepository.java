@@ -17,7 +17,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
     @Query("SELECT usuario FROM Usuario usuario WHERE usuario.usuarioId = :id")
     Optional<Usuario> findById(@Param("id") Long id);
 
-    @Query("SELECT COUNT(p) FROM Prestamo p WHERE p.usuario.usuarioId = :usuarioId")
+    @Query("SELECT COUNT(p) FROM Prestamo p WHERE p.usuario.usuarioId = :usuarioId AND p.status = 'ACTIVE'")
     Long countPrestamosByUsuarioId(@Param("usuarioId") Long usuarioId);
 
     List<Usuario> findByEstado(Estado estado);
