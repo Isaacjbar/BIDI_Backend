@@ -1,5 +1,10 @@
 package com.sibi.GestionDeBibliotecas.Util.Config;
 
+import com.sibi.GestionDeBibliotecas.Categoria.Model.Categoria;
+import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaRepository;
+import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
+import com.sibi.GestionDeBibliotecas.Libro.Model.LibroDTO;
+import com.sibi.GestionDeBibliotecas.Libro.Model.LibroRepository;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
@@ -8,13 +13,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.util.ArrayList;
 import java.util.Optional;
 
 @Configuration
 public class DataInitializer {
 
     @Bean
-    CommandLineRunner initDatabase(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+    CommandLineRunner initDatabase(UsuarioRepository usuarioRepository, CategoriaRepository categoriaRepository, LibroRepository libroRepository, PasswordEncoder passwordEncoder) {
         return args -> {
             // Usuario con rol de ADMINISTRADOR
             Optional<Usuario> optionalAdmin = usuarioRepository.findByCorreo("admin@example.com");
@@ -54,6 +60,14 @@ public class DataInitializer {
                 );
                 usuarioRepository.saveAndFlush(invitadoUser);
             }
+
+            Categoria pelea = new Categoria(1L, "Pelea", Categoria.Status.INACTIVE, new ArrayList<>());
+            categoriaRepository.saveAndFlush(pelea);
+            Categoria familia = new Categoria(2L, "Familia", Categoria.Status.ACTIVE, new ArrayList<>());
+            categoriaRepository.saveAndFlush(familia);
+
+            Libro libro = new Libro(1L, "Emilio Rojas", "Las noches", "Buen libro", Libro.Status.INACTIVE, 3);
+            libroRepository.saveAndFlush(libro);
         };
     }
 }
