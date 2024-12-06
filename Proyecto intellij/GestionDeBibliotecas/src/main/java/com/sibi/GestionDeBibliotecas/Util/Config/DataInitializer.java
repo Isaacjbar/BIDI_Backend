@@ -5,6 +5,7 @@ import com.sibi.GestionDeBibliotecas.Categoria.Model.CategoriaRepository;
 import com.sibi.GestionDeBibliotecas.Libro.Model.Libro;
 import com.sibi.GestionDeBibliotecas.Libro.Model.LibroDTO;
 import com.sibi.GestionDeBibliotecas.Libro.Model.LibroRepository;
+import com.sibi.GestionDeBibliotecas.Libro_Categoria.Model.LibroCategoria;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.Usuario;
 import com.sibi.GestionDeBibliotecas.Usuario.Model.UsuarioRepository;
 import com.sibi.GestionDeBibliotecas.Util.Enum.Rol;
@@ -60,14 +61,6 @@ public class DataInitializer {
                 );
                 usuarioRepository.saveAndFlush(invitadoUser);
             }
-
-            Categoria pelea = new Categoria(1L, "Pelea", Categoria.Status.INACTIVE, new ArrayList<>());
-            categoriaRepository.saveAndFlush(pelea);
-            Categoria familia = new Categoria(2L, "Familia", Categoria.Status.ACTIVE, new ArrayList<>());
-            categoriaRepository.saveAndFlush(familia);
-
-            Libro libro = new Libro(1L, "Emilio Rojas", "Las noches", "Buen libro", Libro.Status.INACTIVE, 3);
-            libroRepository.saveAndFlush(libro);
         };
     }
 }
