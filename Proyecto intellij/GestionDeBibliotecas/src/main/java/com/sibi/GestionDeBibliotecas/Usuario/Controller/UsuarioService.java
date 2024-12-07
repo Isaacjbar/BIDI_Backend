@@ -395,10 +395,10 @@ public class UsuarioService {
     @Transactional(readOnly = true)
     public ResponseEntity<Message> findByStatus(String status) {
         Estado estado;
-        logger.error("Estado antes de la conversión{}", status);
+        logger.error("Estado antes de la conversión {} ", status);
         try {
             estado = Estado.valueOf(status.toUpperCase());
-            logger.error("Estado en la conversión{}", estado);
+            logger.error("Estado en la conversión {} ", estado);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(new Message("Estado inválido", TypesResponse.ERROR), HttpStatus.BAD_REQUEST);
         }
